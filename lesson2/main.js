@@ -1,4 +1,4 @@
-const lists = document.getElementById('js-list');
+const lists = document.getElementById('js-lists');
 const list = document.createElement('li');
 const text = document.createTextNode('これです');
 
