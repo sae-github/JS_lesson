@@ -6,12 +6,8 @@ const anchor = document.createElement('a');
 anchor.href = '1.html';
 
 const image = document.createElement('img');
-const src = document.createAttribute('src');
-const alt = document.createAttribute('alt');
-src.value = 'bookmark.png';
-alt.value = 'ブックマーク';
-image.setAttributeNode(src);
-image.setAttributeNode(alt);
+image.src = 'bookmark.png';
+image.alt = 'ブックマーク';
 
 lists.appendChild(list);
 list.appendChild(anchor);
