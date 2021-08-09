@@ -12,7 +12,7 @@ items.forEach(item => {
   const anchor = document.createElement('a');
   const image = document.createElement('img');
 
-  anchor.href = '/' + item.to;
+  anchor.href = `/${item.to}`;
   image.src = item.img;
   image.alt = item.alt;
 
