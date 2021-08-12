@@ -13,8 +13,8 @@ const promise = new Promise((resolve) => {
     const li = document.createElement('li');
     const anchor = document.createElement('a');
     const img = document.createElement('img');
-
-    anchor.href = list.to;
+    
+    anchor.href = `/${list.to}`;
     img.src = list.img;
     img.alt = list.alt;
 
