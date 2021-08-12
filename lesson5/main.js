@@ -5,7 +5,9 @@ const items = [
   { to: "message.html", img: "2.png", alt: "画像2", text: "メッセージ" }
 ]
 
-Promise.resolve(items).then((items) => {
+new Promise((resolve) => {
+  resolve(items);
+}).then((items) => {
   items.forEach(item => {
     const frag = document.createDocumentFragment();
     const li = document.createElement('li');
