@@ -12,11 +12,11 @@ function getListsObj() {
   });
 }
 
-getListsObj().then((date) => {
+getListsObj().then((data) => {
   const ul = document.getElementById('js-ul');
   const frag = document.createDocumentFragment();
 
-  date.forEach(value => {
+  data.forEach(value => {
     const li = document.createElement('li');
     const anchor = document.createElement('a');
     const img = document.createElement('img');
