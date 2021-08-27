@@ -17,8 +17,8 @@ function createList() {
       if (getData()) {
         resolve(getData());
       }
-    }, 1000)
-  })
+    }, 1000);
+  });
 }
 
 createList().then((lists) => {
@@ -35,7 +35,6 @@ createList().then((lists) => {
 
     frag.appendChild(li).appendChild(anchor).appendChild(img);
     anchor.insertAdjacentHTML('beforeend', list.text);
-
   });
   ul.appendChild(frag);
 });
