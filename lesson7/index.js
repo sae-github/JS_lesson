@@ -1,30 +1,30 @@
 const ul = document.getElementById('js-ul');
 
 function getData() {
-  return data = [
+  const data = [
     { to: "bookmark.html", img: "1.png", alt: "画像1", text: "ブックマーク" },
     { to: "message.html", img: "2.png", alt: "画像2", text: "メッセージ" }
   ]
+  return data;
 }
 
 function createList() {
-  LoadingImage = document.createElement('img');
+  const LoadingImage = document.createElement('img');
   LoadingImage.src = "./loading-circle.gif";
   ul.appendChild(LoadingImage);
   return new Promise((resolve) => {
     setTimeout(() => {
       if (getData()) {
-        resolve(data);
+        resolve(getData());
       }
     }, 1000)
   })
 }
 
 createList().then((lists) => {
-  LoadingImage.remove();
+  ul.removeChild(ul.firstChild);
   const frag = document.createDocumentFragment();
-
-  lists.forEach(list => {
+  lists.forEach((list) => {
     const li = document.createElement('li');
     const anchor = document.createElement('a');
     const img = document.createElement('img');
