@@ -5,23 +5,19 @@ const data = [
   { to: "message.html", img: "2.png", alt: "画像2", text: "メッセージ" }
 ];
 
-function loading() {
-  const LoadingImage = document.createElement('img');
-  LoadingImage.src = "./loading-circle.gif";
-  ul.appendChild(LoadingImage);
+function addLoading() {
+  const loadingImage = document.createElement('img');
+  loadingImage.src = "./loading-circle.gif";
+  loadingImage.id = "loading";
+  ul.appendChild(loadingImage);
 }
 
-function getData() {
-  loading();
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(data);
-    }, 1000);
-  });
+function removeLoading() {
+  const loading = document.getElementById('loading');
+  loading.remove();
 }
 
-getData().then((lists) => {
-  ul.removeChild(ul.firstChild);
+function createList(lists) {
   const frag = document.createDocumentFragment();
   lists.forEach((list) => {
     const li = document.createElement('li');
@@ -36,4 +32,21 @@ getData().then((lists) => {
     anchor.insertAdjacentHTML('beforeend', list.text);
   });
   ul.appendChild(frag);
+}
+
+
+function getData() {
+  addLoading();
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(data);
+    }, 1000);
+  });
+}
+
+getData().then((lists) => {
+  removeLoading();
+  createList(lists);
 });
+
+
