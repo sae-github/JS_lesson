@@ -32,7 +32,8 @@ async function fetchData() {
     return await getData();
   } catch (e) {
     console.error(e);
-    ul.textContent = "エラーが発生しました！";
+    const div = document.getElementById('js-wrapper');
+    div.textContent = "エラーが発生しました！";
   } finally {
     removeLoading();
   }
