@@ -49,7 +49,6 @@ async function createLists() {
     ul.appendChild(frag);
   } else {
     div.textContent = "データが未定義です";
-    div.appendChild(p);
   }
 }
 
