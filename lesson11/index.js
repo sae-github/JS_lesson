@@ -1,4 +1,6 @@
 const ul = document.getElementById('js-ul');
+const div = document.getElementById('js-wrapper');
+
 
 function addLoading() {
   const loading = document.createElement('img');
@@ -22,12 +24,10 @@ async function getData() {
       return response.json();
     }
   } catch (e) {
-    const div = document.getElementById('js-wrapper');
     div.textContent = "エラーが発生しました！";
     console.error(e);
-  } 
+  }
 }
-
 
 async function createLists() {
   const responseData = await getData();
@@ -47,6 +47,9 @@ async function createLists() {
       anchor.insertAdjacentHTML('beforeend', data.text);
     });
     ul.appendChild(frag);
+  } else {
+    div.textContent = "データが未定義です";
+    div.appendChild(p);
   }
 }
 
