@@ -21,20 +21,21 @@ async function getData() {
     if (!response.ok) {
       throw new Error(response.statusText);
     } else {
-      return response.json();
+      const json = await response.json();
+      return json;
     }
   } catch (e) {
-    div.textContent = "エラーが発生しました！";
+    div.textContent = "サーバーエラーが発生しました";
     console.error(e);
   }
 }
 
 async function createLists() {
   const responseData = await getData();
-  if (responseData !== undefined) {
+  if (responseData.data) {
     removeLoading();
     const frag = document.createDocumentFragment();
-    responseData.data.forEach((data) => {
+    responseData.data.forEach(data => {
       const li = document.createElement('li');
       const anchor = document.createElement('a');
       const img = document.createElement('img');
@@ -48,10 +49,8 @@ async function createLists() {
     });
     ul.appendChild(frag);
   } else {
-    div.textContent = "データが未定義です";
+    div.textContent = "適切なデータが見つかりませんでした";
   }
 }
 
 createLists();
-
-
