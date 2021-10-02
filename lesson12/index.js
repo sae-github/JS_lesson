@@ -56,6 +56,8 @@ async function tryCreate() {
   } catch (e) {
     div.textContent = "サーバーエラーが発生しました";
     console.error(e);
+  } finally {
+    button.style = "display: none";
   }
 }
 
