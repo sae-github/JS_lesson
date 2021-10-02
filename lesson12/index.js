@@ -59,6 +59,8 @@ async function tryCreate() {
   }
 }
 
-button.onclick = () => tryCreate();
+button.addEventListener('click',tryCreate);
+
+
 
 
