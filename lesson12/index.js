@@ -27,7 +27,7 @@ async function fetchData() {
   }
 }
 
-async function createLists(responseData) {
+function createLists(responseData) {
   removeLoading();
   const frag = document.createDocumentFragment();
   responseData.data.forEach(data => {
