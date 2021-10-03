@@ -43,17 +43,20 @@ function createLists(responseData) {
     });
     ul.appendChild(frag);
   } else {
-    div.textContent = "適切なデータが見つかりませんでした";
+    const unintendedDataMessage = document.createElement("p");
+    unintendedDataMessage.textContent = "適切なデータが見つかりませんでした";
+    div.appendChild(unintendedDataMessage);
   }
 }
-
 
 async function tryCreate() {
   addLoading();
   try {
-    const responseData = await fetchData();
+    await fetchData();
   } catch (e) {
-    div.textContent = "サーバーエラーが発生しました";
+    const serverErrorMessage = document.createElement("p");
+    serverErrorMessage.textContent = "サーバーエラーが発生しました";
+    div.appendChild(serverErrorMessage);
     console.error(e);
   } finally {
     removeLoading();
