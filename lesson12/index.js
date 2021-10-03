@@ -22,7 +22,7 @@ async function fetchData() {
     throw new Error(response.statusText);
   } else {
     const json = await response.json();
-    return json;
+    createLists(json);
   }
 }
 
