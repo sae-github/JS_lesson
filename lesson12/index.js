@@ -17,7 +17,6 @@ function removeLoading() {
 
 
 async function fetchData() {
-  addLoading();
   const response = await fetch("https://jsondata.okiba.me/v1/json/TOqvy211002104750");
   if (!response) {
     throw new Error(response.statusText);
@@ -28,7 +27,6 @@ async function fetchData() {
 }
 
 function createLists(responseData) {
-  removeLoading();
   const frag = document.createDocumentFragment();
   responseData.data.forEach(data => {
     const li = document.createElement('li');
@@ -46,6 +44,7 @@ function createLists(responseData) {
 }
 
 async function tryCreate() {
+  addLoading();
   try {
     const responseData = await fetchData();
     if (responseData.data) {
@@ -57,6 +56,7 @@ async function tryCreate() {
     div.textContent = "サーバーエラーが発生しました";
     console.error(e);
   } finally {
+    removeLoading();
     button.style = "display: none";
   }
 }
