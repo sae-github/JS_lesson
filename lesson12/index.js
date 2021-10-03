@@ -27,31 +27,31 @@ async function fetchData() {
 }
 
 function createLists(responseData) {
-  const frag = document.createDocumentFragment();
-  responseData.data.forEach(data => {
-    const li = document.createElement('li');
-    const anchor = document.createElement('a');
-    const img = document.createElement('img');
+  if (responseData.data) {
+    const frag = document.createDocumentFragment();
+    responseData.data.forEach(data => {
+      const li = document.createElement('li');
+      const anchor = document.createElement('a');
+      const img = document.createElement('img');
 
-    anchor.href = `/${data.to}`;
-    img.src = data.img;
-    img.alt = data.alt;
+      anchor.href = `/${data.to}`;
+      img.src = data.img;
+      img.alt = data.alt;
 
-    frag.appendChild(li).appendChild(anchor).appendChild(img);
-    anchor.insertAdjacentHTML('beforeend', data.text);
-  });
-  ul.appendChild(frag);
+      frag.appendChild(li).appendChild(anchor).appendChild(img);
+      anchor.insertAdjacentHTML('beforeend', data.text);
+    });
+    ul.appendChild(frag);
+  } else {
+    div.textContent = "適切なデータが見つかりませんでした";
+  }
 }
+
 
 async function tryCreate() {
   addLoading();
   try {
     const responseData = await fetchData();
-    if (responseData.data) {
-      createLists(responseData);
-    } else {
-      div.textContent = "適切なデータが見つかりませんでした";
-    }
   } catch (e) {
     div.textContent = "サーバーエラーが発生しました";
     console.error(e);
@@ -61,7 +61,7 @@ async function tryCreate() {
   }
 }
 
-button.addEventListener('click',tryCreate);
+button.addEventListener('click', tryCreate);
 
 
 
