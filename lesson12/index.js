@@ -17,12 +17,20 @@ function removeLoading() {
 
 
 async function fetchData() {
-  const response = await fetch("https://jsondata.okiba.me/v1/json/TOqvy211002104750");
-  if (!response) {
-    throw new Error(response.statusText);
-  } else {
-    const json = await response.json();
-    createLists(json);
+  try {
+    const response = await fetch("https://jsondata.okiba.me/v1/json/TOqvy211002104750");
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    } else {
+      const json = await response.json();
+      return json;
+    }
+  }
+  catch (e) {
+    const serverErrorMessage = document.createElement("p");
+    serverErrorMessage.textContent = "サーバーエラーが発生しました";
+    div.appendChild(serverErrorMessage);
+    console.error(e);
   }
 }
 
@@ -49,22 +57,17 @@ function createLists(responseData) {
   }
 }
 
-async function tryCreate() {
+async function init() {
   addLoading();
-  try {
-    await fetchData();
-  } catch (e) {
-    const serverErrorMessage = document.createElement("p");
-    serverErrorMessage.textContent = "サーバーエラーが発生しました";
-    div.appendChild(serverErrorMessage);
-    console.error(e);
-  } finally {
-    removeLoading();
-    button.style = "display: none";
+  const response = await fetchData();
+  if(response !== undefined) {
+    createLists(response);
   }
+  button.style = "display:none";
+  removeLoading();
 }
 
-button.addEventListener('click', tryCreate);
+button.addEventListener('click', init);
 
 
 
