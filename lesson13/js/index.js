@@ -39,7 +39,7 @@ function createLists(values) {
     const anchor = document.createElement('a');
     const img = document.createElement('img');
 
-    anchor.href = value.a;
+    anchor.href = `/${value.a}.html`;
     img.src = value.img;
     img.alt = value.alt;
 
