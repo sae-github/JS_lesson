@@ -24,7 +24,7 @@ async function fetchErrorHandling(response) {
   }
 }
 
-async function fetchData() {
+async function getJsonOrError() {
   const response = await fetch("https://jsondata.okiba.me/v1/json/fR9k5211007080400");
   const json = await fetchErrorHandling(response);
   return json;
@@ -51,7 +51,7 @@ function createLists(values) {
 async function tryCreate() {
   addLoading();
   try {
-    const responseData = await fetchData();
+    const responseData = await getJsonOrError();
     if (!responseData.data) {
       throw new Error("適切なデータが見つかりませんでした");
     } else {
