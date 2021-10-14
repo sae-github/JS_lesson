@@ -17,10 +17,10 @@ function removeLoading() {
 }
 
 async function fetchErrorHandling(response) {
-  if (!response.ok) {
-    throw new Error("サーバーエラーが発生しました");
-  } else {
+  if (response.ok) {
     return await response.json();
+  } else {
+    throw new Error("サーバーエラーが発生しました");
   }
 }
 
@@ -52,10 +52,10 @@ async function tryCreate() {
   addLoading();
   try {
     const responseData = await getJsonOrError();
-    if (!responseData.data) {
-      throw new Error("適切なデータが見つかりませんでした");
-    } else {
+    if (responseData.data) {
       createLists(responseData.data);
+    } else {
+      throw new Error("適切なデータが見つかりませんでした");
     }
   } catch (exception) {
     ul.replaceWith(exception);
