@@ -2,6 +2,7 @@ const modalBtn = document.getElementById("js-modal-btn");
 const modal = document.getElementById("js-modal");
 const requestBtn = document.getElementById("js-request-btn");
 const ul = document.getElementById("js-ul");
+const modalCloseIcon = document.getElementById('js-modal-close-icon');
 
 function addLoading() {
   const wrapper = document.getElementById("js-wrapper");
@@ -92,3 +93,7 @@ requestBtn.addEventListener("click", (e) => {
   }
 });
 
+modalCloseIcon.addEventListener('click', () => {
+  modal.classList.remove("visible");
+  modalBtn.style = "display: block";
+});
