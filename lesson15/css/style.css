@@ -14,7 +14,7 @@
   border-radius: 50px;
 }
 
-.modal-btn:hover {
+.modal__open-btn:hover {
   margin-top: 33px;
   border-bottom: 2px solid rgb(93, 151, 199);
 }
