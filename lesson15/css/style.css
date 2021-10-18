@@ -1,4 +1,4 @@
-.modal-btn {
+.modal__open-btn {
   background-color: #fff;
   display: flex;
   justify-content: center;
@@ -14,7 +14,7 @@
   border-radius: 50px;
 }
 
-.modal-btn:hover{
+.modal-btn:hover {
   margin-top: 33px;
   border-bottom: 2px solid rgb(93, 151, 199);
 }
@@ -40,14 +40,14 @@
   pointer-events: auto;
 }
 
-.modal__btn {
+.modal__close-icon {
   display: block;
   position: absolute;
   top: -25px;
   right: -25px;
 }
 
-.modal__btn img {
+.modal__close-icon img {
   width: 35px;
   height: 35px;
 }
@@ -67,7 +67,6 @@
   line-height: 1.2;
   cursor: pointer;
 }
-
 
 input[type="number"],
 input[type="text"] {
@@ -96,11 +95,11 @@ input[type="submit"] {
   justify-content: center;
   margin: 30px auto 0;
   background-color: #fff;
-  transition: background-color .3s;
+  transition: background-color 0.3s;
 }
 
 input[type="submit"]:hover {
   background-color: #333;
   color: #fff;
-  transition: background-color .3s;
+  transition: background-color 0.3s;
 }
