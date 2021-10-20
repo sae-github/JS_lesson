@@ -76,7 +76,7 @@ async function tryCreate() {
 }
 
 modalBtn.addEventListener("click", (e) => {
-  e.target.style = "display: none";
+  e.target.style.display = "none";
   modal.classList.add("visible");
 });
 
@@ -86,7 +86,7 @@ requestBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
   const replaceInputName = inputName.replace(/\s+/g, '');
-  
+
   if (replaceInputName.length === 0 || inputNumber === "") {
     alert("Name or number not entered properly.Please confirm.");
   } else {
@@ -98,5 +98,5 @@ requestBtn.addEventListener("click", (e) => {
 
 modalCloseIcon.addEventListener('click', () => {
   modal.classList.remove("visible");
-  modalBtn.style = "display: block";
+  modalBtn.style.display = "block";
 });
