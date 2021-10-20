@@ -84,10 +84,13 @@ requestBtn.addEventListener("click", (e) => {
   const inputName = document.getElementById("name").value;
   const inputNumber = document.getElementById("number").value;
   e.preventDefault();
-  if (inputName === "" || inputNumber === "") {
-    alert("Name or number not entered. Please confirm.");
+
+  const replaceInputName = inputName.replace(/\s+/g, '');
+  
+  if (replaceInputName.length === 0 || inputNumber === "") {
+    alert("Name or number not entered properly.Please confirm.");
   } else {
-    console.log(`Name: ${inputName}, Number: ${inputNumber}`);
+    console.log(`Name: ${replaceInputName}, Number: ${inputNumber}`);
     tryCreate();
     modal.classList.remove("visible");
   }
