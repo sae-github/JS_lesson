@@ -87,7 +87,7 @@ requestBtn.addEventListener("click", (e) => {
 
   const trimInputName = inputName.trim();
 
-  if (trimInputName.length === 0 || inputNumber === "") {
+  if (trimInputName === "" || inputNumber === "") {
     alert("Name or number not entered properly.Please confirm.");
   } else {
     console.log(`Name: ${trimInputName}, Number: ${inputNumber}`);
