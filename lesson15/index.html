@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>TerraceTechフロントエンドエンジニア養成所</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <div id="js-wrapper" class="wrapper">
+    <ul id="js-ul"></ul>
+    <button type="button" id="js-modal-btn" class="modal__open-btn">modal open</button>
+  </div>
+  <div class="modal" id="js-modal">
+    <form>
+      <p class="form-text">Tell me about yourself.</p>
+      <dl>
+        <div class="form-item">
+          <dt><label for="name">Name :</label></dt>
+          <dd><input type="text" name="name" id="name"></dd>
+        </div>
+        <div class="form-item">
+          <dt><label for="number">What is your favorite number?</label></dt>
+          <dd><input type="number" name="number" id="number"></dd>
+        </div>
+      </dl>
+      <input type="submit" value="submit" id="js-request-btn">
+    </form>
+    <a href="" class="modal__close-icon" id="js-modal-close-icon"><img src="./img/close-btn.svg" alt=""></a>
+  </div>
+  <script src="./js/index.js"></script>
+</body>
+
+</html>
