@@ -1,0 +1,90 @@
+body {
+  background-color: skyblue;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 45px;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  margin-top: 80px;
+}
+
+.tab-menu {
+  margin-top: 60px;
+}
+
+.tab-menu__list {
+  display: flex;
+  justify-content: center;
+}
+
+
+.tab-menu__list > li {
+  width: 25%;
+  text-align: center;
+  border: 1px solid #fff;
+  border-radius: 20px 20px 0 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 20px 0;
+}
+
+.tab-content {
+  background-color: #fff;
+  height: 450px;
+  padding: 30px;
+  box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.25);
+}
+
+.tab-content__inner {
+  display: flex;
+}
+
+.tab-content__list {
+  width: 70%;
+}
+
+.tab-content__list > li {
+  color: #333;
+  font-size: 24px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+
+.tab-content__list > li:hover {
+  text-decoration: underline;
+}
+
+.tab-menu__list > li.active {
+  background-color: #fff;
+  color: #333;
+  font-weight: bold;
+}
+
+
+.tab-content__img-wrapper {
+  width: 30%;
+}
+
