@@ -5,3 +5,4 @@ dist-ssr
 package-lock.json
 package.json
 *.local
+loading-circle.gif

@@ -2,6 +2,20 @@ const tabContentList = document.getElementById("js-tab-content");
 const imgWrapper = document.getElementById("js-tab-img");
 const tabs = document.getElementsByClassName("tab-menu__item");
 
+function addLoading() {
+  const tabContent = document.getElementById("js-tab-content");
+  const loading = document.createElement("img");
+  loading.src = "./loading-circle.gif";
+  loading.classList.add("loading");
+  loading.id = "loading";
+  tabContent.appendChild(loading);
+}
+
+function removeLoading() {
+  const loading = document.getElementById("loading");
+  loading.remove();
+}
+
 
 async function getJsonOrError() {
   const response = await fetch("./data.json");
