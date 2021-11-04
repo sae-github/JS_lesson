@@ -59,7 +59,9 @@ async function init() {
   if (data) {
     const hasSelectData = data.find((value) => value.select === true);
     const tab = document.getElementById(hasSelectData.category);
-    tab.click();
+    tab.classList.add("active");
+    createElement(hasSelectData);
+    addImage(hasSelectData);
   }
 }
 
