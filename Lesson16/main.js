@@ -27,9 +27,8 @@ async function tryGetData() {
 }
 
 async function createElement({ article }) {
-  const articleLength = 4;
   const frag = document.createDocumentFragment();
-  for (let i = 0; i < articleLength; i++) {
+  for (let i = 0; i < article.length; i++) {
     const li = document.createElement("li");
     const anchor = document.createElement("a");
     anchor.href = "#";
