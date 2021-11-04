@@ -85,12 +85,12 @@ async function configUIfromFetchData() {
     const hasSelectData = data.find((value) => value.select === true);
     const tab = document.getElementById(hasSelectData.category);
     tab.classList.add("active");
-    createElement(hasSelectData);
+    createArticleElements(hasSelectData);
     addImage(hasSelectData);
   }
 }
 
-async function createElement({ article }) {
+async function createArticleElements({ article }) {
   const ul = document.getElementById("js-tab-content__list");
   const frag = document.createDocumentFragment();
   for (let i = 0; i < article.length; i++) {
@@ -113,7 +113,7 @@ function addImage({ image }) {
 async function clickedTabContentCreate(target) {
   const targetResource = `./${target.id}.json`;
   const json = await tryGetData(targetResource);
-  createElement(json);
+  createArticleElements(json);
   addImage(json);
 }
 
