@@ -1,0 +1,38 @@
+{
+  "id": "532a61c4-5aea-4fed-8f9e-5f3441f14eh",
+  "category": "economy",
+  "select": false,
+  "image": "https://i.postimg.cc/fbq9zNzw/economy.png",
+  "article": [
+    {
+      "id": "8b5ae244-cddb-4b94-a5cd-b1ca4201c945",
+      "date": "2021-10-23",
+      "title": "Economy#1",
+      "comment": []
+    },
+    {
+      "id": "8b5ae244-cddb-4b94-a5cd-b1ca4201c946",
+      "date": "2021-09-20",
+      "title": "Economy#2",
+      "comment": []
+    },
+    {
+      "id": "8b5ae244-cddb-4b94-a5cd-b1ca4201c947",
+      "date": "2021-04-13",
+      "title": "Economy#3",
+      "comment": []
+    },
+    {
+      "id": "8b5ae244-cddb-4b94-a5cd-b1ca4201c948",
+      "date": "2021-04-13",
+      "title": "Economy#4",
+      "comment": []
+    },
+    {
+      "id": "8b5ae244-cddb-4b94-a5cd-b1ca4201c949",
+      "date": "2021-04-13",
+      "title": "Economy#5",
+      "comment": []
+    }
+  ]
+}

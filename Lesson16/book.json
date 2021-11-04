@@ -1,0 +1,26 @@
+{
+  "id": "532a61c4-5aea-4fed-8f9e-5f3441f14ebf",
+  "category": "book",
+  "select": false,
+  "image": "https://i.postimg.cc/wjTM7Gb3/book.png",
+  "article": [
+    {
+      "id": "8b5ae244-cddb-4b94-a5cd-b1ca4201c945",
+      "date": "2021-10-23",
+      "title": "Book#1",
+      "comment": []
+    },
+    {
+      "id": "8b5ae244-cddb-4b94-a5cd-b1ca4201c946",
+      "date": "2021-09-20",
+      "title": "Book#2",
+      "comment": []
+    },
+    {
+      "id": "8b5ae244-cddb-4b94-a5cd-b1ca4201c947",
+      "date": "2021-04-13",
+      "title": "Book#3",
+      "comment": []
+    }
+  ]
+}
