@@ -1,6 +1,4 @@
-const tabContentList = document.getElementById("js-tab-content");
-const imgWrapper = document.getElementById("js-tab-img");
-const tabs = document.getElementsByClassName("tab-menu__item");
+const tabMenuList = document.getElementById("js-tab-menu__list");
 
 function addLoading() {
   const tabContent = document.getElementById("js-tab-content");
@@ -16,11 +14,12 @@ function removeLoading() {
   loading.remove();
 }
 
-
-async function getJsonOrError() {
-  const response = await fetch("./data.json");
-  const json = await fetchErrorHandling(response);
-  return json;
+function addErrorMessage(error) {
+  const tabContent = document.getElementById("js-tab-content");
+  const errorMessage = document.createElement("p");
+  errorMessage.classList.add("error-message");
+  errorMessage.textContent = error;
+  tabContent.appendChild(errorMessage);
 }
 
 async function fetchErrorHandling(response) {
@@ -31,46 +30,58 @@ async function fetchErrorHandling(response) {
   }
 }
 
-async function tryGetData() {
+async function getJsonOrError(url) {
+  const response = await fetch(url);
+  const json = await fetchErrorHandling(response);
+  return json;
+}
+
+async function getArrayFetchData() {
+  const resource = [
+    "./news.json",
+    "./book.json",
+    "./travel.json",
+    "./economy.json"
+  ];
   try {
-    const data = await getJsonOrError();
-    return data;
-  } catch (error) {
-    tabContentList.replaceWith(error);
+    const data = await Promise.all(resource.map(getJsonOrError));
+    return data.filter((value) => value !== undefined);
+  } catch (e) {
+    addErrorMessage(e);
   }
 }
 
-async function createElement({ article }) {
-  const frag = document.createDocumentFragment();
-  for (let i = 0; i < article.length; i++) {
-    const li = document.createElement("li");
-    const anchor = document.createElement("a");
-    anchor.href = "#";
-    anchor.insertAdjacentHTML("beforeend", article[i].title);
-    frag.appendChild(li).appendChild(anchor);
+function createTabMenu(data) {
+  for (let i = 0; i < data.length; i++) {
+    const tabMenuItem = document.createElement("li");
+    tabMenuItem.classList.add("tab-menu__item");
+    tabMenuItem.id = data[i].category;
+    tabMenuItem.textContent = data[i].category;
+    tabMenuList.appendChild(tabMenuItem);
   }
-  tabContentList.appendChild(frag);
 }
 
-function addImage({ image }) {
-  const img = document.createElement("img");
-  img.src = image;
-  imgWrapper.appendChild(img);
+function createTabContent() {
+  const tabContent = document.createElement("div");
+  const imageWrapper = document.createElement("div");
+  const tabContentList = document.createElement("ul");
+
+  tabContent.id = "js-tab-content";
+  tabContentList.id = "js-tab-content__list";
+  imageWrapper.id = "js-img-wrapper";
+
+  imageWrapper.classList.add("tab-content__img-wrapper");
+  tabContent.classList.add("tab-content");
+
+  tabContent.appendChild(tabContentList);
+  tabContent.appendChild(imageWrapper);
+  tabMenuList.parentNode.insertBefore(tabContent, tabMenuList.nextSibling);
 }
 
-
-async function createTabContent(index) {
-  const data = await tryGetData();
+async function configUIfromFetchData() {
+  const data = await getArrayFetchData();
   if (data) {
-    createElement(data[index]);
-    addImage(data[index]);
-  }
-}
-
-
-async function init() {
-  const data = await tryGetData();
-  if (data) {
+    createTabMenu(data);
     const hasSelectData = data.find((value) => value.select === true);
     const tab = document.getElementById(hasSelectData.category);
     tab.classList.add("active");
@@ -79,22 +90,60 @@ async function init() {
   }
 }
 
-init();
+async function createElement({ article }) {
+  const ul = document.getElementById("js-tab-content__list");
+  const frag = document.createDocumentFragment();
+  for (let i = 0; i < article.length; i++) {
+    const li = document.createElement("li");
+    const anchor = document.createElement("a");
+    anchor.href = "#";
+    anchor.insertAdjacentHTML("beforeend", article[i].title);
+    frag.appendChild(li).appendChild(anchor);
+  }
+  ul.appendChild(frag);
+}
 
+function addImage({ image }) {
+  const imgWrapper = document.getElementById("js-img-wrapper");
+  const img = document.createElement("img");
+  img.src = image;
+  imgWrapper.appendChild(img);
+}
 
-for (let i = 0; i < tabs.length; i++) {
-  tabs[i].addEventListener("click", (e) => {
-    const targetIndex = i;
-    const hasActiveElement = document.getElementsByClassName("active")[0];
+async function clickedTabContentCreate(target) {
+  const targetResource = `./${target.id}.json`;
+  const json = await tryGetData(targetResource);
+  createElement(json);
+  addImage(json);
+}
 
-    if (hasActiveElement) {
-      hasActiveElement.classList.remove("active");
-    }
+async function tryGetData(resource) {
+  addLoading();
+  try {
+    return await getJsonOrError(resource);
+  } catch (e) {
+    addErrorMessage(e);
+  } finally {
+    removeLoading();
+  }
+}
+
+createTabContent();
+configUIfromFetchData();
+
+tabMenuList.addEventListener("click", (e) => {
+  const hasActiveClassElement = document.getElementsByClassName("active")[0];
+
+  if (hasActiveClassElement && e.currentTarget !== e.target) {
+    hasActiveClassElement.classList.remove("active");
     e.target.classList.add("active");
+
+    const imgWrapper = document.getElementById("js-img-wrapper");
+    const tabContentList = document.getElementById("js-tab-content__list");
 
     tabContentList.textContent = "";
     imgWrapper.textContent = "";
 
-    createTabContent(targetIndex);
-  });
-}
+    clickedTabContentCreate(e.target);
+  }
+});
