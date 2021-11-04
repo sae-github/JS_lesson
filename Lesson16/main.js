@@ -58,10 +58,8 @@ async function createTabContent(index) {
 async function init() {
   const data = await tryGetData();
   if (data) {
-    const hasSelectData = data.filter((value) => {
-      return value.select === true;
-    });
-    const tab = document.getElementById(hasSelectData[0].category);
+    const hasSelectData = data.find((value) => value.select === true);
+    const tab = document.getElementById(hasSelectData.category);
     tab.click();
   }
 }
