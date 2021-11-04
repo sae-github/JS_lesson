@@ -110,7 +110,7 @@ function addImage({ image }) {
   imgWrapper.appendChild(img);
 }
 
-async function clickedTabContentCreate(target) {
+async function createClickedTabContent(target) {
   const targetResource = `./${target.id}.json`;
   const json = await tryGetData(targetResource);
   createArticleElements(json);
@@ -144,6 +144,6 @@ tabMenuList.addEventListener("click", (e) => {
     tabContentList.textContent = "";
     imgWrapper.textContent = "";
 
-    clickedTabContentCreate(e.target);
+    createClickedTabContent(e.target);
   }
 });
