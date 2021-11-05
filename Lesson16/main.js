@@ -37,14 +37,13 @@ async function getJsonOrError(url) {
 }
 
 async function getArrayFetchData() {
-  const resource = [
-    "./news.json",
-    "./book.json",
-    "./travel.json",
-    "./economy.json"
-  ];
+  const newsApi = "https://jsondata.okiba.me/v1/json/p4k7o211104194632";
+  const bookApi = "https://jsondata.okiba.me/v1/json/C2haH211104194737";
+  const travelApi = "https://jsondata.okiba.me/v1/json/vbUXI211104194810";
+  const economyApi = "https://jsondata.okiba.me/v1/json/RSWyy211104194854";
+  const apiResources = [newsApi, bookApi, travelApi, economyApi];
   try {
-    const data = await Promise.all(resource.map(getJsonOrError));
+    const data = await Promise.all(apiResources.map(getJsonOrError));
     return data.filter((value) => value !== undefined);
   } catch (e) {
     addErrorMessage(e);
@@ -111,8 +110,14 @@ function addImage({ image }) {
 }
 
 async function createClickedTabContent(target) {
-  const targetResource = `./${target.id}.json`;
-  const json = await tryGetData(targetResource);
+  const apiResources = {
+    news: "https://jsondata.okiba.me/v1/json/p4k7o211104194632",
+    book: "https://jsondata.okiba.me/v1/json/C2haH211104194737",
+    travel: "https://jsondata.okiba.me/v1/json/vbUXI211104194810",
+    economy: "https://jsondata.okiba.me/v1/json/RSWyy211104194854"
+  };
+  const targetId = await target.id;
+  const json = await tryGetData(apiResources[targetId]);
   createArticleElements(json);
   addImage(json);
 }
