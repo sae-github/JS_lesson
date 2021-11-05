@@ -83,7 +83,7 @@ async function configUIfromFetchData() {
     createTabMenu(data);
     const hasSelectData = data.find((value) => value.select === true);
     const tab = document.getElementById(hasSelectData.category);
-    tab.classList.add("active");
+    tab.classList.add("tab-select");
     createArticleElements(hasSelectData);
     addImage(hasSelectData);
   }
@@ -137,11 +137,11 @@ createTabContent();
 configUIfromFetchData();
 
 tabMenuList.addEventListener("click", (e) => {
-  const hasActiveClassElement = document.getElementsByClassName("active")[0];
+  const hasActiveClassElement = document.getElementsByClassName("tab-select")[0];
 
   if (hasActiveClassElement && e.currentTarget !== e.target) {
-    hasActiveClassElement.classList.remove("active");
-    e.target.classList.add("active");
+    hasActiveClassElement.classList.remove("tab-select");
+    e.target.classList.add("tab-select");
 
     const imgWrapper = document.getElementById("js-img-wrapper");
     const tabContentList = document.getElementById("js-tab-content__list");

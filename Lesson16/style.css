@@ -91,7 +91,7 @@ a {
   text-decoration: underline;
 }
 
-.tab-menu__list > li.active {
+.tab-menu__list > li.tab-select {
   background-color: #fff;
   color: #333;
   font-weight: bold;
