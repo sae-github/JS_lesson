@@ -1,8 +1,9 @@
+import { format, differenceInCalendarDays } from "date-fns";
 const API = {
-  news: "https://jsondata.okiba.me/v1/json/p4k7o211104194632",
-  book: "https://jsondata.okiba.me/v1/json/C2haH211104194737",
-  travel: "https://jsondata.okiba.me/v1/json/vbUXI211104194810",
-  economy: "https://jsondata.okiba.me/v1/json/RSWyy211104194854"
+  news: "https://jsondata.okiba.me/v1/json/4N9rO211111110723",
+  book: "https://jsondata.okiba.me/v1/json/P40aO211111111010",
+  travel: "https://jsondata.okiba.me/v1/json/EB0MC211111111223",
+  economy: "https://jsondata.okiba.me/v1/json/TqU0F211111111341"
 };
 const tabMenuList = document.getElementById("js-tab-menu__list");
 
@@ -90,15 +91,53 @@ async function configUIfromFetchData() {
   }
 }
 
+function addNewIcon(date, element) {
+  const today = format(new Date(), "yyyy,MM,dd");
+  const articleDate = format(new Date(date), "yyyy,MM,dd");
+  const periodOfDays = differenceInCalendarDays(
+    new Date(today),
+    new Date(articleDate)
+  );
+  const newArrivalDays = 3;
+  if (periodOfDays <= newArrivalDays) {
+    const newIcon = document.createElement("img");
+    newIcon.src = "./new-icon.svg";
+    newIcon.classList.add("new-icon");
+    element.appendChild(newIcon);
+  }
+}
+
+function addCommentCount({ comment }, element) {
+  const commentCount = comment.length;
+  if (commentCount > 0) {
+    const commentWrapper = document.createElement("span");
+    const commentIcon = document.createElement("img");
+    commentIcon.src = "./comment-icon.svg";
+
+    commentWrapper.classList.add("comment-length");
+    commentIcon.classList.add("comment-icon");
+
+    commentWrapper.appendChild(commentIcon);
+    commentWrapper.insertAdjacentHTML("beforeend", commentCount);
+    element.appendChild(commentWrapper);
+  }
+}
+
 async function createArticleElements({ article }) {
   const ul = document.getElementById("js-tab-content__list");
   const frag = document.createDocumentFragment();
   for (let i = 0; i < article.length; i++) {
+    const metaWrapper = document.createElement("div");
+    metaWrapper.classList.add("meta-wrapper");
+
+    addNewIcon(article[i].date, metaWrapper);
+    addCommentCount(article[i], metaWrapper);
+
     const li = document.createElement("li");
     const anchor = document.createElement("a");
     anchor.href = "#";
     anchor.insertAdjacentHTML("beforeend", article[i].title);
-    frag.appendChild(li).appendChild(anchor);
+    frag.appendChild(li).appendChild(anchor).after(metaWrapper);
   }
   ul.appendChild(frag);
 }
