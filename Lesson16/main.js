@@ -90,21 +90,23 @@ async function configUIfromFetchData() {
     addImage(hasSelectData);
   }
 }
-
-function addNewIcon(date, element) {
+function isSpecifiedPeriod(date) {
+  const newArrivalDays = 3;
   const today = format(new Date(), "yyyy,MM,dd");
   const articleDate = format(new Date(date), "yyyy,MM,dd");
   const periodOfDays = differenceInCalendarDays(
     new Date(today),
     new Date(articleDate)
   );
-  const newArrivalDays = 3;
-  if (periodOfDays <= newArrivalDays) {
-    const newIcon = document.createElement("img");
-    newIcon.src = "./new-icon.svg";
-    newIcon.classList.add("new-icon");
-    element.appendChild(newIcon);
-  }
+  const result = periodOfDays <= newArrivalDays;
+  return result;
+}
+
+function addNewIcon(element) {
+  const newIcon = document.createElement("img");
+  newIcon.src = "./new-icon.svg";
+  newIcon.classList.add("new-icon");
+  element.appendChild(newIcon);
 }
 
 function addCommentCount({ comment }, element) {
@@ -130,7 +132,9 @@ async function createArticleElements({ article }) {
     const metaWrapper = document.createElement("div");
     metaWrapper.classList.add("meta-wrapper");
 
-    addNewIcon(article[i].date, metaWrapper);
+    if (isSpecifiedPeriod(article[i].date)) {
+      addNewIcon(metaWrapper);
+    }
     addCommentCount(article[i], metaWrapper);
 
     const li = document.createElement("li");
