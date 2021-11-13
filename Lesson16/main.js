@@ -90,6 +90,7 @@ async function configUIfromFetchData() {
     addImage(hasSelectData);
   }
 }
+
 function isSpecifiedPeriod(date) {
   const newArrivalDays = 3;
   const today = format(new Date(), "yyyy,MM,dd");
@@ -107,38 +108,6 @@ function addNewIcon(element) {
   newIcon.src = "./new-icon.svg";
   newIcon.classList.add("new-icon");
   element.appendChild(newIcon);
-}
-
-function addCommentCount({ comment }, element) {
-  const commentCount = comment.length;
-  if (commentCount > 0) {
-    const commentWrapper = document.createElement("span");
-    const commentIcon = document.createElement("img");
-    commentIcon.src = "./comment-icon.svg";
-
-    commentWrapper.classList.add("comment-length");
-    commentIcon.classList.add("comment-icon");
-
-    commentWrapper.appendChild(commentIcon);
-    commentWrapper.insertAdjacentHTML("beforeend", commentCount);
-    element.appendChild(commentWrapper);
-  }
-}
-
-function addNewIcon(date, element) {
-  const today = format(new Date(), "yyyy,MM,dd");
-  const articleDate = format(new Date(date), "yyyy,MM,dd");
-  const periodOfDays = differenceInCalendarDays(
-    new Date(today),
-    new Date(articleDate)
-  );
-  const newArrivalDays = 3;
-  if (periodOfDays <= newArrivalDays) {
-    const newIcon = document.createElement("img");
-    newIcon.src = "./new-icon.svg";
-    newIcon.classList.add("new-icon");
-    element.appendChild(newIcon);
-  }
 }
 
 function addCommentCount({ comment }, element) {
