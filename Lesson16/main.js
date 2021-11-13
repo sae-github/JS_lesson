@@ -110,20 +110,21 @@ function addNewIcon(element) {
   element.appendChild(newIcon);
 }
 
-function addCommentCount({ comment }, element) {
-  const commentCount = comment.length;
-  if (commentCount > 0) {
-    const commentWrapper = document.createElement("span");
-    const commentIcon = document.createElement("img");
-    commentIcon.src = "./comment-icon.svg";
+function hasComment(commentLength) {
+  return commentLength > 0;
+}
 
-    commentWrapper.classList.add("comment-length");
-    commentIcon.classList.add("comment-icon");
+function addCommentLength(commentLength, element) {
+  const commentWrapper = document.createElement("span");
+  const commentIcon = document.createElement("img");
+  commentIcon.src = "./comment-icon.svg";
 
-    commentWrapper.appendChild(commentIcon);
-    commentWrapper.insertAdjacentHTML("beforeend", commentCount);
-    element.appendChild(commentWrapper);
-  }
+  commentWrapper.classList.add("comment-length");
+  commentIcon.classList.add("comment-icon");
+
+  commentWrapper.appendChild(commentIcon);
+  commentWrapper.insertAdjacentHTML("beforeend", commentLength);
+  element.appendChild(commentWrapper);
 }
 
 async function createArticleElements({ article }) {
@@ -132,11 +133,14 @@ async function createArticleElements({ article }) {
   for (let i = 0; i < article.length; i++) {
     const metaWrapper = document.createElement("div");
     metaWrapper.classList.add("meta-wrapper");
+    const commentLength = article[i].comment.length;
 
     if (isSpecifiedPeriod(article[i].date)) {
       addNewIcon(metaWrapper);
     }
-    addCommentCount(article[i], metaWrapper);
+    if (hasComment(commentLength)) {
+      addCommentLength(commentLength, metaWrapper);
+    }
 
     const li = document.createElement("li");
     const anchor = document.createElement("a");
