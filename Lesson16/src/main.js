@@ -7,24 +7,27 @@ const API = {
   economy: "./json/economy.json"
 };
 
+function createElementWithClass(type, name) {
+  const element = document.createElement(type);
+  element.className = name;
+  return element;
+}
+
 function addLoading() {
   const tabContent = document.getElementById("js-tab-content");
-  const loading = document.createElement("img");
-  loading.src = "./loading-circle.gif";
-  loading.classList.add("loading");
-  loading.id = "loading";
+  const loading = createElementWithClass("img", "loading");
+  loading.src = "./img/loading-circle.gif";
+  loading.id = "js-loading";
   tabContent.appendChild(loading);
 }
 
 function removeLoading() {
-  const loading = document.getElementById("loading");
-  loading.remove();
+  document.getElementById("js-loading").remove();
 }
 
 function addErrorMessage(error) {
   const tabContent = document.getElementById("js-tab-content");
-  const errorMessage = document.createElement("p");
-  errorMessage.classList.add("error-message");
+  const errorMessage = createElementWithClass("p", "error-message");
   errorMessage.textContent = error;
   tabContent.appendChild(errorMessage);
 }
@@ -54,8 +57,7 @@ async function getArrayFetchData() {
 
 function createTabMenu(data) {
   for (let i = 0; i < data.length; i++) {
-    const tabMenuItem = document.createElement("li");
-    tabMenuItem.classList.add("tab-menu__item");
+    const tabMenuItem = createElementWithClass("li", "tab-menu__item");
     tabMenuItem.id = data[i].category;
     tabMenuItem.textContent = data[i].category;
     tabMenuList.appendChild(tabMenuItem);
@@ -63,16 +65,13 @@ function createTabMenu(data) {
 }
 
 function createTabContent() {
-  const tabContent = document.createElement("div");
-  const imageWrapper = document.createElement("div");
-  const tabContentList = document.createElement("ul");
+  const tabContent = createElementWithClass("div", "tab-content");
+  const imageWrapper = createElementWithClass("div", "tab-content__img-wrapper");
+  const tabContentList = createElementWithClass("ul", "tab-content__list")
 
   tabContent.id = "js-tab-content";
   tabContentList.id = "js-tab-content__list";
   imageWrapper.id = "js-img-wrapper";
-
-  imageWrapper.classList.add("tab-content__img-wrapper");
-  tabContent.classList.add("tab-content");
 
   tabContent.appendChild(tabContentList);
   tabContent.appendChild(imageWrapper);
@@ -104,9 +103,8 @@ function isSpecifiedPeriod(date) {
 }
 
 function addNewIcon(element) {
-  const newIcon = document.createElement("img");
-  newIcon.src = "./new-icon.svg";
-  newIcon.classList.add("new-icon");
+  const newIcon = createElementWithClass("img", "new-icon");
+  newIcon.src = "./img/new-icon.svg";
   element.appendChild(newIcon);
 }
 
@@ -115,13 +113,9 @@ function hasComment(commentLength) {
 }
 
 function addCommentLength(commentLength, element) {
-  const commentWrapper = document.createElement("span");
-  const commentIcon = document.createElement("img");
-  commentIcon.src = "./comment-icon.svg";
-
-  commentWrapper.classList.add("comment-length");
-  commentIcon.classList.add("comment-icon");
-
+  const commentWrapper = createElementWithClass("span", "comment-length");
+  const commentIcon = createElementWithClass("img", "comment-icon");
+  commentIcon.src = "./img/comment-icon.svg";
   commentWrapper.appendChild(commentIcon);
   commentWrapper.insertAdjacentHTML("beforeend", commentLength);
   element.appendChild(commentWrapper);
@@ -131,8 +125,7 @@ async function createArticleElements({ article }) {
   const ul = document.getElementById("js-tab-content__list");
   const frag = document.createDocumentFragment();
   for (let i = 0; i < article.length; i++) {
-    const metaWrapper = document.createElement("div");
-    metaWrapper.classList.add("meta-wrapper");
+    const metaWrapper = createElementWithClass("div", "meta-wrapper");
     const commentLength = article[i].comment.length;
 
     if (isSpecifiedPeriod(article[i].date)) {
