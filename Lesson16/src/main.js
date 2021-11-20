@@ -1,11 +1,11 @@
 import { format, differenceInCalendarDays } from "date-fns";
-const API = {
-  news: "https://jsondata.okiba.me/v1/json/4N9rO211111110723",
-  book: "https://jsondata.okiba.me/v1/json/P40aO211111111010",
-  travel: "https://jsondata.okiba.me/v1/json/EB0MC211111111223",
-  economy: "https://jsondata.okiba.me/v1/json/TqU0F211111111341"
-};
 const tabMenuList = document.getElementById("js-tab-menu__list");
+const API = {
+  news: "./json/news.json",
+  book: "./json/book.json",
+  travel: "./json/travel.json",
+  economy: "./json/economy.json"
+};
 
 function addLoading() {
   const tabContent = document.getElementById("js-tab-content");
