@@ -222,11 +222,12 @@ function openModalAndOverLay() {
 }
 
 function setClickEventInCommentIcon(target) {
-  target.addEventListener("click", (e) => {
+  target.addEventListener("click", async(e) => {
+    openModalAndOverLay();
     const toAppendElement = document.getElementById("js-modal-inner");
     const targetParentId = e.currentTarget.closest("li").id;
-    tryCommentContentCreate(targetParentId, toAppendElement);
-    openModalAndOverLay();
+    const commentData = await getComment(targetParentId,toAppendElement);
+    createAndAddCommentContent(commentData,toAppendElement);
   });
 }
 
@@ -234,15 +235,15 @@ async function getClickedArticleData(resource, parent) {
   return await tryGetData(parent, articleAPI[resource]);
 }
 
-async function tryCommentContentCreate(targetId, parent) {
+async function getComment(targetId, parent) {
   const responseData = await getClickedArticleData(targetId, parent);
   const { comment } = responseData;
-  createAndAddCommentContent(comment, parent);
+  return comment;
 }
 
-async function createAndAddCommentContent(commentData, parent) {
+async function createAndAddCommentContent(data, parent) {
   const commentContentFragment = document.createDocumentFragment();
-  for (const { name, detail, icon } of commentData) {
+  for (const { name, detail, icon } of data) {
     const modalItem = createElementWithClassName("div", "modal-item");
     const detailWrapper = createElementWithClassName("div", "modal__detail-wrapper");
     const imgWrapper = createElementWithClassName("div", "modal__img-wrapper");
