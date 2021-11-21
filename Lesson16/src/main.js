@@ -16,14 +16,14 @@ const articleAPI = {
   "9d50f525-b5a3-469d-ad28-0bbaa3f38fce": "./json/article-7.json"
 }
 
-function createElementWithClass(type, name) {
+function createElementWithClassName(type, name) {
   const element = document.createElement(type);
   element.className = name;
   return element;
 }
 
 function addLoading(toAppend) {
-  const loading = createElementWithClass("img", "loading");
+  const loading = createElementWithClassName("img", "loading");
   loading.id = "js-loading";
   loading.src = "./img/loading-circle.gif";
   toAppend.appendChild(loading);
@@ -34,7 +34,7 @@ function removeLoading() {
 }
 
 function addErrorMessage(error, toAppend) {
-  const errorMessage = createElementWithClass("p", "error-message");
+  const errorMessage = createElementWithClassName("p", "error-message");
   errorMessage.textContent = error;
   toAppend.appendChild(errorMessage);
 }
@@ -65,7 +65,7 @@ async function getArrayFetchData() {
 
 function createTabMenu(data) {
   for (let i = 0; i < data.length; i++) {
-    const tabMenuItem = createElementWithClass("li", "tab-menu__item");
+    const tabMenuItem = createElementWithClassName("li", "tab-menu__item");
     tabMenuItem.id = data[i].category;
     tabMenuItem.textContent = data[i].category;
     tabMenuList.appendChild(tabMenuItem);
@@ -73,9 +73,9 @@ function createTabMenu(data) {
 }
 
 function createTabContent() {
-  const tabContent = createElementWithClass("div", "tab-content");
-  const imageWrapper = createElementWithClass("div", "tab-content__img-wrapper");
-  const tabContentList = createElementWithClass("ul", "tab-content__list")
+  const tabContent = createElementWithClassName("div", "tab-content");
+  const imageWrapper = createElementWithClassName("div", "tab-content__img-wrapper");
+  const tabContentList = createElementWithClassName("ul", "tab-content__list")
 
   tabContent.id = "js-tab-content";
   tabContentList.id = "js-tab-content__list";
@@ -111,7 +111,7 @@ function isSpecifiedPeriod(date) {
 }
 
 function addNewIcon(toAppend) {
-  const newIcon = createElementWithClass("img", "new-icon");
+  const newIcon = createElementWithClassName("img", "new-icon");
   newIcon.src = "./img/new-icon.svg";
   toAppend.appendChild(newIcon);
 }
@@ -121,8 +121,8 @@ function hasComment(commentLength) {
 }
 
 function addCommentLength(commentLength, toAppend) {
-  const commentWrapper = createElementWithClass("span", "comment-length");
-  const commentIcon = createElementWithClass("img", "comment-icon");
+  const commentWrapper = createElementWithClassName("span", "comment-length");
+  const commentIcon = createElementWithClassName("img", "comment-icon");
   commentIcon.src = "./img/comment-icon.svg";
 
   commentWrapper.appendChild(commentIcon);
@@ -136,7 +136,7 @@ async function createArticleElements({ article }) {
   const ul = document.getElementById("js-tab-content__list");
   const frag = document.createDocumentFragment();
   for (let i = 0; i < article.length; i++) {
-    const metaWrapper = createElementWithClass("div", "meta-wrapper");
+    const metaWrapper = createElementWithClassName("div", "meta-wrapper");
     const commentLength = article[i].comment.length;
 
     if (isSpecifiedPeriod(article[i].date)) {
@@ -183,8 +183,8 @@ async function tryGetData(toAppend, resource) {
 }
 
 function addModal() {
-  const modal = createElementWithClass("div", "modal");
-  const modalInner = createElementWithClass("div", "modal__inner")
+  const modal = createElementWithClassName("div", "modal");
+  const modalInner = createElementWithClassName("div", "modal__inner")
   modal.id = "js-modal";
   modalInner.id = "js-modal-inner";
   modal.appendChild(modalInner);
@@ -193,7 +193,7 @@ function addModal() {
 }
 
 function addModalCloseIcon(toAppend) {
-  const modalCloseWrapper = createElementWithClass("div", "modal__close-wrapper");
+  const modalCloseWrapper = createElementWithClassName("div", "modal__close-wrapper");
   const icon = document.createElement("img");
   icon.src = "./img/cross-icon.svg";
   modalCloseWrapper.appendChild(icon);
@@ -202,7 +202,7 @@ function addModalCloseIcon(toAppend) {
 }
 
 function addOverLay() {
-  const overLay = createElementWithClass("div", "over-lay");
+  const overLay = createElementWithClassName("div", "over-lay");
   overLay.id = "js-over-lay";
   document.querySelector("body").appendChild(overLay);
   setClickEventForModalClose(overLay);
@@ -243,12 +243,12 @@ async function tryCommentContentCreate(targetId, toAppend) {
 async function createAndAddCommentContent(commentData, toAppend) {
   const commentContentFragment = document.createDocumentFragment();
   for (const { name, detail, icon } of commentData) {
-    const modalItem = createElementWithClass("div", "modal-item");
-    const detailWrapper = createElementWithClass("div", "modal__detail-wrapper");
-    const imgWrapper = createElementWithClass("div", "modal__img-wrapper");
-    const userName = createElementWithClass("p", "user-name");
-    const image = createElementWithClass("img", "user-icon");
-    const comment = createElementWithClass("p", "user-comment");
+    const modalItem = createElementWithClassName("div", "modal-item");
+    const detailWrapper = createElementWithClassName("div", "modal__detail-wrapper");
+    const imgWrapper = createElementWithClassName("div", "modal__img-wrapper");
+    const userName = createElementWithClassName("p", "user-name");
+    const image = createElementWithClassName("img", "user-icon");
+    const comment = createElementWithClassName("p", "user-comment");
 
     userName.textContent = name;
     comment.textContent = detail;
