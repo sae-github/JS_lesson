@@ -22,21 +22,21 @@ function createElementWithClassName(type, name) {
   return element;
 }
 
-function addLoading(toAppend) {
+function addLoading(parent) {
   const loading = createElementWithClassName("img", "loading");
   loading.id = "js-loading";
   loading.src = "./img/loading-circle.gif";
-  toAppend.appendChild(loading);
+  parent.appendChild(loading);
 }
 
 function removeLoading() {
   document.getElementById("js-loading").remove();
 }
 
-function addErrorMessage(error, toAppend) {
+function addErrorMessage(error, parent) {
   const errorMessage = createElementWithClassName("p", "error-message");
   errorMessage.textContent = error;
-  toAppend.appendChild(errorMessage);
+  parent.appendChild(errorMessage);
 }
 
 async function fetchErrorHandling(response) {
@@ -110,17 +110,17 @@ function isSpecifiedPeriod(date) {
   return result;
 }
 
-function addNewIcon(toAppend) {
+function addNewIcon(parent) {
   const newIcon = createElementWithClassName("img", "new-icon");
   newIcon.src = "./img/new-icon.svg";
-  toAppend.appendChild(newIcon);
+  parent.appendChild(newIcon);
 }
 
 function hasComment(commentLength) {
   return commentLength > 0;
 }
 
-function addCommentLength(commentLength, toAppend) {
+function addCommentLength(commentLength, parent) {
   const commentWrapper = createElementWithClassName("span", "comment-length");
   const commentIcon = createElementWithClassName("img", "comment-icon");
   commentIcon.src = "./img/comment-icon.svg";
@@ -129,7 +129,7 @@ function addCommentLength(commentLength, toAppend) {
   commentWrapper.insertAdjacentHTML("beforeend", commentLength);
   setClickEventInCommentIcon(commentWrapper);
 
-  toAppend.appendChild(commentWrapper);
+  parent.appendChild(commentWrapper);
 }
 
 async function createArticleElements({ article }) {
@@ -171,12 +171,12 @@ async function createClickedTabContent(target) {
   addImage(json);
 }
 
-async function tryGetData(toAppend, resource) {
-  addLoading(toAppend);
+async function tryGetData(parent, resource) {
+  addLoading(parent);
   try {
     return await getJsonOrError(resource);
   } catch (e) {
-    addErrorMessage(e, toAppend);
+    addErrorMessage(e, parent);
   } finally {
     removeLoading();
   }
@@ -192,12 +192,12 @@ function addModal() {
   addModalCloseIcon(modal);
 }
 
-function addModalCloseIcon(toAppend) {
+function addModalCloseIcon(parent) {
   const modalCloseWrapper = createElementWithClassName("div", "modal__close-wrapper");
   const icon = document.createElement("img");
   icon.src = "./img/cross-icon.svg";
   modalCloseWrapper.appendChild(icon);
-  toAppend.appendChild(modalCloseWrapper);
+  parent.appendChild(modalCloseWrapper);
   setClickEventForModalClose(icon);
 }
 
@@ -230,17 +230,17 @@ function setClickEventInCommentIcon(target) {
   });
 }
 
-async function getClickedArticleData(resource, toAppend) {
-  return await tryGetData(toAppend, articleAPI[resource]);
+async function getClickedArticleData(resource, parent) {
+  return await tryGetData(parent, articleAPI[resource]);
 }
 
-async function tryCommentContentCreate(targetId, toAppend) {
-  const responseData = await getClickedArticleData(targetId, toAppend);
+async function tryCommentContentCreate(targetId, parent) {
+  const responseData = await getClickedArticleData(targetId, parent);
   const { comment } = responseData;
-  createAndAddCommentContent(comment, toAppend);
+  createAndAddCommentContent(comment, parent);
 }
 
-async function createAndAddCommentContent(commentData, toAppend) {
+async function createAndAddCommentContent(commentData, parent) {
   const commentContentFragment = document.createDocumentFragment();
   for (const { name, detail, icon } of commentData) {
     const modalItem = createElementWithClassName("div", "modal-item");
@@ -261,7 +261,7 @@ async function createAndAddCommentContent(commentData, toAppend) {
     commentContentFragment.appendChild(modalItem).appendChild(detailWrapper);
     modalItem.insertBefore(imgWrapper, detailWrapper);
   }
-  toAppend.appendChild(commentContentFragment);
+  parent.appendChild(commentContentFragment);
 }
 
 createTabContent();
