@@ -1,0 +1,136 @@
+.inner {
+  width: 1000px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.slide-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-top: 100px;
+}
+
+.error-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #333;
+  font-size: 22px;
+  z-index: 10;
+}
+
+.loading {
+  object-fit: contain;
+  width: 150px;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.slide-list {
+  width: 100%;
+  height: 600px;
+  position: relative;
+  margin: 0 20px;
+  overflow: hidden;
+}
+
+.slide-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: -1;
+  object-fit: cover;
+  transition: opacity 0.5s, z-index 0s 0.5s;
+}
+
+.slide-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-item.is-displaying{
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 1s, z-index 0s 1s;
+}
+
+.arrow-btn__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 50px;
+}
+
+.arrow-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 60px;
+  height: 60px;
+  position: relative;
+  background-color: #333;
+}
+
+.arrow-btn > span {
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  content: "";
+  background-color: #fff;
+  z-index: 10;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.arrow-btn > span::before,
+.arrow-btn > span:after {
+  position: absolute;
+  width: 13px;
+  height: 2px;
+  background-color: #fff;
+  content: "";
+  display: block;
+}
+
+.arrow-btn.--prev > span::before {
+  top: -5px;
+  transform: rotate(-40deg);
+}
+
+.arrow-btn.--prev > span::after {
+  bottom: -5px;
+  transform: rotate(40deg);
+}
+
+.arrow-btn.--next > span::before {
+  bottom: -5px;
+  right: 0;
+  transform: rotate(-40deg);
+}
+
+.arrow-btn.--next > span::after {
+  bottom: -5px;
+  right: 0;
+  top: -5px;
+  transform: rotate(40deg);
+}
