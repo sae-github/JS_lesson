@@ -59,7 +59,7 @@ const init = async () => {
     for (let i = 0; i < imageData.length; i++) {
       const createdSlideItem = createSlideItem(imageData[i]);
       //初期設定として 最初の要素にis-displayingクラスを付与
-      if (i === 0) createdSlideItem.classList.add("is-displaying");
+      i === 0 && createdSlideItem.classList.add("is-displaying");
       addElement(createdSlideItem, slideList);
     }
     const createdArrowButtons = createArrowButtons();
