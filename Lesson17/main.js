@@ -54,24 +54,29 @@ const tryGetSlideImageData = async () => {
 }
 
 const init = async () => {
-  const result = await tryGetSlideImageData();
-  if (result) {
-    createSlideItem(result);
-    createArrowButtons();
+  const imageData = await tryGetSlideImageData();
+  if (imageData) {
+    for (let i = 0; i < imageData.length; i++) {
+      const createdSlideItem = createSlideItem(imageData[i]);
+      //初期設定として 最初の要素にis-displayingクラスを付与
+      if (i === 0) createdSlideItem.classList.add("is-displaying");
+      addElement(createdSlideItem, slideList);
+    }
+    const createdArrowButtons = createArrowButtons();
+    addElement(createdArrowButtons, slideWrapper);
+    setClickEventInArrowButton();
   }
 }
 
-const createSlideItem = (imageData) => {
-  for (let i = 0; i < imageData.length; i++) {
-    const slideItem = createElementWithClassName("li", "slide-item");
-    const slideImage = createElementWithClassName("img", "slide-img");
-    slideImage.src = imageData[i].image;
-    // 初期設定として 最初の要素にis-displayingクラスを付与
-    if (i === 0) slideItem.classList.add("is-displaying");
-    slideItem.appendChild(slideImage);
-    slideList.appendChild(slideItem);
-  }
+const createSlideItem = ({ image }) => {
+  const slideItem = createElementWithClassName("li", "slide-item");
+  const slideImage = createElementWithClassName("img", "slide-img");
+  slideImage.src = image;
+  slideItem.appendChild(slideImage);
+  return slideItem;
 }
+
+const addElement = (element, parent) => parent.appendChild(element);
 
 const createArrowButtons = () => {
   const arrowBtnWrapper = createElementWithClassName("div", "arrow-btn__wrapper");
@@ -83,8 +88,7 @@ const createArrowButtons = () => {
   nextButton.id = "js-arrow-right-btn";
   arrowBtnWrapper.appendChild(prevButton);
   arrowBtnWrapper.appendChild(nextButton);
-  slideWrapper.appendChild(arrowBtnWrapper)
-  setClickEventInArrowButton();
+  return arrowBtnWrapper;
 }
 
 const setClickEventInArrowButton = () => {
