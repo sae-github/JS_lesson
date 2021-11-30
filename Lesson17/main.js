@@ -102,18 +102,18 @@ const setClickEventInArrowButton = () => {
 }
 
 const clickPrevButton = (target) => {
-  const firstSlideItem = slideList.firstElementChild;
-  if (target !== firstSlideItem) {
+  const targetNextElement = target.previousElementSibling;
+  if (targetNextElement) {
     target.classList.remove("is-displaying");
-    target.previousElementSibling.classList.add("is-displaying");
+    targetNextElement.classList.add("is-displaying");
   }
 }
 
 const clickNextButton = (target) => {
-  const lastSlideItem = slideList.lastElementChild;
-  if (target !== lastSlideItem) {
+  const targetPrevElement = target.nextElementSibling;
+  if (targetPrevElement) {
     target.classList.remove("is-displaying");
-    target.nextElementSibling.classList.add("is-displaying");
+    targetPrevElement.classList.add("is-displaying");
   }
 }
 
