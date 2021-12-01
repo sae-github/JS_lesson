@@ -7,19 +7,19 @@ const createElementWithClassName = (type, className) => {
   return element;
 }
 
-const addLoading = (parent) => {
+const createLoading = () => {
   const loading = createElementWithClassName("img", "loading");
   loading.id = "js-loading";
   loading.src = "./loading-circle.gif";
-  parent.appendChild(loading);
+  return loading;
 }
 
 const removeLoading = () => document.getElementById("js-loading").remove();
 
-const addErrorMessage = (error, parent) => {
+const createErrorMessage = (error) => {
   const errorMessage = createElementWithClassName("p", "error-message");
   errorMessage.textContent = error;
-  parent.appendChild(errorMessage);
+  return errorMessage;
 }
 
 const fetchErrorHandling = async (response) => {
@@ -43,11 +43,11 @@ const getSlideImageData = async () => {
 }
 
 const tryGetSlideImageData = async () => {
-  addLoading(slideWrapper);
+  addElement(createLoading(),slideWrapper)
   try {
     return await getSlideImageData();
   } catch (e) {
-    addErrorMessage(e, slideWrapper);
+    addElement(createErrorMessage(e),slideWrapper);
   } finally {
     removeLoading();
   }
