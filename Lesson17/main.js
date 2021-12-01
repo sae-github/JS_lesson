@@ -55,17 +55,25 @@ const tryGetSlideImageData = async () => {
 
 const init = async () => {
   const imageData = await tryGetSlideImageData();
-  if (imageData) {
-    for (let i = 0; i < imageData.length; i++) {
-      const createdSlideItem = createSlideItem(imageData[i]);
-      //初期設定として 最初の要素にis-displayingクラスを付与
-      i === 0 && createdSlideItem.classList.add("is-displaying");
-      addElement(createdSlideItem, slideList);
-    }
-    const createdArrowButtons = createArrowButtons();
-    addElement(createdArrowButtons, slideWrapper);
-    setClickEventInArrowButton();
+  if(imageData) {
+    initSlideItem(imageData); 
+    initArrowButtons();
   }
+}
+
+const initSlideItem = (imageSrc) => {
+  for (let i = 0; i < imageSrc.length; i++) {
+    const createdSlideItem = createSlideItem(imageSrc[i]);
+    //初期設定として 最初の要素にis-displayingクラスを付与
+    i === 0 && createdSlideItem.classList.add("is-displaying");
+    addElement(createdSlideItem, slideList);
+  }
+}
+
+const initArrowButtons = () => {
+  const createdArrowButtons = createArrowButtons();
+  addElement(createdArrowButtons, slideWrapper);
+  setClickEventInArrowButton();
 }
 
 const createSlideItem = ({ image }) => {
