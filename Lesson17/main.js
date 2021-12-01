@@ -43,11 +43,11 @@ const getSlideImageData = async () => {
 }
 
 const tryGetSlideImageData = async () => {
-  addElement(createLoading(),slideWrapper)
+  addElement(createLoading(), slideWrapper)
   try {
     return await getSlideImageData();
   } catch (e) {
-    addElement(createErrorMessage(e),slideWrapper);
+    addElement(createErrorMessage(e), slideWrapper);
   } finally {
     removeLoading();
   }
@@ -55,8 +55,8 @@ const tryGetSlideImageData = async () => {
 
 const init = async () => {
   const imageData = await tryGetSlideImageData();
-  if(imageData) {
-    initSlideItem(imageData); 
+  if (imageData) {
+    initSlideItem(imageData);
     initArrowButtons();
   }
 }
@@ -103,30 +103,23 @@ const setClickEventInArrowButton = () => {
   const arrowButtons = document.querySelectorAll(".arrow-btn");
   arrowButtons.forEach(button => {
     button.addEventListener("click", (e) => {
-      const displayingItem = document.querySelector(".is-displaying");
       if (e.currentTarget.id === "js-arrow-right-btn") {
-        clickNextButton(displayingItem);
+        switchImage("nextElementSibling");
       } else {
-        clickPrevButton(displayingItem);
+        switchImage("previousElementSibling");
       }
     });
   });
 }
 
-const clickPrevButton = (target) => {
-  const targetNextElement = target.previousElementSibling;
-  if (targetNextElement) {
-    target.classList.remove("is-displaying");
-    targetNextElement.classList.add("is-displaying");
+const switchImage = (direction) => {
+  const displayingItem = document.querySelector(".is-displaying");
+  const targetElement = displayingItem[direction];
+  if (targetElement) {
+    displayingItem.classList.remove("is-displaying");
+    targetElement.classList.add("is-displaying");
   }
 }
 
-const clickNextButton = (target) => {
-  const targetPrevElement = target.nextElementSibling;
-  if (targetPrevElement) {
-    target.classList.remove("is-displaying");
-    targetPrevElement.classList.add("is-displaying");
-  }
-}
 
 init();
