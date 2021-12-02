@@ -43,11 +43,11 @@ const getSlideImageData = async () => {
 }
 
 const tryGetSlideImageData = async () => {
-  addElement(createLoading(), slideWrapper)
+  slideWrapper.appendChild(createLoading());
   try {
     return await getSlideImageData();
   } catch (e) {
-    addElement(createErrorMessage(e), slideWrapper);
+    slideWrapper.appendChild(createErrorMessage(e));
   } finally {
     removeLoading();
   }
@@ -66,13 +66,13 @@ const initSlideItem = (imageSrc) => {
     const createdSlideItem = createSlideItem(imageSrc[i]);
     //初期設定として 最初の要素にis-displayingクラスを付与
     i === 0 && createdSlideItem.classList.add("is-displaying");
-    addElement(createdSlideItem, slideList);
+    slideList.appendChild(createdSlideItem);
   }
 }
 
 const initArrowButtons = () => {
   const createdArrowButtons = createArrowButtons();
-  addElement(createdArrowButtons, slideWrapper);
+  slideWrapper.appendChild(createdArrowButtons);
   setClickEventInArrowButton();
 }
 
@@ -84,7 +84,6 @@ const createSlideItem = ({ image }) => {
   return slideItem;
 }
 
-const addElement = (element, parent) => parent.appendChild(element);
 
 const createArrowButtons = () => {
   const arrowBtnWrapper = createElementWithClassName("div", "arrow-btn__wrapper");
