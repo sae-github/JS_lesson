@@ -87,14 +87,12 @@ const createSlideItem = ({ image }) => {
 
 const createArrowButtons = () => {
   const arrowBtnWrapper = createElementWithClassName("div", "arrow-btn__wrapper");
-  const prevButton = createElementWithClassName("button", "arrow-btn --prev");
-  const nextButton = createElementWithClassName("button", "arrow-btn --next");
-  prevButton.appendChild(document.createElement("span"));
-  nextButton.appendChild(document.createElement("span"));
-  prevButton.id = "js-arrow-left-btn";
-  nextButton.id = "js-arrow-right-btn";
-  arrowBtnWrapper.appendChild(prevButton);
-  arrowBtnWrapper.appendChild(nextButton);
+  const arrowDirections = ["prev", "next"];
+  arrowDirections.forEach((arrowDirection) => {
+    const button = createElementWithClassName("button", `arrow-btn --${arrowDirection}`);
+    button.id = `js-arrow-${arrowDirection}-btn`;
+    arrowBtnWrapper.appendChild(button).appendChild(document.createElement("span"));
+  });
   return arrowBtnWrapper;
 }
 
@@ -102,7 +100,7 @@ const setClickEventInArrowButton = () => {
   const arrowButtons = document.querySelectorAll(".arrow-btn");
   arrowButtons.forEach(button => {
     button.addEventListener("click", (e) => {
-      if (e.currentTarget.id === "js-arrow-right-btn") {
+      if (e.currentTarget.id === "js-arrow-next-btn") {
         switchImage("nextElementSibling");
       } else {
         switchImage("previousElementSibling");
