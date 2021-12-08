@@ -63,21 +63,20 @@ const init = async () => {
 }
 
 const createCounterOfSlide = (data) => {
-  const target = findOrderOfDisplayedItem();
-  const countWrapper = createElementWithClassName("div", "count-wrapper");
-  const numberOfDisplayed = createElementWithClassName("p", "active-number");
+  const counterWrapper = createElementWithClassName("div", "counter-wrapper");
+  const orderOfDisplayedItem = createElementWithClassName("p", "displayed-number");
   const totalSlideItem = createElementWithClassName("p", "total-number");
   totalSlideItem.textContent = data.length;
-  numberOfDisplayed.textContent = target;
-  countWrapper.appendChild(numberOfDisplayed);
-  countWrapper.appendChild(totalSlideItem);
-  return countWrapper;
+  orderOfDisplayedItem.textContent = findOrderOfDisplayedItem();
+  counterWrapper.appendChild(orderOfDisplayedItem);
+  counterWrapper.appendChild(totalSlideItem);
+  return counterWrapper;
 }
 
 const findOrderOfDisplayedItem = () => {
-  const target = [...document.querySelectorAll(".slide-item")];
-  const index = target.findIndex(el => el.classList.contains("is-displaying"));
-  return index + 1;
+  const slideItemArray = [...document.querySelectorAll(".slide-item")];
+  const targetIndex = slideItemArray.findIndex(el => el.classList.contains("is-displaying"));
+  return targetIndex + 1;
 }
 
 const initSlideItem = (imageSrc) => {
@@ -139,7 +138,7 @@ const switchImage = (direction) => {
 }
 
 const updateOfCounter = () => {
-  document.querySelector(".active-number").textContent = findOrderOfDisplayedItem();
+  document.querySelector(".displayed-number").textContent = findOrderOfDisplayedItem();
 }
 
 const toggleTheDisabled = (target) => {

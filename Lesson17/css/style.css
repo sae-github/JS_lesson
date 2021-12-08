@@ -139,7 +139,7 @@ img {
   background-color: rgb(170, 170, 170);
 }
 
-.count-wrapper {
+.counter-wrapper {
   display: flex;
   align-items: center;
   font-size: 20px;
