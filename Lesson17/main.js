@@ -64,11 +64,11 @@ const init = async () => {
 
 const createCounterOfSlide = (data) => {
   const counterWrapper = createElementWithClassName("div", "counter-wrapper");
-  const orderOfDisplayedItem = createElementWithClassName("p", "displayed-number");
-  const totalSlideItem = createElementWithClassName("p", "total-number");
+  const orderOfDisplayedItem = createElementWithClassName("span", "current-number");
+  const totalSlideItem = createElementWithClassName("span", "total-number");
   totalSlideItem.textContent = data.length;
   orderOfDisplayedItem.textContent = findOrderOfDisplayedItem();
-  counterWrapper.appendChild(orderOfDisplayedItem);
+  counterWrapper.appendChild(orderOfDisplayedItem).insertAdjacentHTML("afterend", "/");
   counterWrapper.appendChild(totalSlideItem);
   return counterWrapper;
 }
@@ -138,7 +138,7 @@ const switchImage = (direction) => {
 }
 
 const updateOfCounter = () => {
-  document.querySelector(".displayed-number").textContent = findOrderOfDisplayedItem();
+  document.querySelector(".current-number").textContent = findOrderOfDisplayedItem();
 }
 
 const toggleTheDisabled = (target) => {
