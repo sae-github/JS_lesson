@@ -58,7 +58,26 @@ const init = async () => {
   if (imageData) {
     initSlideItem(imageData);
     initArrowButtons();
+    slideWrapper.appendChild(createCounterOfSlide(imageData));
   }
+}
+
+const createCounterOfSlide = (data) => {
+  const target = findOrderOfDisplayedItem();
+  const countWrapper = createElementWithClassName("div", "count-wrapper");
+  const numberOfDisplayed = createElementWithClassName("p", "active-number");
+  const totalSlideItem = createElementWithClassName("p", "total-number");
+  totalSlideItem.textContent = data.length;
+  numberOfDisplayed.textContent = target;
+  countWrapper.appendChild(numberOfDisplayed);
+  countWrapper.appendChild(totalSlideItem);
+  return countWrapper;
+}
+
+const findOrderOfDisplayedItem = () => {
+  const target = [...document.querySelectorAll(".slide-item")];
+  const index = target.findIndex(el => el.classList.contains("is-displaying"));
+  return index + 1;
 }
 
 const initSlideItem = (imageSrc) => {
@@ -84,13 +103,15 @@ const createSlideItem = ({ image }) => {
   return slideItem;
 }
 
-
 const createArrowButtons = () => {
   const arrowBtnWrapper = createElementWithClassName("div", "arrow-btn__wrapper");
-  const arrowDirections = ["prev", "next"];
+  const arrowDirections = ["previous", "next"];
   arrowDirections.forEach((arrowDirection) => {
     const button = createElementWithClassName("button", `arrow-btn --${arrowDirection}`);
-    button.id = `js-arrow-${arrowDirection}-btn`;
+    button.id = `js-${arrowDirection}`;
+    button.value = arrowDirection;
+    // 初期設定として previousの属性にdisabledを付与
+    button.value === "previous" && button.setAttribute("disabled", true);
     arrowBtnWrapper.appendChild(button).appendChild(document.createElement("span"));
   });
   return arrowBtnWrapper;
@@ -100,11 +121,10 @@ const setClickEventInArrowButton = () => {
   const arrowButtons = document.querySelectorAll(".arrow-btn");
   arrowButtons.forEach(button => {
     button.addEventListener("click", (e) => {
-      if (e.currentTarget.id === "js-arrow-next-btn") {
-        switchImage("nextElementSibling");
-      } else {
-        switchImage("previousElementSibling");
-      }
+      const eventTargetValue = e.currentTarget.value;
+      switchImage(`${eventTargetValue}ElementSibling`);
+      updateOfCounter();
+      toggleTheDisabled(e.currentTarget);
     });
   });
 }
@@ -118,5 +138,20 @@ const switchImage = (direction) => {
   }
 }
 
+const updateOfCounter = () => {
+  document.querySelector(".active-number").textContent = findOrderOfDisplayedItem();
+}
+
+const toggleTheDisabled = (target) => {
+  const lastSlideItem = slideList.lastElementChild;
+  const firstSlideItem = slideList.firstElementChild;
+  const displayingEl = document.querySelector(".is-displaying");
+  if (displayingEl === lastSlideItem || displayingEl === firstSlideItem) {
+    target.setAttribute("disabled", true);
+  } else {
+    const disabledEl = document.querySelector("[disabled]");
+    disabledEl && disabledEl.removeAttribute("disabled")
+  }
+}
 
 init();
