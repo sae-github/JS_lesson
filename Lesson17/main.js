@@ -82,11 +82,14 @@ const findOrderOfDisplayedItem = () => {
 const initSlideItem = (imageSrc) => {
   for (let i = 0; i < imageSrc.length; i++) {
     const createdSlideItem = createSlideItem(imageSrc[i]);
-    //初期設定として 最初の要素にis-displayingクラスを付与
+    /**
+     * 初期設定として 最初の要素にis-displayingクラスを付与 
+     */
     i === 0 && createdSlideItem.classList.add("is-displaying");
     slideList.appendChild(createdSlideItem);
   }
 }
+
 
 const initArrowButtons = () => {
   const createdArrowButtons = createArrowButtons();
@@ -109,7 +112,9 @@ const createArrowButtons = () => {
     const button = createElementWithClassName("button", `arrow-btn --${arrowDirection}`);
     button.id = `js-${arrowDirection}`;
     button.value = arrowDirection;
-    // 初期設定として previousの属性にdisabledを付与
+    /**
+     * 初期設定として previousの属性にdisabledを付与
+     */
     button.value === "previous" && button.setAttribute("disabled", true);
     arrowBtnWrapper.appendChild(button).appendChild(document.createElement("span"));
   });
