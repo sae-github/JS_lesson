@@ -65,7 +65,7 @@ img {
   object-fit: cover;
 }
 
-.slide-item.is-displaying{
+.slide-item.is-displaying {
   z-index: 1;
   opacity: 1;
   transition: opacity 1s, z-index 0s 1s;
@@ -112,12 +112,12 @@ img {
   display: block;
 }
 
-.arrow-btn.--prev > span::before {
+.arrow-btn.--previous > span::before {
   top: -5px;
   transform: rotate(-40deg);
 }
 
-.arrow-btn.--prev > span::after {
+.arrow-btn.--previous > span::after {
   bottom: -5px;
   transform: rotate(40deg);
 }
@@ -133,4 +133,21 @@ img {
   right: 0;
   top: -5px;
   transform: rotate(40deg);
+}
+
+.arrow-btn:disabled {
+  background-color: rgb(170, 170, 170);
+}
+
+.counter-wrapper {
+  align-items: center;
+  font-size: 20px;
+}
+
+.current-number {
+  margin-right: 5px;
+}
+
+.total-number {
+  margin-left: 5px;
 }

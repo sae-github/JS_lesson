@@ -58,17 +58,38 @@ const init = async () => {
   if (imageData) {
     initSlideItem(imageData);
     initArrowButtons();
+    slideWrapper.appendChild(createCounterOfSlide(imageData));
   }
+}
+
+const createCounterOfSlide = (data) => {
+  const counterWrapper = createElementWithClassName("div", "counter-wrapper");
+  const orderOfDisplayedItem = createElementWithClassName("span", "current-number");
+  const totalSlideItem = createElementWithClassName("span", "total-number");
+  totalSlideItem.textContent = data.length;
+  orderOfDisplayedItem.textContent = findOrderOfDisplayedItem();
+  counterWrapper.appendChild(orderOfDisplayedItem).insertAdjacentHTML("afterend", "/");
+  counterWrapper.appendChild(totalSlideItem);
+  return counterWrapper;
+}
+
+const findOrderOfDisplayedItem = () => {
+  const slideItemArray = [...document.querySelectorAll(".slide-item")];
+  const targetIndex = slideItemArray.findIndex(el => el.classList.contains("is-displaying"));
+  return targetIndex + 1;
 }
 
 const initSlideItem = (imageSrc) => {
   for (let i = 0; i < imageSrc.length; i++) {
     const createdSlideItem = createSlideItem(imageSrc[i]);
-    //初期設定として 最初の要素にis-displayingクラスを付与
+    /**
+     * 初期設定として 最初の要素にis-displayingクラスを付与 
+     */
     i === 0 && createdSlideItem.classList.add("is-displaying");
     slideList.appendChild(createdSlideItem);
   }
 }
+
 
 const initArrowButtons = () => {
   const createdArrowButtons = createArrowButtons();
@@ -84,13 +105,17 @@ const createSlideItem = ({ image }) => {
   return slideItem;
 }
 
-
 const createArrowButtons = () => {
   const arrowBtnWrapper = createElementWithClassName("div", "arrow-btn__wrapper");
-  const arrowDirections = ["prev", "next"];
+  const arrowDirections = ["previous", "next"];
   arrowDirections.forEach((arrowDirection) => {
     const button = createElementWithClassName("button", `arrow-btn --${arrowDirection}`);
-    button.id = `js-arrow-${arrowDirection}-btn`;
+    button.id = `js-${arrowDirection}`;
+    button.value = arrowDirection;
+    /**
+     * 初期設定として previousの属性にdisabledを付与
+     */
+    button.value === "previous" && button.setAttribute("disabled", true);
     arrowBtnWrapper.appendChild(button).appendChild(document.createElement("span"));
   });
   return arrowBtnWrapper;
@@ -100,11 +125,10 @@ const setClickEventInArrowButton = () => {
   const arrowButtons = document.querySelectorAll(".arrow-btn");
   arrowButtons.forEach(button => {
     button.addEventListener("click", (e) => {
-      if (e.currentTarget.id === "js-arrow-next-btn") {
-        switchImage("nextElementSibling");
-      } else {
-        switchImage("previousElementSibling");
-      }
+      const eventTargetValue = e.currentTarget.value;
+      switchImage(`${eventTargetValue}ElementSibling`);
+      updateOfCounter();
+      toggleTheDisabled(e.currentTarget);
     });
   });
 }
@@ -118,5 +142,20 @@ const switchImage = (direction) => {
   }
 }
 
+const updateOfCounter = () => {
+  document.querySelector(".current-number").textContent = findOrderOfDisplayedItem();
+}
+
+const toggleTheDisabled = (target) => {
+  const lastSlideItem = slideList.lastElementChild;
+  const firstSlideItem = slideList.firstElementChild;
+  const displayingEl = document.querySelector(".is-displaying");
+  if (displayingEl === lastSlideItem || displayingEl === firstSlideItem) {
+    target.setAttribute("disabled", true);
+  } else {
+    const disabledEl = document.querySelector("[disabled]");
+    disabledEl && disabledEl.removeAttribute("disabled")
+  }
+}
 
 init();
