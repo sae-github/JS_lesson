@@ -1,0 +1,191 @@
+
+.inner {
+  width: 100vw;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.slide-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.error-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #333;
+  font-size: 22px;
+  z-index: 10;
+}
+
+.loading {
+  object-fit: contain;
+  width: 150px;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.slide-list {
+  width: 100%;
+  height: 600px;
+  position: relative;
+  margin: 0 20px;
+  overflow: hidden;
+}
+
+.slide-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: -1;
+  object-fit: cover;
+  overflow: hidden;
+  transition: opacity 0.5s, z-index 0s 0.5s;
+}
+
+.slide-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-item.is-displaying {
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 1s, z-index 0s 1s;
+}
+
+.slide-item.slide-item.is-displaying img {
+  animation: zoomUp 3s ease-in-out forwards;
+}
+
+@keyframes zoomUp {
+  100% { transform: scale(1.1)}
+  }
+
+.arrowBtn-wrapper {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.arrowBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 60px;
+  height: 60px;
+  position: relative;
+  background-color: #333;
+}
+
+.arrowBtn > span {
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  content: "";
+  background-color: #fff;
+  z-index: 10;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.arrowBtn > span::before,
+.arrowBtn > span:after {
+  position: absolute;
+  width: 13px;
+  height: 2px;
+  background-color: #fff;
+  content: "";
+  display: block;
+}
+
+.arrowBtn.--previous > span::before {
+  top: -5px;
+  transform: rotate(-40deg);
+}
+
+.arrowBtn.--previous > span::after {
+  bottom: -5px;
+  transform: rotate(40deg);
+}
+
+.arrowBtn.--next > span::before {
+  bottom: -5px;
+  right: 0;
+  transform: rotate(-40deg);
+}
+
+.arrowBtn.--next > span::after {
+  bottom: -5px;
+  right: 0;
+  top: -5px;
+  transform: rotate(40deg);
+}
+
+.arrowBtn:disabled {
+  background-color: rgb(170, 170, 170);
+}
+
+.counter {
+  font-size: 20px;
+  font-style: italic;
+  align-items: center;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.current-number {
+  margin-right: 5px;
+}
+
+.total-number {
+  margin-left: 5px;
+}
+
+.indicator-list {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.indicator-item {
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: rgb(230, 230, 230);
+  border: 1px solid #333;
+}
+
+.indicator-item + .indicator-item {
+  margin-left: 10px;
+}
+
+.indicator-item.is-selected {
+  background: #333;
+}
