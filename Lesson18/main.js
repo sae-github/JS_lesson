@@ -148,8 +148,8 @@ const findIndexOfDisplayedItem = () => {
 }
 
 const findIndexOfSelectedIndicator = () => {
-  const Indicators = [...document.querySelectorAll(".indicator-item")];
-  return Indicators.findIndex((el) => el.classList.contains("is-selected"));
+  const indicators = [...document.querySelectorAll(".indicator-item")];
+  return indicators.findIndex((el) => el.classList.contains("is-selected"));
 }
 
 const toggleTheDisabled = () => {
