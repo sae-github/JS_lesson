@@ -62,7 +62,7 @@ const init = async () => {
   if (imgData) {
     initSlideItem(imgData);
     initArrowButtons();
-    initIndicator(imgData);
+    initIndicator(imgData.length);
     slideWrapper.appendChild(createCounterOfSlide(imgData));
   }
 }
@@ -115,9 +115,9 @@ const createArrowButtons = () => {
   return arrowBtnWrapper;
 }
 
-const createIndicator = (data) => {
+const createIndicator = (imageLength) => {
   const ul = createElementWithClassName("ul", "indicator-list")
-  for (let i = 0; i < data.length; i++) {
+  for (let i = 0; i < imageLength; i++) {
     const li = createElementWithClassName("li", "indicator-item");
     /**
     * Set the is-selected class to the first element by default 
