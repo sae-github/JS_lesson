@@ -119,6 +119,7 @@ const createIndicator = (imageLength) => {
   const ul = createElementWithClassName("ul", "indicator-list")
   for (let i = 0; i < imageLength; i++) {
     const li = createElementWithClassName("li", "indicator-item");
+    li.setAttribute("data-num", i);
     /**
     * Set the is-selected class to the first element by default 
     */
@@ -175,21 +176,21 @@ const switchIndicator = (target) => {
   const selectedIndicator = document.querySelector(".is-selected");
   const indicators = [...document.querySelectorAll(".indicator-item")];
   selectedIndicator.classList.remove("is-selected");
-  (indicators[target] ?? target).classList.add("is-selected");
+  indicators[target].classList.add("is-selected");
 }
 
 const switchSlideImg = (target) => {
   const displayedSlideItem = document.querySelector(".is-displaying");
   displayedSlideItem.classList.remove("is-displaying");
   const slideItems = [...document.querySelectorAll(".slide-item")];
-  (slideItems[target] ?? displayedSlideItem[target]).classList.add("is-displaying");
+  slideItems[target].classList.add("is-displaying");
 }
 
 const setClickEventInIndicator = () => {
   const indicator = document.querySelectorAll(".indicator-item");
   indicator.forEach(target => {
     target.addEventListener("click", (e) => {
-      switchIndicator(e.target);
+      switchIndicator(e.target.dataset.num);
       switchSlideImg(findIndexOfSelectedIndicator());
       updateOfCounter();
       toggleTheDisabled();
@@ -201,7 +202,11 @@ const setClickEventInArrowButton = () => {
   const arrowButtons = document.querySelectorAll(".arrowBtn");
   arrowButtons.forEach(button => {
     button.addEventListener("click", (e) => {
-      switchSlideImg(`${e.currentTarget.value}ElementSibling`);
+      if (e.currentTarget.value === "next") {
+        switchSlideImg(findIndexOfDisplayedItem() + 1);
+      } else {
+        switchSlideImg(findIndexOfDisplayedItem() - 1);
+      }
       updateOfCounter();
       toggleTheDisabled();
       switchIndicator(findIndexOfDisplayedItem());
