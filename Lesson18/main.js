@@ -187,9 +187,9 @@ const switchSlideImg = (targetIndex) => {
 }
 
 const setClickEventInIndicator = () => {
-  const indicator = document.querySelectorAll(".indicator-item");
-  indicator.forEach(target => {
-    target.addEventListener("click", (e) => {
+  const indicators = document.querySelectorAll(".indicator-item");
+  indicators.forEach(indicator=> {
+    indicator.addEventListener("click", (e) => {
       switchIndicator(e.target.dataset.num);
       switchSlideImg(findIndexOfSelectedIndicator());
       updateOfCounter();
