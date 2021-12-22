@@ -172,18 +172,18 @@ const updateOfCounter = () => {
   document.querySelector(".current-number").textContent = displayedItemIndex + 1;
 }
 
-const switchIndicator = (target) => {
+const switchIndicator = (targetIndex) => {
   const selectedIndicator = document.querySelector(".is-selected");
   const indicators = [...document.querySelectorAll(".indicator-item")];
   selectedIndicator.classList.remove("is-selected");
-  indicators[target].classList.add("is-selected");
+  indicators[targetIndex].classList.add("is-selected");
 }
 
-const switchSlideImg = (target) => {
+const switchSlideImg = (targetIndex) => {
   const displayedSlideItem = document.querySelector(".is-displaying");
   displayedSlideItem.classList.remove("is-displaying");
   const slideItems = [...document.querySelectorAll(".slide-item")];
-  slideItems[target].classList.add("is-displaying");
+  slideItems[targetIndex].classList.add("is-displaying");
 }
 
 const setClickEventInIndicator = () => {
