@@ -64,10 +64,32 @@ const init = async () => {
     initArrowButtons();
     initIndicator(imgData.length);
     slideWrapper.appendChild(createCounterOfSlide(imgData));
+    autoPlay.start();
   }
 }
 
 init();
+
+/**
+ * index of the element being displayed.
+ * @type {Number}
+ */
+let currentIndex = 0;
+
+let autoPlayerId;
+const autoPlay = {
+  start: function () {
+    autoPlayerId = setInterval(() => {
+      const slideItems = [...document.querySelectorAll(".slide-item")];
+      currentIndex < slideItems.length - 1 ? ++currentIndex : currentIndex = 0;
+      playOfSlideshow();
+    }, 3000);
+  },
+  reset: function () {
+    clearInterval(autoPlayerId);
+    this.start();
+  }
+}
 
 const initSlideItem = (imgSources) => {
   for (let i = 0; i < imgSources.length; i++) {
@@ -131,27 +153,22 @@ const createIndicator = (imageLength) => {
 
 const createCounterOfSlide = (data) => {
   const counterWrapper = createElementWithClassName("div", "counter");
-  const orderOfDisplayedItem = createElementWithClassName("span", "current-number");
+  const orderOfDisplayedItem = createElementWithClassName(
+    "span",
+    "current-number"
+  );
   const totalSlideItem = createElementWithClassName("span", "total-number");
   totalSlideItem.textContent = data.length;
   /**
    * Add 1 to the currently displayed index and display the count.
    */
-  orderOfDisplayedItem.textContent = findIndexOfDisplayedItem() + 1;
-  counterWrapper.appendChild(orderOfDisplayedItem).insertAdjacentHTML("afterend", "/");
+  orderOfDisplayedItem.textContent = currentIndex + 1;
+  counterWrapper
+    .appendChild(orderOfDisplayedItem)
+    .insertAdjacentHTML("afterend", "/");
   counterWrapper.appendChild(totalSlideItem);
   return counterWrapper;
-}
-
-const findIndexOfDisplayedItem = () => {
-  const slideItemArray = [...document.querySelectorAll(".slide-item")];
-  return slideItemArray.findIndex(el => el.classList.contains("is-displaying"));
-}
-
-const findIndexOfSelectedIndicator = () => {
-  const indicators = [...document.querySelectorAll(".indicator-item")];
-  return indicators.findIndex((el) => el.classList.contains("is-selected"));
-}
+};
 
 const toggleTheDisabled = () => {
   const lastSlideItem = slideList.lastElementChild;
@@ -167,10 +184,12 @@ const toggleTheDisabled = () => {
   }
 }
 
-const updateOfCounter = () => {
-  const displayedItemIndex = findIndexOfDisplayedItem();
-  document.querySelector(".current-number").textContent = displayedItemIndex + 1;
-}
+const updateOfCounter = (targetIndex) => {
+  /**
+   * The counter will display the value of index plus one.
+   */
+  document.querySelector(".current-number").textContent = ++targetIndex;
+};
 
 const switchIndicator = (targetIndex) => {
   const selectedIndicator = document.querySelector(".is-selected");
@@ -186,33 +205,34 @@ const switchSlideImg = (targetIndex) => {
   slideItems[targetIndex].classList.add("is-displaying");
 }
 
+const playOfSlideshow = () => {
+  switchIndicator(currentIndex);
+  switchSlideImg(currentIndex);
+  updateOfCounter(currentIndex);
+  toggleTheDisabled();
+}
+
 const setClickEventInIndicator = () => {
   const indicators = document.querySelectorAll(".indicator-item");
-  indicators.forEach(indicator=> {
+  indicators.forEach((indicator) => {
     indicator.addEventListener("click", (e) => {
-      switchIndicator(e.target.dataset.num);
-      switchSlideImg(findIndexOfSelectedIndicator());
-      updateOfCounter();
-      toggleTheDisabled();
+      autoPlay.reset();
+      currentIndex = e.target.dataset.num;
+      playOfSlideshow();
     });
   });
-}
+};
 
 const setClickEventInArrowButton = () => {
   const arrowButtons = document.querySelectorAll(".arrowBtn");
-  arrowButtons.forEach(button => {
+  arrowButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
-      if (e.currentTarget.value === "next") {
-        switchSlideImg(findIndexOfDisplayedItem() + 1);
-      } else {
-        switchSlideImg(findIndexOfDisplayedItem() - 1);
-      }
-      updateOfCounter();
-      toggleTheDisabled();
-      switchIndicator(findIndexOfDisplayedItem());
+      autoPlay.reset();
+      e.currentTarget.value === "next" ? ++currentIndex : --currentIndex;
+      playOfSlideshow();
     });
   });
-}
+};
 
 
 
