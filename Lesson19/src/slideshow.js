@@ -195,12 +195,8 @@ const toggleTheDisabled = () => {
   const displayingEl = document.querySelector(".is-displaying");
   const disabledEl = document.querySelector("[disabled]");
   disabledEl && disabledEl.removeAttribute("disabled");
-  if (displayingEl === lastSlideItem) {
-    document.getElementById("js-nextBtn").setAttribute("disabled", true);
-  }
-  if (displayingEl === firstSlideItem) {
-    document.getElementById("js-previousBtn").setAttribute("disabled", true);
-  }
+  displayingEl === lastSlideItem && document.getElementById("js-nextBtn").setAttribute("disabled", true);
+  displayingEl === firstSlideItem && document.getElementById("js-previousBtn").setAttribute("disabled", true);
 };
 
 const updateOfCounter = () => {

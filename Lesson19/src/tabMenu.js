@@ -136,12 +136,10 @@ const createArticleElements = ({ article }) => {
   for (let i = 0; i < article.length; i++) {
     const metaWrapper = createElementWithClassName("div", "meta-wrapper");
     const commentLength = article[i].comment.length;
-    if (isSpecifiedPeriod(article[i].date)) {
-      metaWrapper.appendChild(createNewIcon());
-    }
-    if (hasComment(commentLength)) {
-      metaWrapper.appendChild(createCommentLength(commentLength));
-    }
+
+    isSpecifiedPeriod(article[i].date) && metaWrapper.appendChild(createNewIcon());
+    hasComment(commentLength) && metaWrapper.appendChild(createCommentLength(commentLength));
+  
     const li = document.createElement("li");
     li.id = article[i].id;
     const anchor = document.createElement("a");
