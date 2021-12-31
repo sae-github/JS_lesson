@@ -100,8 +100,8 @@ const autoPlay = function () {
     start();
   }
   return {
-    start: start,
-    reset: reset
+    start,
+    reset
   }
 }();
 
