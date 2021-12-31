@@ -10,7 +10,7 @@ const createElementWithClassName = (type, className) => {
 const createLoading = () => {
   const loading = createElementWithClassName("img", "loading");
   loading.id = "js-loading";
-  loading.src = "./img/loading-circle.gif";
+  loading.src = "./img/loading-line.gif";
   return loading;
 };
 
