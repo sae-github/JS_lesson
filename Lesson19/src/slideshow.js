@@ -50,7 +50,8 @@ const tryGetSlideImgData = async () => {
   try {
     const slideImgData = await getSlideImgData();
     if (slideImgData.length === 0) {
-      throw new Error("No data...");
+      slideWrapper.appendChild(createErrorMessage("画像が登録されていません"));
+      return;
     }
     return slideImgData;
   } catch (e) {
