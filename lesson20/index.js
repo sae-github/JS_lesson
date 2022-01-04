@@ -65,43 +65,40 @@ const init = async () => {
   data && body.appendChild(createTable(data));
 }
 
-const createTable = (data) => {
+const createTable = usersData => {
+  const tableItems = {
+    "id": "ID",
+    "name": "名前",
+    "gender": "性別",
+    "age": "年齢"
+  }
   const table = document.createElement("table");
-  const columnKey = createColumnKey(data);
-  const tableHead = createTableHead(data, columnKey);
-  const tableBody = createTabBody(data, columnKey);
+  const columnKeys = Object.keys(tableItems);
+  const tableHead = createTableHead(tableItems);
+  const tableBody = createTabBody(usersData, columnKeys);
   table.appendChild(tableHead).after(tableBody);
   return table;
 }
 
-const createColumnKey = ({ column }) => {
-  return column.reduce((array, current, index) => {
-    for (const [key] of Object.entries(current)) {
-      array[index] = key;
-    }
-    return array;
-  }, []);
-}
-
-const createTableHead = ({ column }, key) => {
+const createTableHead = items => {
   const thead = document.createElement("thead");
   const tr = document.createElement("tr");
-  for (let i = 0; i < key.length; i++) {
+  Object.values(items).forEach(item => {
     const th = document.createElement("th");
-    th.textContent = column[i][key[i]];
+    th.textContent = item;
     tr.appendChild(th);
-  }
+  });
   thead.appendChild(tr);
   return thead;
 }
 
-const createTabBody = ({ body }, key) => {
+const createTabBody = (usersData, keys) => {
   const tbody = document.createElement("tbody");
-  body.forEach(item => {
+  usersData.forEach(userData => {
     const tr = document.createElement("tr");
-    for (let i = 0; i < key.length; i++) {
+    for (let i = 0; i < keys.length; i++) {
       const td = document.createElement("td");
-      td.textContent = item[key[i]];
+      td.textContent = userData[keys[i]];
       tr.appendChild(td);
     }
     tbody.appendChild(tr);
