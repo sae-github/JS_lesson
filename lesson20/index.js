@@ -75,7 +75,7 @@ const createTable = usersData => {
   const table = document.createElement("table");
   const columnKeys = Object.keys(tableItems);
   const tableHead = createTableHead(tableItems);
-  const tableBody = createTabBody(usersData, columnKeys);
+  const tableBody = createTableBody(usersData, columnKeys);
   table.appendChild(tableHead).after(tableBody);
   return table;
 }
@@ -92,18 +92,23 @@ const createTableHead = items => {
   return thead;
 }
 
-const createTabBody = (usersData, keys) => {
+const createTableBody = (usersData, keys) => {
   const tbody = document.createElement("tbody");
   usersData.forEach(userData => {
     const tr = document.createElement("tr");
-    for (let i = 0; i < keys.length; i++) {
-      const td = document.createElement("td");
-      td.textContent = userData[keys[i]];
-      tr.appendChild(td);
-    }
-    tbody.appendChild(tr);
+    tbody.appendChild(tr).appendChild(createTd(userData, keys));
   });
   return tbody;
+}
+
+const createTd = (usersData, keys) => {
+  const fragment = document.createDocumentFragment();
+  for (let i = 0; i < keys.length; i++) {
+    const td = document.createElement("td");
+    td.textContent = usersData[keys[i]];
+    fragment.appendChild(td);
+  }
+  return fragment;
 }
 
 init();
