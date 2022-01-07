@@ -39,7 +39,7 @@ const getJsonOrError = async (url) => {
 const getTableData = async () => {
   return new Promise(resolve => {
     setTimeout(
-      () => resolve(getJsonOrError("https://myjson.dit.upm.es/api/bins/94kd")), 3000
+      () => resolve(getJsonOrError("http://myjson.dit.upm.es/api/bins/9me1")), 3000
     );
   });
 };
@@ -67,7 +67,7 @@ const init = async () => {
 
 const createTable = usersData => {
   const tableItems = {
-    "id": "ID",
+    "userId": "ID",
     "name": "名前",
     "gender": "性別",
     "age": "年齢"
