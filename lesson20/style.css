@@ -1,0 +1,10 @@
+
+th {
+  background: rgb(253, 167, 167);
+  font-weight: bold;
+}
+
+th,td {
+  border: solid 1px;
+  padding: 10px; 
+}
