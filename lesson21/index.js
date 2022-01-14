@@ -124,11 +124,10 @@ const setClickInSortBtn = () => {
   const sortBtn = document.getElementById("js-sort-btn");
 
   sortBtn.addEventListener("click", (e) => {
-    let currentStatus = e.target.dataset.sortStatus;
-    currentStatus = switchSortStatus(currentStatus);
-    e.target.dataset.sortStatus = currentStatus;
+    const nextStatus = switchSortStatus(e.target.dataset.sortStatus);
+    e.target.dataset.sortStatus = nextStatus;
 
-    const sortedRows = getSortedRows(currentStatus, standardRows);
+    const sortedRows = getSortedRows(nextStatus, standardRows);
 
     const tbody = document.querySelector("tbody");
     sortedRows.forEach((row) => {
