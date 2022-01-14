@@ -128,7 +128,7 @@ const setClickInSortBtn = () => {
     currentStatus = switchSortStatus(currentStatus);
     e.target.dataset.sortStatus = currentStatus;
 
-    sortedRows = getSortedRows(currentStatus, standardRows);
+    const sortedRows = getSortedRows(currentStatus, standardRows);
 
     const tbody = document.querySelector("tbody");
     sortedRows.forEach((row) => {
