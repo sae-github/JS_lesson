@@ -127,7 +127,7 @@ const setClickInSortBtn = () => {
     const nextStatus = switchSortStatus(e.target.dataset.sortStatus);
     e.target.dataset.sortStatus = nextStatus;
 
-    const sortedRows = getSortedRows(nextStatus, defaultRows);
+    const sortedRows = getSortedRows(nextStatus, defaultRows,e.target);
 
     const tbody = document.querySelector("tbody");
     sortedRows.forEach((row) => {
@@ -152,22 +152,27 @@ const switchSortStatus = (status) => {
   }
 }
 
-const getSortedRows = (status, defaultLows) => {
+const findClickedCellIndex = (target) => {
+  const th = [...document.querySelector("thead").querySelectorAll("th")];
+  return th.indexOf(target.parentElement);
+}
+
+const getSortedRows = (status, defaultLows,target) => {
   if (status === "default") {
     return defaultLows;
   }
-  return sortById(status, defaultLows);
+  return sortByClickedCell(status, defaultLows,findClickedCellIndex(target));
 }
 
-const sortById = (status, defaultLows) => {
+const sortByClickedCell = (status, defaultLows, index) => {
   if (status === "asc") {
     return [...defaultLows].sort(
-      (a, b) => a.children[0].textContent - b.children[0].textContent
+      (a, b) => a.children[index].textContent - b.children[index].textContent
     );
   }
   if (status === "desc") {
     return [...defaultLows].sort(
-      (a, b) => b.children[0].textContent - a.children[0].textContent
+      (a, b) => b.children[index].textContent - a.children[index].textContent
     );
   }
 };
