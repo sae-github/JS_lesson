@@ -38,7 +38,7 @@ const getJsonOrError = async (url) => {
 const getTableData = async () => {
   return new Promise(resolve => {
     setTimeout(
-      () => resolve(getJsonOrError("http://myjson.dit.upm.es/api/bins/9me1")), 3000
+      () => resolve(getJsonOrError("https://myjson.dit.upm.es/api/bins/9me1")), 3000
     );
   });
 };
