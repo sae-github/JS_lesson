@@ -151,10 +151,10 @@ const getSortedRows = (status, standardRows) => {
   if (status === "standard") {
     return standardRows;
   }
-  return SortById(status, standardRows);
+  return sortById(status, standardRows);
 }
 
-const SortById = (status, standardRows) => {
+const sortById = (status, standardRows) => {
   if (status === "asc") {
     return [...standardRows].sort(
       (a, b) => a.children[0].textContent - b.children[0].textContent
