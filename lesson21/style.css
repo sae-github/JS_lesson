@@ -59,7 +59,7 @@ td {
   width: 15px;
   float: right;
 }
-.sort-btn[data-sort-status="standard"] {
+.sort-btn[data-sort-status="default"] {
   background-image: url(./img/standard.svg);
 }
 

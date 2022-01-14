@@ -114,20 +114,20 @@ const createTd = (usersData, keys) => {
 
 const createSortBtn = () => {
   const sortBtn = createElementWithClassName("button", "sort-btn");
-  sortBtn.dataset.sortStatus = "standard";
+  sortBtn.dataset.sortStatus = "default";
   sortBtn.id = "js-sort-btn";
   return sortBtn;
 }
 
 const setClickInSortBtn = () => {
-  const standardRows = [...document.querySelector("tbody").querySelectorAll("tr")];
+  const defaultRows = [...document.querySelector("tbody").querySelectorAll("tr")];
   const sortBtn = document.getElementById("js-sort-btn");
 
   sortBtn.addEventListener("click", (e) => {
     const nextStatus = switchSortStatus(e.target.dataset.sortStatus);
     e.target.dataset.sortStatus = nextStatus;
 
-    const sortedRows = getSortedRows(nextStatus, standardRows);
+    const sortedRows = getSortedRows(nextStatus, defaultRows);
 
     const tbody = document.querySelector("tbody");
     sortedRows.forEach((row) => {
@@ -138,35 +138,35 @@ const setClickInSortBtn = () => {
 
 const switchSortStatus = (status) => {
   switch (status) {
-    case "standard":
+    case "default":
       return "asc";
 
     case "desc":
-      return "standard";
+      return "default";
 
     case "asc":
       return "desc";
 
     default:
-      return "standard";
+      return "default";
   }
 }
 
-const getSortedRows = (status, standardRows) => {
-  if (status === "standard") {
-    return standardRows;
+const getSortedRows = (status, defaultLows) => {
+  if (status === "default") {
+    return defaultLows;
   }
-  return sortById(status, standardRows);
+  return sortById(status, defaultLows);
 }
 
-const sortById = (status, standardRows) => {
+const sortById = (status, defaultLows) => {
   if (status === "asc") {
-    return [...standardRows].sort(
+    return [...defaultLows].sort(
       (a, b) => a.children[0].textContent - b.children[0].textContent
     );
   }
   if (status === "desc") {
-    return [...standardRows].sort(
+    return [...defaultLows].sort(
       (a, b) => b.children[0].textContent - a.children[0].textContent
     );
   }
