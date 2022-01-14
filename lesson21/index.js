@@ -9,7 +9,7 @@ const createElementWithClassName = (type, className) => {
 const createLoading = () => {
   const loading = createElementWithClassName("img", "loading");
   loading.id = "js-loading";
-  loading.src = "./loading-circle.gif";
+  loading.src = "./img/loading-circle.gif";
   return loading;
 };
 
@@ -62,6 +62,7 @@ const tryGetTableData = async () => {
 const init = async () => {
   const data = await tryGetTableData();
   data && tableWrapper.appendChild(createTable(data));
+  setClickInSortBtn();
 }
 
 const createTable = usersData => {
@@ -85,6 +86,7 @@ const createTableHead = items => {
   Object.values(items).forEach(item => {
     const th = document.createElement("th");
     th.textContent = item;
+    item === "ID" && th.appendChild(createSortBtn());
     tr.appendChild(th);
   });
   thead.appendChild(tr);
@@ -109,6 +111,61 @@ const createTd = (usersData, keys) => {
   }
   return fragment;
 }
+
+const createSortBtn = () => {
+  const sortBtn = createElementWithClassName("button", "sort-btn");
+  sortBtn.dataset.sortStatus = "standard";
+  sortBtn.id = "js-sort-btn";
+  return sortBtn;
+}
+
+const setClickInSortBtn = () => {
+  const standardRows = [...document.querySelector("tbody").querySelectorAll("tr")];
+  const sortBtn = document.getElementById("js-sort-btn");
+
+  sortBtn.addEventListener("click", (e) => {
+    let currentStatus = e.target.dataset.sortStatus;
+    currentStatus = switchSortStatus(currentStatus);
+    e.target.dataset.sortStatus = currentStatus;
+
+    sortedRows = getSortedRows(currentStatus, standardRows);
+
+    const tbody = document.querySelector("tbody");
+    sortedRows.forEach((row) => {
+      tbody.appendChild(row);
+    })
+  });
+}
+
+const switchSortStatus = (status) => {
+  if (status === "standard") {
+    return "asc";
+  } else if (status === "desc") {
+    return "standard";
+  } else if (status === "asc") {
+    return "desc";
+  }
+}
+
+const getSortedRows = (status, standardRows) => {
+  if (status === "standard") {
+    return standardRows;
+  }
+  return SortById(status, standardRows);
+}
+
+const SortById = (status, standardRows) => {
+  if (status === "asc") {
+    return [...standardRows].sort(
+      (a, b) => a.children[0].textContent - b.children[0].textContent
+    );
+  }
+  if (status === "desc") {
+    return [...standardRows].sort(
+      (a, b) => b.children[0].textContent - a.children[0].textContent
+    );
+  }
+};
 
 init();
 
