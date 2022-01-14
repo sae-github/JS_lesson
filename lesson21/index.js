@@ -138,12 +138,18 @@ const setClickInSortBtn = () => {
 }
 
 const switchSortStatus = (status) => {
-  if (status === "standard") {
-    return "asc";
-  } else if (status === "desc") {
-    return "standard";
-  } else if (status === "asc") {
-    return "desc";
+  switch (status) {
+    case "standard":
+      return "asc";
+
+    case "desc":
+      return "standard";
+
+    case "asc":
+      return "desc";
+
+    default:
+      return "standard";
   }
 }
 
