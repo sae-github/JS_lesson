@@ -127,7 +127,7 @@ const setClickInSortBtn = () => {
     const nextStatus = switchSortStatus(e.target.dataset.sortStatus);
     e.target.dataset.sortStatus = nextStatus;
 
-    const sortedRows = getSortedRows(nextStatus, defaultRows,e.target);
+    const sortedRows = getSortedRows(nextStatus, defaultRows, e.target);
 
     const tbody = document.querySelector("tbody");
     sortedRows.forEach((row) => {
@@ -157,25 +157,21 @@ const findClickedCellIndex = (target) => {
   return th.indexOf(target.parentElement);
 }
 
-const getSortedRows = (status, defaultRows,target) => {
-  if (status === "default") {
-    return defaultRows;
+const getSortedRows = (status, defaultRows, target) => {
+  if (status === "default") return defaultRows;
+  const index = findClickedCellIndex(target);
+  switch (status) {
+    case "asc":
+      return [...defaultRows].sort((a, b) => a.children[index].textContent - b.children[index].textContent
+      );
+    case "desc":
+      return [...defaultRows].sort((a, b) => b.children[index].textContent - a.children[index].textContent
+      );
+    default:
+      throw new Error(`${status} is not provided.`)
   }
-  return sortByClickedCell(status, defaultRows,findClickedCellIndex(target));
 }
 
-const sortByClickedCell = (status, defaultRows, index) => {
-  if (status === "asc") {
-    return [...defaultRows].sort(
-      (a, b) => a.children[index].textContent - b.children[index].textContent
-    );
-  }
-  if (status === "desc") {
-    return [...defaultRows].sort(
-      (a, b) => b.children[index].textContent - a.children[index].textContent
-    );
-  }
-};
 
 init();
 
