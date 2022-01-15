@@ -157,21 +157,21 @@ const findClickedCellIndex = (target) => {
   return th.indexOf(target.parentElement);
 }
 
-const getSortedRows = (status, defaultLows,target) => {
+const getSortedRows = (status, defaultRows,target) => {
   if (status === "default") {
-    return defaultLows;
+    return defaultRows;
   }
-  return sortByClickedCell(status, defaultLows,findClickedCellIndex(target));
+  return sortByClickedCell(status, defaultRows,findClickedCellIndex(target));
 }
 
-const sortByClickedCell = (status, defaultLows, index) => {
+const sortByClickedCell = (status, defaultRows, index) => {
   if (status === "asc") {
-    return [...defaultLows].sort(
+    return [...defaultRows].sort(
       (a, b) => a.children[index].textContent - b.children[index].textContent
     );
   }
   if (status === "desc") {
-    return [...defaultLows].sort(
+    return [...defaultRows].sort(
       (a, b) => b.children[index].textContent - a.children[index].textContent
     );
   }
