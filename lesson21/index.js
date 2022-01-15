@@ -9,7 +9,7 @@ const createElementWithClassName = (type, className) => {
 const createLoading = () => {
   const loading = createElementWithClassName("img", "loading");
   loading.id = "js-loading";
-  loading.src = "./loading-circle.gif";
+  loading.src = "./img/loading-circle.gif";
   return loading;
 };
 
@@ -38,7 +38,7 @@ const getJsonOrError = async (url) => {
 const getTableData = async () => {
   return new Promise(resolve => {
     setTimeout(
-      () => resolve(getJsonOrError("http://myjson.dit.upm.es/api/bins/9me1")), 3000
+      () => resolve(getJsonOrError("https://myjson.dit.upm.es/api/bins/9me1")), 3000
     );
   });
 };
@@ -62,6 +62,7 @@ const tryGetTableData = async () => {
 const init = async () => {
   const data = await tryGetTableData();
   data && tableWrapper.appendChild(createTable(data));
+  setClickInSortBtn();
 }
 
 const createTable = usersData => {
@@ -85,6 +86,7 @@ const createTableHead = items => {
   Object.values(items).forEach(item => {
     const th = document.createElement("th");
     th.textContent = item;
+    item === "ID" && th.appendChild(createSortBtn());
     tr.appendChild(th);
   });
   thead.appendChild(tr);
@@ -109,6 +111,67 @@ const createTd = (usersData, keys) => {
   }
   return fragment;
 }
+
+const createSortBtn = () => {
+  const sortBtn = createElementWithClassName("button", "sort-btn");
+  sortBtn.dataset.sortStatus = "default";
+  sortBtn.id = "js-sort-btn";
+  return sortBtn;
+}
+
+const setClickInSortBtn = () => {
+  const defaultRows = [...document.querySelector("tbody").querySelectorAll("tr")];
+  const sortBtn = document.getElementById("js-sort-btn");
+
+  sortBtn.addEventListener("click", (e) => {
+    const nextStatus = switchSortStatus(e.target.dataset.sortStatus);
+    e.target.dataset.sortStatus = nextStatus;
+
+    const sortedRows = getSortedRows(nextStatus, defaultRows, e.target);
+
+    const tbody = document.querySelector("tbody");
+    sortedRows.forEach((row) => {
+      tbody.appendChild(row);
+    })
+  });
+}
+
+const switchSortStatus = (status) => {
+  switch (status) {
+    case "default":
+      return "asc";
+
+    case "desc":
+      return "default";
+
+    case "asc":
+      return "desc";
+
+    default:
+      return "default";
+  }
+}
+
+const findClickedCellIndex = (target) => {
+  const th = [...document.querySelector("thead").querySelectorAll("th")];
+  return th.indexOf(target.parentElement);
+}
+
+const getSortedRows = (status, defaultRows, target) => {
+  if (status === "default") return defaultRows;
+  const index = findClickedCellIndex(target);
+  switch (status) {
+    case "asc":
+      return [...defaultRows].sort((a, b) => a.children[index].textContent - b.children[index].textContent
+      );
+    case "desc":
+      return [...defaultRows].sort((a, b) => b.children[index].textContent - a.children[index].textContent
+      );
+    default:
+      throw new Error(`${status} is not provided.`)
+  }
+}
+
 
 init();
 
