@@ -87,7 +87,7 @@ const createTableHead = items => {
   Object.values(items).forEach(item => {
     const th = document.createElement("th");
     th.textContent = item;
-    item === "ID" && th.appendChild(createSortButton());
+    (item === "ID" || item === "年齢") && th.appendChild(createSortButton());
     tr.appendChild(th);
   });
   thead.appendChild(tr);
@@ -97,7 +97,7 @@ const createTableHead = items => {
 const createTableBody = (usersData, keys) => {
   const tbody = document.createElement("tbody");
   usersData.forEach(userData => {
-    const tr = document.createElement("tr");
+    const tr = createElementWithClassName("tr", "js-tr-inTbody");
     tbody.appendChild(tr).appendChild(createTd(userData, keys));
   });
   return tbody;
@@ -114,26 +114,26 @@ const createTd = (usersData, keys) => {
 }
 
 const createSortButton = () => {
-  const sortButton = createElementWithClassName("button", "sort-button");
+  const sortButton = createElementWithClassName("button", "sort-button js-sort-button");
   sortButton.dataset.sortStatus = "default";
-  sortButton.id = "js-sort-button";
   return sortButton;
 }
 
 const setClickInSortButton = () => {
-  const defaultRows = [...document.querySelector("tbody").querySelectorAll("tr")];
-  const sortButton = document.getElementById("js-sort-button");
+  const defaultRows = [...document.querySelectorAll(".js-tr-inTbody")];
+  const sortButtons = [...document.querySelectorAll(".js-sort-button")];
 
-  sortButton.addEventListener("click", (e) => {
-    const nextStatus = switchSortStatus(e.target.dataset.sortStatus);
-    e.target.dataset.sortStatus = nextStatus;
-
-    const sortedRows = getSortedRows(nextStatus, defaultRows, e.target);
-
-    const tbody = document.querySelector("tbody");
-    sortedRows.forEach((row) => {
-      tbody.appendChild(row);
-    })
+  sortButtons.forEach((sortButton) => {
+    sortButton.addEventListener("click", (e) => {
+      sortButtons.find(button => button !== e.target).dataset.sortStatus = "default";
+      const nextStatus = switchSortStatus(e.target.dataset.sortStatus);
+      e.target.dataset.sortStatus = nextStatus;
+      const sortedRows = getSortedRows(nextStatus, defaultRows, e.target);
+      const tbody = document.querySelector("tbody");
+      sortedRows.forEach((row) => {
+        tbody.appendChild(row);
+      });
+    });
   });
 }
 
