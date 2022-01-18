@@ -63,8 +63,13 @@ const tryGetTableData = async () => {
 const init = async () => {
   const data = await tryGetTableData();
   data && tableWrapper.appendChild(createTable(data));
-  setClickInSortButton();
+  initSortButton();
 };
+
+const initSortButton = () => {
+  addSortButton();
+  setClickInSortButton();
+}
 
 const createTable = (usersData) => {
   const tableItems = {
@@ -84,10 +89,10 @@ const createTable = (usersData) => {
 const createTableHead = (items) => {
   const thead = document.createElement("thead");
   const tr = document.createElement("tr");
-  Object.values(items).forEach((item) => {
+  Object.keys(items).forEach((key) => {
     const th = createElementWithClassName("th", "js-th");
-    th.textContent = item;
-    (item === "ID" || item === "年齢") && th.appendChild(createSortButton());
+    th.textContent = items[key];
+    th.id = `js-${key}`;
     tr.appendChild(th);
   });
   thead.appendChild(tr);
@@ -113,6 +118,13 @@ const createTd = (usersData, keys) => {
   return fragment;
 };
 
+const addSortButton = () => {
+  const sortItemsId = ["userId", "age"];
+  sortItemsId.forEach((id) => {
+    document.getElementById(`js-${id}`).appendChild(createSortButton());
+  });
+}
+
 const createSortButton = () => {
   const sortButton = createElementWithClassName(
     "button",
@@ -128,8 +140,7 @@ const setClickInSortButton = () => {
 
   sortButtons.forEach((sortButton) => {
     sortButton.addEventListener("click", (e) => {
-      sortButtons.find((button) => button !== e.target).dataset.sortStatus =
-        "default";
+      resetSortButtonsExceptTarget(sortButtons, e.target);
       const nextStatus = switchSortStatus(e.target.dataset.sortStatus);
       e.target.dataset.sortStatus = nextStatus;
       const sortedRows = getSortedRows(nextStatus, defaultRows, e.target);
@@ -140,6 +151,12 @@ const setClickInSortButton = () => {
     });
   });
 };
+
+const resetSortButtonsExceptTarget = (sortButtons, target) => {
+  sortButtons.filter((button) => button !== target).forEach((value) => {
+    value.dataset.sortStatus = "default";
+  })
+}
 
 const switchSortStatus = (status) => {
   switch (status) {
