@@ -1,11 +1,14 @@
-# JS_lesson
-## The challenges of going from a markup engineer to a front-end engineer
-https://github.com/sae-github/handsonFrontend/blob/master/work/markup/1.md
+# JavaScript Lesson
 
-- [This assignment](https://github.com/sae-github/handsonFrontend/blob/master/work/markup/1.md) was created by Mr.Moriken.
+もりけん塾の取り組んだ [マークアップエンジニアの方がフロントエンドエンジニアになる為の課題](https://github.com/sae-github/handsonFrontend/blob/master/work/markup/1.md)の リポジトリです
 
-- [I'm blogging](https://itosae.com/) about what I learned through the assignment✍️
+もりけん塾では、課題ごとにPRを出し、レビューをし合います。
+
+課題や、レビューを通して学んだことは[ブログ](https://itosae.com/)にまとめています
 
 
-
-I would like to take this opportunity to thank  Mr. Moriken and the reviewers. 🥳.
+### 課題の内容・まとめ
+No. | 内容 | リンク | ブログ
+-|-|-|-
+1 | DOM構築  | https://github.com/sae-github/JS_lesson/tree/main/lesson1 
+2 | DOM構築 | https://github.com/sae-github/JS_lesson/tree/main/lesson2 
