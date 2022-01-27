@@ -139,7 +139,7 @@ button[type="submit"] {
 }
 
 .modal__content {
-  height: 80%;
+  height: 90%;
   overflow: auto;
   padding: 20px;
 }
