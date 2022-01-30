@@ -29,7 +29,7 @@
   <img alt="Edit JS_lesson01" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
 </td>
-<td  rowspan="2"><a href="https://itosae.com/js_lesson01/" target="_blank" rel="noopener"><img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png"></a></td> 
+<td  rowspan="2"><a href="https://itosae.com/js_lesson01/" target="_blank" rel="noopener noreferrer"><img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png"></a></td> 
 </tr>
 
 <tr>
@@ -75,7 +75,7 @@
   <img alt="Edit JS_lesson5" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
 </td>
-<td><a href="https://itosae.com/js_lesson5/" target="_blank" rel="noopener"><img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png"></a></td> 
+<td><a href="https://itosae.com/js_lesson5/" target="_blank" rel="noopener noreferrer"><img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png"></a></td> 
 </tr>
 
 <tr>
@@ -86,7 +86,7 @@
   <img alt="Edit JS_lesson6" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
 </td>
-<td><a href="https://itosae.com/js_lesson6/" target="_blank" rel="noopener"><img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png"></a></td> 
+<td><a href="https://itosae.com/js_lesson6/" target="_blank" rel="noopener noreferrer"><img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png"></a></td> 
 </tr>
 
 <tr>
@@ -97,7 +97,7 @@
   <img alt="Edit JS_lesson7" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
 </td>
-<td><a href="https://itosae.com/js_lesson07/" target="_blank" rel="noopener"><img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png"></a></td> 
+<td><a href="https://itosae.com/js_lesson07/" target="_blank" rel="noopener noreferrer"><img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png"></a></td> 
 </tr>
 
 
@@ -120,7 +120,7 @@
   <img alt="Edit JS_lesson9" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
 </td>
-<td  rowspan="2"><a href="https://itosae.com/js_lesson9-10/" target="_blank" rel="noopener"><img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png"></a></td> 
+<td  rowspan="2"><a href="https://itosae.com/js_lesson9-10/" target="_blank" rel="noopener noreferrer"><img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png"></a></td> 
 </tr>
 
 
@@ -143,7 +143,7 @@
   <img alt="Edit JS_lesson11 (forked)" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
 </td>
-<td><a href=https://itosae.com/js_lesson11/" target="blank" rel="noopener"><img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png"></a></td> 
+<td><a href=https://itosae.com/js_lesson11/" target="_blank" rel="noopener noreferrer"><img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png"></a></td> 
 </tr>
 
 </tbody>
