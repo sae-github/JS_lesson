@@ -8,7 +8,39 @@
 
 
 ### 課題の内容・まとめ
-No. | 内容 | リンク | ブログ
--|-|-|-
-1 | DOM構築  | https://github.com/sae-github/JS_lesson/tree/main/lesson1 
-2 | DOM構築 | https://github.com/sae-github/JS_lesson/tree/main/lesson2 
+
+
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>内容</th>
+<th>リンク</th>
+<th>CodeSandBox</th>
+<th>ブログ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>DOM構築</td>
+<td>https://github.com/sae-github/JS_lesson/tree/main/lesson1</td>
+<td>
+<a href="https://codesandbox.io/s/jslesson01-0s2my?fontsize=14&hidenavigation=1&theme=dark">
+  <img alt="Edit JS_lesson01" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td></td> 
+</tr>
+<tr>
+<td>2</td>
+<td>DOM構築</td>
+<td>https://github.com/sae-github/JS_lesson/tree/main/lesson2</td>
+<td><a href="https://codesandbox.io/s/jsleeson2-rcjpf?fontsize=14&hidenavigation=1&theme=dark">
+<img alt="Edit JS_leeson2" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td></td> 
+</tr>
+</tbody>
+</table>
