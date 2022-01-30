@@ -36,11 +36,43 @@
 <td>2</td>
 <td>DOM構築</td>
 <td>https://github.com/sae-github/JS_lesson/tree/main/lesson2</td>
-<td><a href="https://codesandbox.io/s/jsleeson2-rcjpf?fontsize=14&hidenavigation=1&theme=dark">
-<img alt="Edit JS_leeson2" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+<td>
+<a href="https://codesandbox.io/s/jsleeson2-rcjpf?fontsize=14&hidenavigation=1&theme=dark">
+  <img alt="Edit JS_lesson2" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
 </td>
 <td></td> 
 </tr>
+<tr>
+<td>3</td>
+<td>DOM構築</td>
+<td>https://github.com/sae-github/JS_lesson/tree/main/lesson3</td>
+<td>
+<a href="https://codesandbox.io/s/js-lesson3-x7tys?fontsize=14&hidenavigation=1&theme=dark">
+  <img alt="Edit JS_lesson3" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td></td> 
+</tr>
+<tr>
+<td>4</td>
+<td>DOM構築<br>配列を加工してDOMへ追加</td>
+<td>https://github.com/sae-github/JS_lesson/tree/main/lesson4</td>
+<td>
+<a href="https://codesandbox.io/s/js-lesson4-nmfvm?fontsize=14&hidenavigation=1&theme=dark">
+  <img alt="Edit JS_lesson4" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td></td> 
+</tr>
+<tr>
+<td>5</td>
+<td>非同期処理(Promise) / DOM構築</td>
+<td>https://github.com/sae-github/JS_lesson/tree/main/lesson5</td>
+<td>
+<a href="https://codesandbox.io/s/js-lesson5-dhgxd?fontsize=14&hidenavigation=1&theme=dark">
+  <img alt="Edit JS_lesson5" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
 </tbody>
 </table>
