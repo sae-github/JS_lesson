@@ -143,7 +143,7 @@
   <img alt="Edit JS_lesson11 (forked)" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
 </td>
-<td><a href=https://itosae.com/js_lesson11/" target="_blank" rel="noopener"><img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png"></a></td> 
+<td><a href=https://itosae.com/js_lesson11/" target="blank" rel="noopener"><img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png"></a></td> 
 </tr>
 
 </tbody>
