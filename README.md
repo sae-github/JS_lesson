@@ -23,7 +23,7 @@
 
 <tr>
 <td><a href="https://github.com/sae-github/JS_lesson/tree/main/lesson1">Lesson1</a></td>
-<td>DOM構築</td>
+<td>DOM構築 <br> JavaScriptで作成した要素をDOMへ追加する</td>
 <td>
 <a href="https://codesandbox.io/s/jslesson01-0s2my?fontsize=14&hidenavigation=1&theme=dark">
   <img alt="Edit JS_lesson01" src="https://codesandbox.io/static/img/play-codesandbox.svg">
