@@ -188,7 +188,6 @@
 <tr>
 <td><a href="https://github.com/sae-github/JS_lesson/tree/main/lesson15">Lesson15</a></td>
 <td>非同期処理 / DOM構築 <br>モーダル内にformをおき、input[type="number"]、input[type="text"]、submitボタンを追加。押下でリクエストをする</td>
-<td>
 <a href="https://codesandbox.io/s/js-lesson15-poy25?fontsize=14&hidenavigation=1&theme=dark">
   <img alt="Edit JS_lesson15" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
@@ -213,7 +212,7 @@
 </a>
 </td>
 <td>
-<div style="display: flex;">
+
 <a href="https://itosae.com/js_lesson16/" target="_blank" rel="noopener noreferrer">
 <img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png">
 </a>
@@ -221,9 +220,10 @@
 <a href="https://itosae.com/js_lesson16-2/" target="_blank" rel="noopener noreferrer">
 <img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png">
 </a>
-  </div>
+
 </td>
 </tr>
+
 
 </tbody>
 </table>
