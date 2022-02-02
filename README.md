@@ -20,7 +20,6 @@
 </thead>
 <tbody>
 
-
 <tr>
 <td><a href="https://github.com/sae-github/JS_lesson/tree/main/lesson1">Lesson1</a></td>
 <td>DOM構築 <br> JavaScriptで作成した要素をDOMへ追加する</td>
@@ -186,8 +185,11 @@
 
 
 <tr>
-<td><a href="https://github.com/sae-github/JS_lesson/tree/main/lesson15">Lesson15</a></td>
+<td>
+<a href="https://github.com/sae-github/JS_lesson/tree/main/lesson15">Lesson15</a>
+</td>
 <td>非同期処理 / DOM構築 <br>モーダル内にformをおき、input[type="number"]、input[type="text"]、submitボタンを追加。押下でリクエストをする</td>
+<td>
 <a href="https://codesandbox.io/s/js-lesson15-poy25?fontsize=14&hidenavigation=1&theme=dark">
   <img alt="Edit JS_lesson15" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
@@ -196,8 +198,8 @@
 
 <tr>
 <td><a href="https://github.com/sae-github/JS_lesson/tree/main/lesson15">Lesson15</a></td>
-  <td>タブUI実装<br>
-    <ul>
+<td>タブUI実装<br>
+<ul>
 <li>カテゴリタブを開くことができ、ジャンルに応じた記事を4つ表示</li>
 <li>それぞれのカテゴリにはそれぞれ固有の画像が入る</li>
 <li>3日以内の記事であれば、Newアイコンを表示する</li>
@@ -206,22 +208,22 @@
 <li>コメントアイコンをクリックするモーダルが表示され、コメント内容とコアイコンが表示</li>
 </ul>
 </td>
+
 <td>
 <a href="https://codesandbox.io/s/js-lesson16-part3-d2m4e?fontsize=14&hidenavigation=1&theme=dark">
   <img alt="Edit JS_lesson16 Part3" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
 </td>
-<td>
 
+<td>
 <a href="https://itosae.com/js_lesson16/" target="_blank" rel="noopener noreferrer">
 <img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png">
 </a>
-
 <a href="https://itosae.com/js_lesson16-2/" target="_blank" rel="noopener noreferrer">
 <img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png">
 </a>
-
 </td>
+
 </tr>
 
 
