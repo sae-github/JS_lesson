@@ -197,7 +197,7 @@
 </tr>
 
 <tr>
-<td><a href="https://github.com/sae-github/JS_lesson/tree/main/lesson15">Lesson15</a></td>
+<td><a href="https://github.com/sae-github/JS_lesson/tree/main/lesson16">Lesson16</a></td>
 <td>タブUI実装<br>
 <ul>
 <li>カテゴリタブを開くことができ、ジャンルに応じた記事を4つ表示</li>
