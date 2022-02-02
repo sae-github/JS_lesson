@@ -29,7 +29,7 @@
   <img alt="Edit JS_lesson01" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
 </td>
-<td  rowspan="2"><a href="https://itosae.com/js_lesson01/" target="_blank" rel="noopener noreferrer"><img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png"></a></td> 
+<td rowspan="2"><a href="https://itosae.com/js_lesson01/" target="_blank" rel="noopener noreferrer"><img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png"></a></td> 
 </tr>
 
 <tr>
@@ -143,7 +143,86 @@
   <img alt="Edit JS_lesson11 (forked)" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
 </td>
-<td><a href=https://itosae.com/js_lesson11/" target="_blank" rel="noopener noreferrer"><img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png"></a></td> 
+<td><a href="https://itosae.com/js_lesson11/" target="_blank" rel="noopener noreferrer"><img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png"></a></td> 
+</tr>
+  
+<tr>
+<td><a href="https://github.com/sae-github/JS_lesson/tree/main/lesson12">Lesson12</a></td>
+<td>非同期処理 / DOM構築 <br>クリックをトリガーとして非同期処理を実装する</td>
+<td>
+<a href="https://codesandbox.io/s/js-lesson12-zyzg5?fontsize=14&hidenavigation=1&theme=dark">
+  <img alt="Edit JS_lesson12" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td></td> 
+</tr>
+
+<tr>
+<td><a href="https://github.com/sae-github/JS_lesson/tree/main/lesson13">Lesson13</a></td>
+<td>非同期処理 / DOM構築 <br>モーダル内のボタンをクリックしてリクエストを行う</td>
+<td>
+<a href="https://codesandbox.io/s/js-lesson13-m7253?fontsize=14&hidenavigation=1&theme=dark">
+  <img alt="Edit JS_lesson13" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td><a href="https://itosae.com/js_lesson13/" target="_blank" rel="noopener noreferrer"><img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png"></a></td>
+</tr>
+
+
+<tr>
+<td><a href="https://github.com/sae-github/JS_lesson/tree/main/lesson14">Lesson14</a></td>
+<td>非同期処理 / DOM構築 <br>モーダル内にinput[type="number"]を追加、クリックした際にinput[type="number"]のvalueを取得して、リクエストできるようにする</td>
+<td>
+<a href="https://codesandbox.io/s/js-lesson14-cxfby?fontsize=14&hidenavigation=1&theme=dark">
+  <img alt="Edit JS_lesson14" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td rowspan="2">
+<a href="https://itosae.com/js_lesson14-15/" target="_blank" rel="noopener noreferrer">
+<img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png">
+</a>
+</td>
+</tr>
+
+
+<tr>
+<td><a href="https://github.com/sae-github/JS_lesson/tree/main/lesson15">Lesson15</a></td>
+<td>非同期処理 / DOM構築 <br>モーダル内にformをおき、input[type="number"]、input[type="text"]、submitボタンを追加。押下でリクエストをする</td>
+<td>
+<a href="https://codesandbox.io/s/js-lesson15-poy25?fontsize=14&hidenavigation=1&theme=dark">
+  <img alt="Edit JS_lesson15" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/sae-github/JS_lesson/tree/main/lesson15">Lesson15</a></td>
+  <td>タブUI実装<br>
+    <ul>
+<li>カテゴリタブを開くことができ、ジャンルに応じた記事を4つ表示</li>
+<li>それぞれのカテゴリにはそれぞれ固有の画像が入る</li>
+<li>3日以内の記事であれば、Newアイコンを表示する</li>
+<li>コメントが0件なら表示なし、1以上ならアイコンと共に数字が表示</li>
+<li>htmlはulのみ</li>
+<li>コメントアイコンをクリックするモーダルが表示され、コメント内容とコアイコンが表示</li>
+</ul>
+</td>
+<td>
+<a href="https://codesandbox.io/s/js-lesson16-part3-d2m4e?fontsize=14&hidenavigation=1&theme=dark">
+  <img alt="Edit JS_lesson16 Part3" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td>
+<div style="display: flex;">
+<a href="https://itosae.com/js_lesson16/" target="_blank" rel="noopener noreferrer">
+<img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png">
+</a>
+
+<a href="https://itosae.com/js_lesson16-2/" target="_blank" rel="noopener noreferrer">
+<img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png">
+</a>
+  </div>
+</td>
 </tr>
 
 </tbody>
