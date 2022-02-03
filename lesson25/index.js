@@ -37,7 +37,7 @@ const constraint = {
   name: {
     validation: () => {
       const value = document.getElementById("name").value;
-      return isLimitTextLength(value, 15);
+      return isLimitTextLength(value, 16);
     },
     invalidMessage: "ユーザー名は15文字以下にしてください。"
   },
