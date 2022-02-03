@@ -44,7 +44,7 @@ const constraint = {
   email: {
     validation: () => {
       const value = document.getElementById("email").value;
-      const reg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[A-Za-z]+$/g;
+      const reg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[A-Za-z]+(\.[A-Za-z]+?)?$/g;
       return isValidInRegex(reg, value);
     },
     invalidMessage: "メールアドレスの形式になっていません"
