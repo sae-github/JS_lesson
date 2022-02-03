@@ -120,9 +120,5 @@ const addInvalidMessage = (target, message) => {
 form.addEventListener("input", (e) => {
   const targetField = e.target;
   targetField.id !== "check-box" && addValidationMessage(targetField);
-  if (checkAllInputs() && checkBox.checked) {
-    submitButton.disabled = false;
-  } else {
-    submitButton.disabled = true;
-  }
+  submitButton.disabled = checkAllInputs() && checkBox.checked ? false : true;
 });
