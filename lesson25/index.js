@@ -61,9 +61,9 @@ const constraint = {
 
 const isBlankInInput = (value) => value.trim() === "";
 
-const isLimitTextLength = (value, limit) => value.length < limit;
+const isLimitTextLength = (value, limit) => value.length >= limit;
 
-const isValidInRegex = (constraint, value) => constraint.test(value);
+const isValidInRegex = (constraint, value) => constraint.test(value) ? false : true;
 
 const addValidClassName = (target) => {
   const parent = target.parentElement;
@@ -81,24 +81,28 @@ const removeValidClassName = (target) => {
 };
 
 const addValidationMessage = (field) => {
+
   if (isBlankInInput(field.value)) {
     removeValidClassName(field);
     addInvalidMessage(field, "未入力です");
     return;
-  } else if (!constraint[field.id].validation()) {
+  }
+
+  if (constraint[field.id].validation()) {
     removeValidClassName(field);
     addInvalidMessage(field, constraint[field.id].invalidMessage);
     return;
-  } else {
-    removeInvalidMessage(field);
-    addValidClassName(field);
   }
+
+  removeInvalidMessage(field);
+  addValidClassName(field);
+
 };
 
 const checkAllInputs = () => {
   return Object.keys(constraint).every((key) => {
     const fieldElement = document.getElementById(key).value;
-    return !isBlankInInput(fieldElement) && constraint[key].validation();
+    return isBlankInInput(fieldElement) || constraint[key].validation() ? false : true;
   });
 };
 
