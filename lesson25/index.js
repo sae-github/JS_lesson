@@ -5,7 +5,9 @@ const overLay = document.getElementById("js-overlay");
 const closeButton = document.getElementById("js-modal-close");
 const rules = document.getElementById("js-rules");
 const body = document.querySelector("body");
-const form = document.getElementById("js-register-form");
+const userName = document.getElementById("username");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
 
 const closeModal = () => {
   body.classList.remove("modal-open");
@@ -24,9 +26,7 @@ const scrollInModalContent = new IntersectionObserver(
     if (entry.isIntersecting) {
       checkBox.checked = true;
       checkBox.disabled = false;
-      const event = new Event("input", { bubbles: true });
-      checkBox.dispatchEvent(event);
-      scrollInModalContent.disconnect();
+      switchDisabledInCheckbox();
     }
   },
   { root: modalContent }
@@ -36,24 +36,21 @@ scrollInModalContent.observe(modalContent.lastElementChild);
 const constraint = {
   username: {
     validation: () => {
-      const value = document.getElementById("username").value;
-      return isLimitTextLength(value, 16);
+      return isLimitTextLength(userName.value, 16);
     },
     invalidMessage: "ユーザー名は15文字以下にしてください。"
   },
   email: {
     validation: () => {
-      const value = document.getElementById("email").value;
       const reg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[A-Za-z]+(\.[A-Za-z]+?)?$/g;
-      return isValidInRegex(reg, value);
+      return isValidInRegex(reg, email.value);
     },
     invalidMessage: "メールアドレスの形式になっていません"
   },
   password: {
     validation: () => {
-      const value = document.getElementById("password").value;
       const reg = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[a-zA-Z0-9]{8,}$/g;
-      return isValidInRegex(reg, value);
+      return isValidInRegex(reg, password.value);
     },
     invalidMessage: "8文字以上の大小の英数字を交ぜたものにしてください。"
   }
@@ -70,33 +67,18 @@ const addValidClassName = (target) => {
   parent.classList.add("valid");
 };
 
-const removeInvalidMessage = (target) => {
-  target.parentElement.classList.remove("invalid");
-  const errorMessage = target.parentElement.querySelector(".invalid-message");
-  errorMessage && errorMessage.remove();
-};
-
-const removeValidClassName = (target) => {
-  target.parentElement.classList.remove("valid");
-};
-
-const addValidationMessage = (field) => {
-
+const checkFieldValidation = (field) => {
   if (isBlankInInput(field.value)) {
-    removeValidClassName(field);
     addInvalidMessage(field, "未入力です");
-    return;
+    return false;
   }
 
   if (constraint[field.id].validation()) {
-    removeValidClassName(field);
     addInvalidMessage(field, constraint[field.id].invalidMessage);
-    return;
+    return false;
   }
 
-  removeInvalidMessage(field);
-  addValidClassName(field);
-
+  return true;
 };
 
 const checkAllInputs = () => {
@@ -109,16 +91,36 @@ const checkAllInputs = () => {
 const addInvalidMessage = (target, message) => {
   const parent = target.parentElement;
   parent.classList.add("invalid");
-  const el =
-    target.parentElement.querySelector(".invalid-message") ??
-    document.createElement("span");
+  const el = document.createElement("span");
   el.classList.add("invalid-message");
   el.textContent = message;
   parent.appendChild(el);
 };
 
-form.addEventListener("input", (e) => {
-  const targetField = e.target;
-  targetField.id !== "check-box" && addValidationMessage(targetField);
+const resetInputField = (e) => {
+  const className = ["invalid", "valid"];
+  e.target.parentElement.classList.remove(...className);
+  const errorMessage = e.target.parentElement.querySelector(".invalid-message");
+  errorMessage && errorMessage.remove();
+};
+
+const setInputFieldEvent = (e) => {
+  if (checkFieldValidation(e.target)) {
+    addValidClassName(e.target);
+    switchDisabledInCheckbox();
+  } else {
+    submitButton.disabled = true;
+  }
+};
+
+const switchDisabledInCheckbox = () => {
   submitButton.disabled = checkAllInputs() && checkBox.checked ? false : true;
-});
+};
+
+password.addEventListener("blur", setInputFieldEvent);
+email.addEventListener("blur", setInputFieldEvent);
+userName.addEventListener("blur", setInputFieldEvent);
+checkBox.addEventListener("change", switchDisabledInCheckbox);
+userName.addEventListener("focus", resetInputField);
+email.addEventListener("focus", resetInputField);
+password.addEventListener("focus", resetInputField);
