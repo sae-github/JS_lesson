@@ -34,9 +34,9 @@ const scrollInModalContent = new IntersectionObserver(
 scrollInModalContent.observe(modalContent.lastElementChild);
 
 const constraint = {
-  name: {
+  username: {
     validation: () => {
-      const value = document.getElementById("name").value;
+      const value = document.getElementById("username").value;
       return isLimitTextLength(value, 16);
     },
     invalidMessage: "ユーザー名は15文字以下にしてください。"
