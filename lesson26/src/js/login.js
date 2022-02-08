@@ -100,20 +100,15 @@ loginButton.addEventListener("click", (e) => {
   init(obj);
 });
 
-const checkUsername = (value) => {
-  const nameInStorage = storage.getItem("username");
-  return nameInStorage && value === nameInStorage;
-}
+const checkUsername = (inputValue, data) => inputValue === data.username;
 
-const checkPassword = (value) => {
-  const passwordInStorage = storage.getItem("password");
-  return passwordInStorage && value === passwordInStorage;
-}
+const checkPassword = (inputValue, data) => inputValue === data.password;
 
-const userVerification = (data) => {
-  const { username, password } = data;
+const verificationUserData = (inputData) => {
   return new Promise((resolve, reject) => {
-    if (checkUsername(username) && checkPassword(password)) {
+    const userData = { username: "yamadahanako", password: "N302aoe3" };
+    const { username, password } = inputData;
+    if (checkUsername(username, userData) && checkPassword(password, userData)) {
       resolve({ token: "fafae92rfjafa03", ok: true, code: 200 });
     } else {
       reject({ ok: false, code: 401 });
@@ -121,12 +116,19 @@ const userVerification = (data) => {
   })
 }
 
-const init = async (obj) => {
+const getToken = async (inputData) => {
   try {
-    const data = await userVerification(obj);
-    storage.setItem("token",data.token);
-    window.location.href = "./index.html";
-  } catch(e) {
+    const responseData = await verificationUserData(inputData);
+    return responseData.token;
+  } catch (e) {
     window.location.href = "./401.html";
+  }
+}
+
+const init = async (inputData) => {
+  const token = await getToken(inputData);
+  if (token) {
+    storage.setItem("token", token);
+    window.location.href = "./index.html";
   }
 }

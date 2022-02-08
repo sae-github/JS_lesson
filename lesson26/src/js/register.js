@@ -125,8 +125,3 @@ userName.addEventListener("focus", resetInputField);
 email.addEventListener("focus", resetInputField);
 password.addEventListener("focus", resetInputField);
 
-submitButton.addEventListener("click",() => {
-  const storage = localStorage;
-  storage.setItem("username",userName.value);
-  storage.setItem("password",password.value);
-});
