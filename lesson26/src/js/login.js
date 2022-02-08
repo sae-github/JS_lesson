@@ -1,37 +1,10 @@
-const modalContent = document.getElementById("js-modal-content");
-const submitButton = document.getElementById("js-submit-button");
-const checkBox = document.querySelector(".js-check-box");
-const overLay = document.getElementById("js-overlay");
-const closeButton = document.getElementById("js-modal-close");
-const rules = document.getElementById("js-rules");
-const body = document.querySelector("body");
 const userName = document.getElementById("username");
-const email = document.getElementById("email");
 const password = document.getElementById("password");
+const loginButton = document.getElementById("js-login-button");
+const storage = localStorage;
 
-const closeModal = () => {
-  body.classList.remove("modal-open");
-};
+if (storage.getItem("token")) window.location.href = "./index.html";
 
-const openModal = () => {
-  body.classList.add("modal-open");
-};
-
-rules.addEventListener("click", openModal);
-closeButton.addEventListener("click", closeModal);
-overLay.addEventListener("click", closeModal);
-
-const scrollInModalContent = new IntersectionObserver(
-  ([entry]) => {
-    if (entry.isIntersecting) {
-      checkBox.checked = true;
-      checkBox.disabled = false;
-      switchDisabledInCheckbox();
-    }
-  },
-  { root: modalContent }
-);
-scrollInModalContent.observe(modalContent.lastElementChild);
 
 const constraint = {
   username: {
@@ -39,13 +12,6 @@ const constraint = {
       return isLimitTextLength(userName.value, 16);
     },
     invalidMessage: "ユーザー名は15文字以下にしてください。"
-  },
-  email: {
-    validation: () => {
-      const reg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[A-Za-z]+(\.[A-Za-z]+?)?$/g;
-      return isValidInRegex(reg, email.value);
-    },
-    invalidMessage: "メールアドレスの形式になっていません"
   },
   password: {
     validation: () => {
@@ -61,6 +27,7 @@ const isBlankInInput = (value) => value.trim() === "";
 const isLimitTextLength = (value, limit) => value.length >= limit;
 
 const isValidInRegex = (constraint, value) => constraint.test(value) ? false : true;
+
 
 const addValidClassName = (target) => {
   const parent = target.parentElement;
@@ -84,7 +51,9 @@ const checkFieldValidation = (field) => {
 const checkAllInputs = () => {
   return Object.keys(constraint).every((key) => {
     const fieldElement = document.getElementById(key).value;
-    return isBlankInInput(fieldElement) || constraint[key].validation() ? false : true;
+    return isBlankInInput(fieldElement) || constraint[key].validation()
+      ? false
+      : true;
   });
 };
 
@@ -109,24 +78,55 @@ const setInputFieldEvent = (e) => {
     addValidClassName(e.target);
     switchDisabledInCheckbox();
   } else {
-    submitButton.disabled = true;
+    loginButton.disabled = true;
   }
 };
 
 const switchDisabledInCheckbox = () => {
-  submitButton.disabled = checkAllInputs() && checkBox.checked ? false : true;
+  loginButton.disabled = checkAllInputs() ? false : true;
 };
 
 password.addEventListener("blur", setInputFieldEvent);
-email.addEventListener("blur", setInputFieldEvent);
 userName.addEventListener("blur", setInputFieldEvent);
-checkBox.addEventListener("change", switchDisabledInCheckbox);
 userName.addEventListener("focus", resetInputField);
-email.addEventListener("focus", resetInputField);
 password.addEventListener("focus", resetInputField);
 
-submitButton.addEventListener("click",() => {
-  const storage = localStorage;
-  storage.setItem("username",userName.value);
-  storage.setItem("password",password.value);
+loginButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  const obj = {
+    username: userName.value,
+    password: password.value
+  }
+  init(obj);
 });
+
+const checkUsername = (value) => {
+  const nameInStorage = storage.getItem("username");
+  return nameInStorage && value === nameInStorage;
+}
+
+const checkPassword = (value) => {
+  const passwordInStorage = storage.getItem("password");
+  return passwordInStorage && value === passwordInStorage;
+}
+
+const userVerification = (data) => {
+  const { username, password } = data;
+  return new Promise((resolve, reject) => {
+    if (checkUsername(username) && checkPassword(password)) {
+      resolve({ token: "fafae92rfjafa03", ok: true, code: 200 });
+    } else {
+      reject({ ok: false, code: 401 });
+    }
+  })
+}
+
+const init = async (obj) => {
+  try {
+    const data = await userVerification(obj);
+    storage.setItem("token",data.token);
+    window.location.href = "./index.html";
+  } catch(e) {
+    window.location.href = "./401.html";
+  }
+}
