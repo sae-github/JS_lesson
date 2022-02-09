@@ -15,7 +15,7 @@ const constraint = {
   password: {
     validation: () => {
       const reg = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[a-zA-Z0-9]{8,}$/g;
-      return isValidInRegex(reg, password.value);
+      return isInvalidRegex(reg, password.value);
     },
     invalidMessage: "8文字以上の大小の英数字を交ぜたものにしてください。"
   }
