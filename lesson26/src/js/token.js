@@ -1,4 +1,3 @@
-const storage = localStorage;
-if(!storage.token) window.location.href = "./login.html";
+if(!localStorage.token) window.location.href = "./login.html";
 
 

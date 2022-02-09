@@ -1,9 +1,8 @@
 const userName = document.getElementById("username");
 const password = document.getElementById("password");
 const loginButton = document.getElementById("js-login-button");
-const storage = localStorage;
 
-if (storage.getItem("token")) window.location.href = "./index.html";
+if (localStorage.getItem("token")) window.location.href = "./index.html";
 
 
 const constraint = {
@@ -128,7 +127,7 @@ const getToken = async (inputData) => {
 const init = async (inputData) => {
   const token = await getToken(inputData);
   if (token) {
-    storage.setItem("token", token);
+    localStorage.setItem("token", token);
     window.location.href = "./index.html";
   }
 }
