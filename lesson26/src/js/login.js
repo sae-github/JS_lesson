@@ -93,11 +93,11 @@ password.addEventListener("focus", resetInputField);
 
 loginButton.addEventListener("click", (e) => {
   e.preventDefault();
-  const obj = {
+  const inputValues = {
     username: userName.value,
     password: password.value
   }
-  init(obj);
+  init(inputValues);
 });
 
 const checkUsername = (inputValue, data) => inputValue === data.username;
