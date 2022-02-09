@@ -36,7 +36,8 @@ scrollInModalContent.observe(modalContent.lastElementChild);
 const constraint = {
   username: {
     validation: () => {
-      return isLimitTextLength(userName.value, 16);
+      const limitNumber = 16;
+      return isLimitTextLength(userName.value, limitNumber);
     },
     invalidMessage: "ユーザー名は15文字以下にしてください。"
   },
