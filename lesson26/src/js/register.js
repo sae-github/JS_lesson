@@ -44,14 +44,14 @@ const constraint = {
   email: {
     validation: () => {
       const reg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[A-Za-z]+(\.[A-Za-z]+?)?$/g;
-      return isValidInRegex(reg, email.value);
+      return isInvalidRegex(reg, email.value);
     },
     invalidMessage: "メールアドレスの形式になっていません"
   },
   password: {
     validation: () => {
       const reg = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[a-zA-Z0-9]{8,}$/g;
-      return isValidInRegex(reg, password.value);
+      return isInvalidRegex(reg, password.value);
     },
     invalidMessage: "8文字以上の大小の英数字を交ぜたものにしてください。"
   }
