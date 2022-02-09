@@ -34,7 +34,7 @@ const addValidClassName = (target) => {
   parent.classList.add("valid");
 };
 
-const checkFieldValidation = (field) => {
+const isValidField = (field) => {
   if (isBlankInInput(field.value)) {
     addInvalidMessage(field, "未入力です");
     return false;
@@ -48,7 +48,7 @@ const checkFieldValidation = (field) => {
   return true;
 };
 
-const checkAllInputs = () => {
+const isValidAllInputFields = () => {
   return Object.keys(constraint).every((key) => {
     const fieldElement = document.getElementById(key).value;
     return isBlankInInput(fieldElement) || constraint[key].validation()
@@ -74,7 +74,7 @@ const resetInputField = (e) => {
 };
 
 const setInputFieldEvent = (e) => {
-  if (checkFieldValidation(e.target)) {
+  if (isValidField(e.target)) {
     addValidClassName(e.target);
     switchDisabledInCheckbox();
   } else {
@@ -83,7 +83,7 @@ const setInputFieldEvent = (e) => {
 };
 
 const switchDisabledInCheckbox = () => {
-  loginButton.disabled = checkAllInputs() ? false : true;
+  loginButton.disabled = isValidAllInputFields() ? false : true;
 };
 
 password.addEventListener("blur", setInputFieldEvent);
