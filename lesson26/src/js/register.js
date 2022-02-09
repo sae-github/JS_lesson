@@ -61,7 +61,7 @@ const isBlankInInput = (value) => value.trim() === "";
 
 const isLimitTextLength = (value, limit) => value.length >= limit;
 
-const isValidInRegex = (constraint, value) => constraint.test(value) ? false : true;
+const isInvalidRegex = (reg, value) =>reg.test(value) ? false : true;
 
 const addValidClassName = (target) => {
   const parent = target.parentElement;
