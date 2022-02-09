@@ -1,3 +1,3 @@
-if(!localStorage.token) window.location.href = "./login.html";
+if(!localStorage.getItem("token")) window.location.href = "./login.html";
 
 
