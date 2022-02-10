@@ -1,37 +1,9 @@
-const modalContent = document.getElementById("js-modal-content");
-const submitButton = document.getElementById("js-submit-button");
-const checkBox = document.querySelector(".js-check-box");
-const overLay = document.getElementById("js-overlay");
-const closeButton = document.getElementById("js-modal-close");
-const rules = document.getElementById("js-rules");
-const body = document.querySelector("body");
 const userName = document.getElementById("username");
-const email = document.getElementById("email");
 const password = document.getElementById("password");
+const loginButton = document.getElementById("js-login-button");
 
-const closeModal = () => {
-  body.classList.remove("modal-open");
-};
+if (localStorage.getItem("token")) window.location.href = "./index.html";
 
-const openModal = () => {
-  body.classList.add("modal-open");
-};
-
-rules.addEventListener("click", openModal);
-closeButton.addEventListener("click", closeModal);
-overLay.addEventListener("click", closeModal);
-
-const scrollInModalContent = new IntersectionObserver(
-  ([entry]) => {
-    if (entry.isIntersecting) {
-      checkBox.checked = true;
-      checkBox.disabled = false;
-      switchDisabledInCheckbox();
-    }
-  },
-  { root: modalContent }
-);
-scrollInModalContent.observe(modalContent.lastElementChild);
 
 const constraint = {
   username: {
@@ -40,13 +12,6 @@ const constraint = {
       return isLimitTextLength(userName.value, limitNumber);
     },
     invalidMessage: "ユーザー名は15文字以下にしてください。"
-  },
-  email: {
-    validation: () => {
-      const reg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[A-Za-z]+(\.[A-Za-z]+?)?$/g;
-      return isInvalidRegex(reg, email.value);
-    },
-    invalidMessage: "メールアドレスの形式になっていません"
   },
   password: {
     validation: () => {
@@ -62,6 +27,7 @@ const isBlankInInput = (value) => value.trim() === "";
 const isLimitTextLength = (value, limit) => value.length >= limit;
 
 const isInvalidRegex = (reg, value) =>reg.test(value) ? false : true;
+
 
 const addValidClassName = (target) => {
   const parent = target.parentElement;
@@ -85,7 +51,9 @@ const isValidField = (field) => {
 const isValidAllInputFields = () => {
   return Object.keys(constraint).every((key) => {
     const fieldElement = document.getElementById(key).value;
-    return isBlankInInput(fieldElement) || constraint[key].validation() ? false : true;
+    return isBlankInInput(fieldElement) || constraint[key].validation()
+      ? false
+      : true;
   });
 };
 
@@ -110,19 +78,57 @@ const setInputFieldEvent = (e) => {
     addValidClassName(e.target);
     switchDisabledInCheckbox();
   } else {
-    submitButton.disabled = true;
+    loginButton.disabled = true;
   }
 };
 
 const switchDisabledInCheckbox = () => {
-  submitButton.disabled = isValidAllInputFields() && checkBox.checked ? false : true;
+  loginButton.disabled = isValidAllInputFields() ? false : true;
 };
 
 password.addEventListener("blur", setInputFieldEvent);
-email.addEventListener("blur", setInputFieldEvent);
 userName.addEventListener("blur", setInputFieldEvent);
-checkBox.addEventListener("change", switchDisabledInCheckbox);
 userName.addEventListener("focus", resetInputField);
-email.addEventListener("focus", resetInputField);
 password.addEventListener("focus", resetInputField);
 
+loginButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  const inputValues = {
+    username: userName.value,
+    password: password.value
+  }
+  init(inputValues);
+});
+
+const checkUsername = (inputValue, data) => inputValue === data.username;
+
+const checkPassword = (inputValue, data) => inputValue === data.password;
+
+const verificationUserData = (inputData) => {
+  return new Promise((resolve, reject) => {
+    const userData = { username: "yamadahanako", password: "N302aoe3" };
+    const { username, password } = inputData;
+    if (checkUsername(username, userData) && checkPassword(password, userData)) {
+      resolve({ token: "fafae92rfjafa03", ok: true, code: 200 });
+    } else {
+      reject({ ok: false, code: 401 });
+    }
+  })
+}
+
+const getToken = async (inputData) => {
+  try {
+    const responseData = await verificationUserData(inputData);
+    return responseData.token;
+  } catch (e) {
+    window.location.href = "./401.html";
+  }
+}
+
+const init = async (inputData) => {
+  const token = await getToken(inputData);
+  if (token) {
+    localStorage.setItem("token", token);
+    window.location.href = "./index.html";
+  }
+}
