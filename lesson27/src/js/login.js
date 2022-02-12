@@ -124,7 +124,7 @@ const verificationUserData = (inputData) => {
     const userData = { username: "yamadahanako", password: "N302aoe3" };
     const { username, password } = inputData;
     if (checkUsername(username, userData) && checkPassword(password, userData)) {
-      resolve({ token: "fafae92rfjafa03", ok: true, code: 200 });
+      resolve({ token: "far0fja*ff]afaawfqrlzkfq@aq9283af", ok: true, code: 200 });
     } else {
       reject({ ok: false, code: 401 });
     }
