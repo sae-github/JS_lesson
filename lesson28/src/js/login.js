@@ -5,7 +5,6 @@ const passwordButton = document.getElementById("js-password-icon");
 
 if (localStorage.getItem("token")) window.location.href = "./index.html";
 
-
 const constraint = {
   username: {
     validation: () => {
@@ -27,35 +26,35 @@ const isBlankInInput = (value) => value.trim() === "";
 
 const isLimitTextLength = (value, limit) => value.length >= limit;
 
-const isInvalidRegex = (reg, value) =>reg.test(value) ? false : true;
-
+const isInvalidRegex = (reg, value) => reg.test(value) ? false : true;
 
 const addValidClassName = (target) => {
-  const parent = target.parentElement;
-  parent.classList.add("valid");
+  target.parentElement.classList.add("valid");;
 };
 
-const isValidField = (field) => {
+const isValidField = (e) => {
+  const field = e.target;
   if (isBlankInInput(field.value)) {
     addInvalidMessage(field, "未入力です");
-    return false;
+    loginButton.disabled = true;
+    return;
   }
-
   if (constraint[field.id].validation()) {
     addInvalidMessage(field, constraint[field.id].invalidMessage);
-    return false;
+    loginButton.disabled = true;
+    return;
   }
 
-  return true;
+  addValidClassName(field);
+  toggleDisableLoginButton();
 };
 
-const isValidAllInputFields = () => {
-  return Object.keys(constraint).every((key) => {
+const toggleDisableLoginButton = () => {
+  const result = Object.keys(constraint).every((key) => {
     const fieldElement = document.getElementById(key).value;
-    return isBlankInInput(fieldElement) || constraint[key].validation()
-      ? false
-      : true;
+    return isBlankInInput(fieldElement) || constraint[key].validation() ? false : true;
   });
+  loginButton.disabled = result ? false : true;
 };
 
 const addInvalidMessage = (target, message) => {
@@ -74,19 +73,6 @@ const resetInputField = (e) => {
   errorMessage && errorMessage.remove();
 };
 
-const setInputFieldEvent = (e) => {
-  if (isValidField(e.target)) {
-    addValidClassName(e.target);
-    switchDisabledInCheckbox();
-  } else {
-    loginButton.disabled = true;
-  }
-};
-
-const switchDisabledInCheckbox = () => {
-  loginButton.disabled = isValidAllInputFields() ? false : true;
-};
-
 const togglePasswordButton = (e) => {
   const target = e.target;
   if (target.classList.contains("is-hide")) {
@@ -101,8 +87,8 @@ const togglePasswordButton = (e) => {
 }
 
 passwordButton.addEventListener("click", togglePasswordButton);
-password.addEventListener("blur", setInputFieldEvent);
-userName.addEventListener("blur", setInputFieldEvent);
+password.addEventListener("blur", isValidField);
+userName.addEventListener("blur", isValidField);
 userName.addEventListener("focus", resetInputField);
 password.addEventListener("focus", resetInputField);
 
@@ -119,7 +105,7 @@ const checkUsername = (inputValue, data) => inputValue === data.username;
 
 const checkPassword = (inputValue, data) => inputValue === data.password;
 
-const verificationUserData = (inputData) => {
+const checkUserData = (inputData) => {
   return new Promise((resolve, reject) => {
     const userData = { username: "yamadahanako", password: "N302aoe3" };
     const { username, password } = inputData;
@@ -133,8 +119,8 @@ const verificationUserData = (inputData) => {
 
 const getToken = async (inputData) => {
   try {
-    const responseData = await verificationUserData(inputData);
-    return responseData.token;
+    const response = await checkUserData(inputData);
+    return response.token;
   } catch (e) {
     window.location.href = "./401.html";
   }
