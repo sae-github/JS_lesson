@@ -28,7 +28,7 @@ const scrollInModalContent = new IntersectionObserver(
     if (entry.isIntersecting) {
       checkBox.checked = true;
       checkBox.disabled = false;
-      switchDisabledInCheckbox();
+      toggleDisableSubmitButton();
     }
   },
   { root: modalContent }
@@ -66,29 +66,24 @@ const isLimitTextLength = (value, limit) => value.length >= limit;
 const isInvalidRegex = (reg, value) => reg.test(value) ? false : true;
 
 const addValidClassName = (target) => {
-  const parent = target.parentElement;
-  parent.classList.add("valid");
+  target.parentElement.classList.add("valid");
 };
 
-const isValidField = (field) => {
+const isValidField = (e) => {
+  const field = e.target;
   if (isBlankInInput(field.value)) {
     addInvalidMessage(field, "未入力です");
-    return false;
+    submitButton.disabled = true;
+    return;
   }
 
   if (constraint[field.id].validation()) {
     addInvalidMessage(field, constraint[field.id].invalidMessage);
-    return false;
+    submitButton.disabled = true;
+    return;
   }
-
-  return true;
-};
-
-const isValidAllInputFields = () => {
-  return Object.keys(constraint).every((key) => {
-    const fieldElement = document.getElementById(key).value;
-    return isBlankInInput(fieldElement) || constraint[key].validation() ? false : true;
-  });
+  addValidClassName(field);
+  toggleDisableSubmitButton();
 };
 
 const addInvalidMessage = (target, message) => {
@@ -107,17 +102,12 @@ const resetInputField = (e) => {
   errorMessage && errorMessage.remove();
 };
 
-const setInputFieldEvent = (e) => {
-  if (isValidField(e.target)) {
-    addValidClassName(e.target);
-    switchDisabledInCheckbox();
-  } else {
-    submitButton.disabled = true;
-  }
-};
-
-const switchDisabledInCheckbox = () => {
-  submitButton.disabled = isValidAllInputFields() && checkBox.checked ? false : true;
+const toggleDisableSubmitButton = () => {
+  const result = Object.keys(constraint).every((key) => {
+    const fieldElement = document.getElementById(key).value;
+    return isBlankInInput(fieldElement) || constraint[key].validation() ? false : true;
+  });
+  submitButton.disabled = result && checkBox.checked ? false : true;
 };
 
 const togglePasswordButton = (e) => {
@@ -134,10 +124,10 @@ const togglePasswordButton = (e) => {
 }
 
 passwordButton.addEventListener("click", togglePasswordButton);
-password.addEventListener("blur", setInputFieldEvent);
-email.addEventListener("blur", setInputFieldEvent);
-userName.addEventListener("blur", setInputFieldEvent);
-checkBox.addEventListener("change", switchDisabledInCheckbox);
+password.addEventListener("blur", isValidField);
+email.addEventListener("blur", isValidField);
+userName.addEventListener("blur", isValidField);
+checkBox.addEventListener("change", toggleDisableSubmitButton);
 userName.addEventListener("focus", resetInputField);
 email.addEventListener("focus", resetInputField);
 password.addEventListener("focus", resetInputField);
