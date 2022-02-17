@@ -101,15 +101,14 @@ loginButton.addEventListener("click", (e) => {
   init(inputValues);
 });
 
-const checkUsername = (inputValue, data) => inputValue === data.username;
+const checkUsername = (value) => value === localStorage.getItem("username");
 
-const checkPassword = (inputValue, data) => inputValue === data.password;
+const checkPassword = (value) => value === localStorage.getItem("password");
 
 const checkUserData = (inputData) => {
   return new Promise((resolve, reject) => {
-    const userData = { username: "yamadahanako", password: "N302aoe3" };
     const { username, password } = inputData;
-    if (checkUsername(username, userData) && checkPassword(password, userData)) {
+    if (checkUsername(username) && checkPassword(password)) {
       resolve({ token: "far0fja*ff]afaawfqrlzkfq@aq9283af", ok: true, code: 200 });
     } else {
       reject({ ok: false, code: 401 });
