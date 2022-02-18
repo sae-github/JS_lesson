@@ -133,6 +133,6 @@ email.addEventListener("focus", resetInputField);
 password.addEventListener("focus", resetInputField);
 
 submitButton.addEventListener("click", () => {
-  const userData = { username: userName.value, password: password.value };
-  localStorage.setItem("data",JSON.stringify(userData));
+  const inputValues = { username: userName.value, password: password.value };
+  localStorage.setItem("authInformation",JSON.stringify(inputValues));
 });

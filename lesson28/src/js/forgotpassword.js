@@ -75,7 +75,7 @@ confirmEmail.addEventListener("focus", resetInputField);
 
 submitButton.addEventListener("click", (e) => {
   const path = "../register/password.html";
-  const user = JSON.parse(localStorage.getItem("data"));
+  const user = JSON.parse(localStorage.getItem("authInformation"));
   const token = "482r22fafah";
   window.location.href = `${path}?user=${user.username}&token=${token}`;
   e.preventDefault();

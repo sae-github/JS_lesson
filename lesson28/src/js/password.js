@@ -5,9 +5,9 @@ const submitButton = document.getElementById("js-submit-button");
 const confirmPassword = document.getElementById("confirmPassword");
 
 submitButton.addEventListener("click", (e) => {
-  const userData = JSON.parse(localStorage.data);
+  const userData = JSON.parse(localStorage.authInformation);
   userData.password = password.value;
-  localStorage.setItem("data", JSON.stringify(userData));
+  localStorage.setItem("authInformation", JSON.stringify(userData));
   window.location.href = "./password-done.html";
   e.preventDefault();
 });
@@ -101,7 +101,7 @@ const isUserParma = (params, data) => params.get("user") === data.username;
 
 const checkUrlParams = () => {
   const urlParams = new URLSearchParams(window.location.search);
-  const userData = JSON.parse(localStorage.getItem("data"));
+  const userData = JSON.parse(localStorage.getItem("authInformation"));
   if (isTokenParam(urlParams) && isUserParma(urlParams, userData)) {
     window.location.href = "../register/password.html";
   } else {
