@@ -60,13 +60,6 @@ const isValidField = (e) => {
   toggleDisableSubmitButton();
 };
 
-const isValidAllField = () => {
-  return Object.keys(constraint).every((key) => {
-    const fieldElement = document.getElementById(key).value;
-    return isBlankInInput(fieldElement) || constraint[key].validation() ? false : true;
-  });
-}
-
 const toggleDisableSubmitButton = () => {
   const result = Object.keys(constraint).every((key) => {
     const fieldElement = document.getElementById(key).value;
