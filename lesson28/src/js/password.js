@@ -90,14 +90,15 @@ const isTokenParam = (params) => {
   return tokenParam === token;
 }
 
-const isUserParma = (params) => {
+const isUserParma = (params, data) => {
   const userParam = params.get("user");
-  return userParam === localStorage.username;
+  return userParam === data.username;
 }
 
 const checkUrlParams = () => {
   const urlParams = new URLSearchParams(window.location.search);
-  if (isTokenParam(urlParams) && isUserParma(urlParams)) {
+  const userData = JSON.parse(localStorage.getItem("data"));
+  if (isTokenParam(urlParams) && isUserParma(urlParams, userData)) {
     window.location.href = "../register/password.html";
   } else {
     window.location.href = "../notauthorize.html";
@@ -116,7 +117,9 @@ confirmPassword.addEventListener("focus", resetInputField);
 
 
 submitButton.addEventListener("click", (e) => {
-  localStorage.setItem("password", password.value);
+  const userData = JSON.parse(localStorage.data);
+  userData.password = password.value;
+  localStorage.setItem("data", JSON.stringify(userData));
   window.location.href = "./password-done.html";
   e.preventDefault();
 });
