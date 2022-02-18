@@ -84,17 +84,10 @@ const togglePasswordButton = (e) => {
   }
 }
 
-const isTokenParam = (params) => {
-  const token = "482r22fafah";
-  return params.get("token") === token;
-}
-
-const isUserParma = (params, data) => params.get("user") === data.username;
-
 const checkUrlParams = () => {
   const urlParams = new URLSearchParams(window.location.search);
-  const userData = JSON.parse(localStorage.getItem("authInformation"));
-  if (isTokenParam(urlParams) && isUserParma(urlParams, userData)) {
+  const token = localStorage.getItem("resetPasswordToken");
+  if (urlParams.get("token") === token) {
     window.location.href = "../register/password.html";
   } else {
     window.location.href = "../notauthorize.html";
@@ -111,12 +104,19 @@ password.addEventListener("focus", resetInputField);
 confirmPassword.addEventListener("blur", isValidField);
 confirmPassword.addEventListener("focus", resetInputField);
 
-submitButton.addEventListener("click", (e) => {
-  e.preventDefault();
+const changeUserPasswordInStorage = () => {
   const userData = JSON.parse(localStorage.authInformation);
   userData.password = password.value;
   localStorage.setItem("authInformation", JSON.stringify(userData));
-  window.location.href = "./password-done.html";
+}
+
+submitButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  changeUserPasswordInStorage();
+  localStorage.removeItem("resetPasswordToken");
+  localStorage.setItem("updatePasswordToken", "hoge123aaaa");
+  const path = "./password-done.html";
+  window.location.href = `${path}?token=hoge123aaaa`;
 });
 
 

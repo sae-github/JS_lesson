@@ -1,24 +1,5 @@
 const email = document.getElementById("email");
-const confirmEmail = document.getElementById("confirmEmail");
 const submitButton = document.getElementById("js-submit-button");
-
-const constraint = {
-  email: {
-    validation: () => {
-      const reg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[A-Za-z]+(\.[A-Za-z]+?)?$/g;
-      return isInvalidRegex(reg, email.value);
-    },
-    invalidMessage: "メールアドレスの形式になっていません"
-  },
-  confirmEmail: {
-    validation: () => {
-      const confirmTrimmedValue = confirmEmail.value.trim();
-      const emailTrimmedValue = email.value.trim();
-      return confirmTrimmedValue !== emailTrimmedValue;
-    },
-    invalidMessage: "入力されたメールアドレスが一致しません"
-  }
-};
 
 const isBlankInInput = (value) => value.trim() === "";
 
@@ -44,39 +25,29 @@ const resetInputField = (e) => {
   errorMessage && errorMessage.remove();
 };
 
-const isValidField = (e) => {
+const emailValidation = (e) => {
   const field = e.target;
+  const reg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[A-Za-z]+(\.[A-Za-z]+?)?$/g;
   if (isBlankInInput(field.value)) {
     addInvalidMessage(field, "未入力です");
     submitButton.disabled = true;
     return;
   }
-  if (constraint[field.id].validation()) {
-    addInvalidMessage(field, constraint[field.id].invalidMessage);
+  if (isInvalidRegex(reg, field.value)) {
+    addInvalidMessage(field, "メールアドレスの形式になっていません");
     submitButton.disabled = true;
     return;
   }
   addValidClassName(field);
-  toggleDisableSubmitButton();
+  submitButton.disabled = false;
 };
 
-const toggleDisableSubmitButton = () => {
-  const isInvalidFields = Object.keys(constraint).some((key) => {
-    const inputValue = document.getElementById(key).value;
-    return isBlankInInput(inputValue) || constraint[key].validation();
-  });
-  submitButton.disabled = isInvalidFields;
-};
-
-email.addEventListener("blur", isValidField);
+email.addEventListener("blur", emailValidation);
 email.addEventListener("focus", resetInputField);
-confirmEmail.addEventListener("blur", isValidField);
-confirmEmail.addEventListener("focus", resetInputField);
 
 submitButton.addEventListener("click", (e) => {
   e.preventDefault();
   const path = "../register/password.html";
-  const user = JSON.parse(localStorage.getItem("authInformation"));
-  const token = "482r22fafah";
-  window.location.href = `${path}?user=${user.username}&token=${token}`;
+  localStorage.setItem("resetPasswordToken","482r22fafah");
+  window.location.href = `${path}?token=482r22fafah`;
 });
