@@ -4,6 +4,14 @@ const password = document.getElementById("password");
 const submitButton = document.getElementById("js-submit-button");
 const confirmPassword = document.getElementById("confirmPassword");
 
+submitButton.addEventListener("click", (e) => {
+  const userData = JSON.parse(localStorage.data);
+  userData.password = password.value;
+  localStorage.setItem("data", JSON.stringify(userData));
+  window.location.href = "./password-done.html";
+  e.preventDefault();
+});
+
 const constraint = {
   password: {
     validation: () => {
@@ -111,14 +119,6 @@ password.addEventListener("focus", resetInputField);
 confirmPassword.addEventListener("blur", isValidField);
 confirmPassword.addEventListener("focus", resetInputField);
 
-
-submitButton.addEventListener("click", (e) => {
-  const userData = JSON.parse(localStorage.data);
-  userData.password = password.value;
-  localStorage.setItem("data", JSON.stringify(userData));
-  window.location.href = "./password-done.html";
-  e.preventDefault();
-});
 
 
 
