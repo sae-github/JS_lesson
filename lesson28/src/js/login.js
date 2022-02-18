@@ -51,8 +51,8 @@ const isValidField = (e) => {
 
 const toggleDisableLoginButton = () => {
   const isInvalidFields = Object.keys(constraint).some((key) => {
-    const fieldElement = document.getElementById(key).value;
-    return isBlankInInput(fieldElement) || constraint[key].validation();
+    const inputValue = document.getElementById(key).value;
+    return isBlankInInput(inputValue) || constraint[key].validation();
   });
   loginButton.disabled = isInvalidFields;
 };

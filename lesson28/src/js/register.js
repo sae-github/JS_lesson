@@ -104,8 +104,8 @@ const resetInputField = (e) => {
 
 const toggleDisableSubmitButton = () => {
   const isInvalidFields = Object.keys(constraint).some((key) => {
-    const fieldElement = document.getElementById(key).value;
-    return isBlankInInput(fieldElement) || constraint[key].validation() || !checkBox.checked;
+    const inputValue = document.getElementById(key).value;
+    return isBlankInInput(inputValue) || constraint[key].validation() || !checkBox.checked;
   });
   submitButton.disabled = isInvalidFields;
 };
