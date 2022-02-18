@@ -103,11 +103,11 @@ const resetInputField = (e) => {
 };
 
 const toggleDisableSubmitButton = () => {
-  const result = Object.keys(constraint).every((key) => {
+  const isInvalidFields = Object.keys(constraint).some((key) => {
     const fieldElement = document.getElementById(key).value;
-    return isBlankInInput(fieldElement) || constraint[key].validation() ? false : true;
+    return isBlankInInput(fieldElement) || constraint[key].validation() || !checkBox.checked;
   });
-  submitButton.disabled = result && checkBox.checked ? false : true;
+  submitButton.disabled = isInvalidFields;
 };
 
 const togglePasswordButton = (e) => {

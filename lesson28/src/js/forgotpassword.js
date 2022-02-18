@@ -61,11 +61,11 @@ const isValidField = (e) => {
 };
 
 const toggleDisableSubmitButton = () => {
-  const result = Object.keys(constraint).every((key) => {
+  const isInvalidFields = Object.keys(constraint).some((key) => {
     const fieldElement = document.getElementById(key).value;
-    return isBlankInInput(fieldElement) || constraint[key].validation() ? false : true;
+    return isBlankInInput(fieldElement) || constraint[key].validation();
   });
-  submitButton.disabled = result ? false : true;
+  submitButton.disabled = isInvalidFields;
 };
 
 email.addEventListener("blur", isValidField);

@@ -50,11 +50,11 @@ const isValidField = (e) => {
 };
 
 const toggleDisableLoginButton = () => {
-  const result = Object.keys(constraint).every((key) => {
+  const isInvalidFields = Object.keys(constraint).some((key) => {
     const fieldElement = document.getElementById(key).value;
-    return isBlankInInput(fieldElement) || constraint[key].validation() ? false : true;
+    return isBlankInInput(fieldElement) || constraint[key].validation();
   });
-  loginButton.disabled = result ? false : true;
+  loginButton.disabled = isInvalidFields;
 };
 
 const addInvalidMessage = (target, message) => {
