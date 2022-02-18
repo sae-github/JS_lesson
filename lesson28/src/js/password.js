@@ -85,15 +85,11 @@ const togglePasswordButton = (e) => {
 }
 
 const isTokenParam = (params) => {
-  const tokenParam = params.get("token");
   const token = "482r22fafah";
-  return tokenParam === token;
+  return params.get("token") === token;
 }
 
-const isUserParma = (params, data) => {
-  const userParam = params.get("user");
-  return userParam === data.username;
-}
+const isUserParma = (params, data) => params.get("user") === data.username;
 
 const checkUrlParams = () => {
   const urlParams = new URLSearchParams(window.location.search);
