@@ -1,1 +1,1 @@
-setTimeout(() => window.location.href = "../index.html", 3000)
+setTimeout(() => window.location.href = "../login.html", 3000)
