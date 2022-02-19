@@ -1,6 +1,6 @@
 const checkUrlParams = () => {
   const urlParams = new URLSearchParams(window.location.search);
-  const token = localStorage.getItem("updatePasswordToken");
+  const token = localStorage.getItem("forgotPasswordDoneToken");
   if (urlParams.get("token") === token) {
     window.location.href = "../register/password-done.html";
   } else {

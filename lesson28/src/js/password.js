@@ -114,7 +114,7 @@ submitButton.addEventListener("click", (e) => {
   e.preventDefault();
   changeUserPasswordInStorage();
   localStorage.removeItem("resetPasswordToken");
-  localStorage.setItem("updatePasswordToken", "hoge123aaaa");
+  localStorage.setItem("forgotPasswordDoneToken", "hoge123aaaa");
   const path = "./password-done.html";
   window.location.href = `${path}?token=hoge123aaaa`;
 });
