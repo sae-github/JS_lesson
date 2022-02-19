@@ -133,6 +133,6 @@ email.addEventListener("focus", resetInputField);
 password.addEventListener("focus", resetInputField);
 
 submitButton.addEventListener("click", () => {
-  const inputValues = { username: userName.value, password: password.value };
+  const inputValues = { username: userName.value, password: password.value, email: email.value };
   localStorage.setItem("morikenjuku",JSON.stringify(inputValues));
 });

@@ -7,11 +7,8 @@ if (localStorage.getItem("token")) window.location.href = "./index.html";
 
 const constraint = {
   username: {
-    validation: () => {
-      const limitNumber = 16;
-      return isLimitTextLength(userName.value, limitNumber);
-    },
-    invalidMessage: "ユーザー名は15文字以下にしてください。"
+    validation: () => isBlankInInput(userName.value),
+    invalidMessage: "未入力です"
   },
   password: {
     validation: () => {
@@ -24,8 +21,6 @@ const constraint = {
 
 const isBlankInInput = (value) => value.trim() === "";
 
-const isLimitTextLength = (value, limit) => value.length >= limit;
-
 const isInvalidRegex = (reg, value) => !reg.test(value);
 
 const addValidClassName = (target) => {
@@ -34,11 +29,6 @@ const addValidClassName = (target) => {
 
 const isValidField = (e) => {
   const field = e.target;
-  if (isBlankInInput(field.value)) {
-    addInvalidMessage(field, "未入力です");
-    loginButton.disabled = true;
-    return;
-  }
   if (constraint[field.id].validation()) {
     addInvalidMessage(field, constraint[field.id].invalidMessage);
     loginButton.disabled = true;
@@ -51,8 +41,7 @@ const isValidField = (e) => {
 
 const toggleDisableLoginButton = () => {
   const isInvalidFields = Object.keys(constraint).some((key) => {
-    const inputValue = document.getElementById(key).value;
-    return isBlankInInput(inputValue) || constraint[key].validation();
+    return constraint[key].validation();
   });
   loginButton.disabled = isInvalidFields;
 };
@@ -101,15 +90,15 @@ loginButton.addEventListener("click", (e) => {
   init(inputValues);
 });
 
-const checkUsername = (value, data) => value === data.username;
+const isMatchUsernameOrEmail = (value, data) => value === data.username || data.email;
 
-const checkPassword = (value, data) => value === data.password;
+const isMatchPassword = (value, data) => value === data.password;
 
 const checkUserData = (inputData) => {
   return new Promise((resolve, reject) => {
     const { username, password } = inputData;
     const userData = JSON.parse(localStorage.getItem("morikenjuku"));
-    if (checkUsername(username, userData) && checkPassword(password, userData)) {
+    if (isMatchUsernameOrEmail(username, userData) && isMatchPassword(password, userData)) {
       resolve({ token: "far0fja*ff]afaawfqrlzkfq@aq9283af", ok: true, code: 200 });
     } else {
       reject({ ok: false, code: 401 });
