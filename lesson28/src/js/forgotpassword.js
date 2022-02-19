@@ -45,9 +45,15 @@ const emailValidation = (e) => {
 email.addEventListener("blur", emailValidation);
 email.addEventListener("focus", resetInputField);
 
+
 submitButton.addEventListener("click", (e) => {
   e.preventDefault();
-  const path = "../register/password.html";
-  localStorage.setItem("resetPasswordToken","482r22fafah");
-  window.location.href = `${path}?token=482r22fafah`;
+  if(localStorage.getItem("morikenjuku")) {
+    const path = "../register/password.html";
+    localStorage.setItem("resetPasswordToken","482r22fafah");
+    window.location.href = `${path}?token=482r22fafah`;
+  } else {
+    window.location.href = "../notregistereduser.html";
+  }
+
 });
