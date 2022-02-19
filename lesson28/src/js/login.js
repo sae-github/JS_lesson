@@ -108,7 +108,7 @@ const checkPassword = (value, data) => value === data.password;
 const checkUserData = (inputData) => {
   return new Promise((resolve, reject) => {
     const { username, password } = inputData;
-    const userData = JSON.parse(localStorage.getItem("authInformation"));
+    const userData = JSON.parse(localStorage.getItem("morikenjuku"));
     if (checkUsername(username, userData) && checkPassword(password, userData)) {
       resolve({ token: "far0fja*ff]afaawfqrlzkfq@aq9283af", ok: true, code: 200 });
     } else {

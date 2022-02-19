@@ -134,5 +134,5 @@ password.addEventListener("focus", resetInputField);
 
 submitButton.addEventListener("click", () => {
   const inputValues = { username: userName.value, password: password.value };
-  localStorage.setItem("authInformation",JSON.stringify(inputValues));
+  localStorage.setItem("morikenjuku",JSON.stringify(inputValues));
 });

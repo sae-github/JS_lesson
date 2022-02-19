@@ -105,9 +105,9 @@ confirmPassword.addEventListener("blur", isValidField);
 confirmPassword.addEventListener("focus", resetInputField);
 
 const changeUserPasswordInStorage = () => {
-  const userData = JSON.parse(localStorage.authInformation);
+  const userData = JSON.parse(localStorage.morikenjuku);
   userData.password = password.value;
-  localStorage.setItem("authInformation", JSON.stringify(userData));
+  localStorage.setItem("morikenjuku", JSON.stringify(userData));
 }
 
 submitButton.addEventListener("click", (e) => {
