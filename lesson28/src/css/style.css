@@ -316,31 +316,27 @@ label {
 }
 
 .register,
-.register-done {
+.register-done,
+.p-password-done {
   padding: 100px 0;
 }
 
-.register-done__inner {
+.register-done__inner,
+.p-password-done__inner {
   background-color: #fff;
   border-radius: 20px;
   width: 70%;
   margin: 0 auto;
   padding: 30px;
+  text-align: center;
+
 }
 
 .register-done__title {
   font-size: 20px;
-  text-align: center;
 }
 
 .register-done__message {
-  text-align: center;
-  margin-top: 10px;
-}
-
-.login-page-link {
-  display: block;
-  text-decoration: underline;
   text-align: center;
   margin-top: 10px;
 }
@@ -354,12 +350,21 @@ label {
   position: relative;
 }
 
-.register-form__item {
+.form-wrapper {
   margin-top: 20px;
 }
 
-.register-form__field {
+.form-item + .form-item{
+  margin-top: 10px;
+}
+
+.form-field {
   margin-top: 5px;
+  position: relative;
+}
+
+.form-foot {
+  margin-top: 10px;
 }
 
 input[type="text"],
@@ -372,21 +377,26 @@ input[type="email"] {
   outline: none;
 }
 
-input[type="password"] {
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border: 2px solid skyblue;
+  box-shadow: 0 0 3px skyblue;
+}
+
+
+input[type="password"],
+input[type="text"].password {
+  width: 100%;
+  padding: 10px 35px 10px 10px;
   box-sizing: border-box;
-  padding: 10px;
   border: 2px solid #c2c2c2;
-  width: 50%;
   border-radius: 5px;
   outline: none;
 }
 
-.register-form__foot {
-  margin-top: 30px;
-}
-
 .register-form__submit {
-  margin-top: 30px;
+  margin-top: 20px;
   text-align: center;
 }
 
@@ -461,7 +471,7 @@ button:disabled {
 
 .rules-modal__content > ul,
 .rules-modal__content ol {
-  padding-left: 2em;
+  padding-left: 1em;
   margin-top: 10px;
 }
 
@@ -484,25 +494,19 @@ body.modal-open .rules-modal {
   visibility: visible;
 }
 
-.register-form__field.invalid input {
-  border-color: #ff3860;
-}
-
-.register-form__field.valid input {
-  border-color: #09c372;
-}
-
 .invalid-message {
   color: red;
   font-size: 12px;
   display: block;
 }
 
-.login-page {
+.login-page,
+.register-password {
   padding: 100px 0;
 }
 
-.login-form {
+.login-form,
+.register-password__wrapper {
   background-color: #fff;
   border-radius: 20px;
   width: 70%;
@@ -543,20 +547,8 @@ a.tab-menu__item {
   color: #333;
 }
 
-.login-form__item {
-  margin-top: 20px;
-}
-
-.login-form__field {
-  margin-top: 5px;
-}
-
 .login-form__submit {
-  margin-top: 30px;
-}
-
-.login-page__foot {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .forgot-link {
@@ -569,11 +561,11 @@ a.tab-menu__item {
   opacity: 0.7;
 }
 
-.login-form__field.invalid input {
+.form-field.invalid input {
   border-color: #ff3860;
 }
 
-.login-form__field.valid input {
+.form-field.valid input {
   border-color: #09c372;
 }
 
@@ -589,29 +581,26 @@ a.tab-menu__item {
   padding: 30px;
 }
 
-.forgot-page__title {
+.forgot-page__title,
+.register-password__title {
   font-size: 20px;
 }
 
-.forgot-page__wrapper > .login-page-link {
+.login-page-link {
   color: #333;
+  font-size: 14px;
   text-align: left;
   text-decoration: underline;
 }
 
 .forgot-page__message,
-.forgot-page__form {
+.register-password__message {
   margin-top: 10px;
 }
 
-.forgot-page__submit-button {
-  margin-top: 10px;
-}
-
-.forgot-page__submit-button > button[type="submit"] {
-  padding: 5px;
-  width: 100px;
-  font-size: 16px;
+.forgot-page__submit-button,
+.register-password__submit-button {
+  margin-top: 20px;
 }
 
 .error-page {
@@ -651,6 +640,10 @@ a.tab-menu__item {
 }
 
 .status-message {
+  font-size: 20px;
+}
+
+.notauthorize-title {
   font-size: 20px;
 }
 
@@ -880,18 +873,6 @@ a.tab-menu__item {
   }
 }
 
-.login-form__field {
-  position: relative;
-}
-
-#password {
-  width: 100%;
-}
-
-.password {
-  padding: 10px 35px 10px 10px;
-}
-
 .password-icon {
   width: 25px;
   height: 25px;
@@ -913,3 +894,8 @@ a.tab-menu__item {
 .password-icon.is-show {
   background-image: url(../img/eye-icon.png);
 }
+
+.password-field {
+  width: 70%;
+}
+

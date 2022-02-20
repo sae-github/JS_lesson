@@ -7,11 +7,8 @@ if (localStorage.getItem("token")) window.location.href = "./index.html";
 
 const constraint = {
   username: {
-    validation: () => {
-      const limitNumber = 16;
-      return isLimitTextLength(userName.value, limitNumber);
-    },
-    invalidMessage: "ユーザー名は15文字以下にしてください。"
+    validation: () => isBlankInInput(userName.value),
+    invalidMessage: "未入力です"
   },
   password: {
     validation: () => {
@@ -24,9 +21,7 @@ const constraint = {
 
 const isBlankInInput = (value) => value.trim() === "";
 
-const isLimitTextLength = (value, limit) => value.length >= limit;
-
-const isInvalidRegex = (reg, value) => reg.test(value) ? false : true;
+const isInvalidRegex = (reg, value) => !reg.test(value);
 
 const addValidClassName = (target) => {
   target.parentElement.classList.add("valid");;
@@ -34,11 +29,6 @@ const addValidClassName = (target) => {
 
 const isValidField = (e) => {
   const field = e.target;
-  if (isBlankInInput(field.value)) {
-    addInvalidMessage(field, "未入力です");
-    loginButton.disabled = true;
-    return;
-  }
   if (constraint[field.id].validation()) {
     addInvalidMessage(field, constraint[field.id].invalidMessage);
     loginButton.disabled = true;
@@ -50,11 +40,10 @@ const isValidField = (e) => {
 };
 
 const toggleDisableLoginButton = () => {
-  const result = Object.keys(constraint).every((key) => {
-    const fieldElement = document.getElementById(key).value;
-    return isBlankInInput(fieldElement) || constraint[key].validation() ? false : true;
+  const isInvalidFields = Object.keys(constraint).some((key) => {
+    return constraint[key].validation();
   });
-  loginButton.disabled = result ? false : true;
+  loginButton.disabled = isInvalidFields;
 };
 
 const addInvalidMessage = (target, message) => {
@@ -101,15 +90,15 @@ loginButton.addEventListener("click", (e) => {
   init(inputValues);
 });
 
-const checkUsername = (inputValue, data) => inputValue === data.username;
+const isMatchUsernameOrEmail = (value, data) => value === data.username || data.email;
 
-const checkPassword = (inputValue, data) => inputValue === data.password;
+const isMatchPassword = (value, data) => value === data.password;
 
 const checkUserData = (inputData) => {
   return new Promise((resolve, reject) => {
-    const userData = { username: "yamadahanako", password: "N302aoe3" };
     const { username, password } = inputData;
-    if (checkUsername(username, userData) && checkPassword(password, userData)) {
+    const userData = JSON.parse(localStorage.getItem("morikenjuku"));
+    if (isMatchUsernameOrEmail(username, userData) && isMatchPassword(password, userData)) {
       resolve({ token: "far0fja*ff]afaawfqrlzkfq@aq9283af", ok: true, code: 200 });
     } else {
       reject({ ok: false, code: 401 });

@@ -63,7 +63,7 @@ const isBlankInInput = (value) => value.trim() === "";
 
 const isLimitTextLength = (value, limit) => value.length >= limit;
 
-const isInvalidRegex = (reg, value) => reg.test(value) ? false : true;
+const isInvalidRegex = (reg, value) => !reg.test(value);
 
 const addValidClassName = (target) => {
   target.parentElement.classList.add("valid");
@@ -103,11 +103,11 @@ const resetInputField = (e) => {
 };
 
 const toggleDisableSubmitButton = () => {
-  const result = Object.keys(constraint).every((key) => {
-    const fieldElement = document.getElementById(key).value;
-    return isBlankInInput(fieldElement) || constraint[key].validation() ? false : true;
+  const isInvalidFields = Object.keys(constraint).some((key) => {
+    const inputValue = document.getElementById(key).value;
+    return isBlankInInput(inputValue) || constraint[key].validation() || !checkBox.checked;
   });
-  submitButton.disabled = result && checkBox.checked ? false : true;
+  submitButton.disabled = isInvalidFields;
 };
 
 const togglePasswordButton = (e) => {
@@ -132,3 +132,7 @@ userName.addEventListener("focus", resetInputField);
 email.addEventListener("focus", resetInputField);
 password.addEventListener("focus", resetInputField);
 
+submitButton.addEventListener("click", () => {
+  const inputValues = { username: userName.value, password: password.value, email: email.value };
+  localStorage.setItem("morikenjuku",JSON.stringify(inputValues));
+});
