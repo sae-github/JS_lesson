@@ -24,7 +24,7 @@ const isBlankInInput = (value) => value.trim() === "";
 const isInvalidRegex = (reg, value) => !reg.test(value);
 
 const addValidClassName = (target) => {
-  target.parentElement.classList.add("valid");;
+  target.parentElement.classList.add("valid");
 };
 
 const isValidField = (e) => {
