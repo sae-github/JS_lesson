@@ -111,7 +111,7 @@ const getToken = async (inputData) => {
     const response = await checkUserData(inputData);
     return response.token;
   } catch (e) {
-    window.location.href = "./401.html";
+    window.location.href = "./notauthorize.html";
   }
 }
 
