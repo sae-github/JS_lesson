@@ -1,12 +1,10 @@
 const checkUrlParams = () => {
   const urlParams = new URLSearchParams(window.location.search);
-  const token = localStorage.getItem("forgotPasswordDoneToken");
+  const token = localStorage.getItem("registerDoneToken");
   if (token && urlParams.get("token") === token) {
     return;
   }
   window.location.href = "../notauthorize.html";
 }
-
 checkUrlParams();
-localStorage.removeItem("forgotPasswordDoneToken");
-setTimeout(() => window.location.href = "../login.html", 3000);
+localStorage.removeItem("registerDoneToken");
