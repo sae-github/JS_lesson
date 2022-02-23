@@ -132,7 +132,11 @@ userName.addEventListener("focus", resetInputField);
 email.addEventListener("focus", resetInputField);
 password.addEventListener("focus", resetInputField);
 
-submitButton.addEventListener("click", () => {
+submitButton.addEventListener("click", (e) => {
+  e.preventDefault();
   const inputValues = { username: userName.value, password: password.value, email: email.value };
   localStorage.setItem("morikenjuku",JSON.stringify(inputValues));
+  const path = "./register-done.html";
+  localStorage.setItem("registerDoneToken", "yayayayayayaooeoeore818181");
+  window.location.href = `${path}?token=yayayayayayaooeoeore818181`;
 });

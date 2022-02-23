@@ -87,14 +87,13 @@ const togglePasswordButton = (e) => {
 const checkUrlParams = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const token = localStorage.getItem("resetPasswordToken");
-  if (urlParams.get("token") === token) {
-    window.location.href = "../register/password.html";
-  } else {
-    window.location.href = "../notauthorize.html";
+  if (token && urlParams.get("token") === token) {
+    return;
   }
+  window.location.href = "../notauthorize.html";
 }
 
-window.location.search && checkUrlParams();
+checkUrlParams();
 
 passwordButtons.forEach(button => {
   button.addEventListener("click", togglePasswordButton);
