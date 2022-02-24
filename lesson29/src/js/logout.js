@@ -1,6 +1,7 @@
-const logoutButton = document.getElementById("js-logout-button");
+const logout = document.getElementById("js-logout");
 
-logoutButton.addEventListener("click", () => {
+logout.addEventListener("click", (e) => {
+  e.preventDefault();
   localStorage.removeItem("token");
   window.location.href = "./login.html";
 });
