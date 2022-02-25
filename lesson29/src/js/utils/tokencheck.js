@@ -1,4 +1,3 @@
-
 const checkUrlParams = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const token = localStorage.getItem("token");
@@ -7,6 +6,5 @@ const checkUrlParams = () => {
   }
   window.location.href = "./notauthorize.html";
   localStorage.removeItem("token");
-}
+};
 checkUrlParams();
-
