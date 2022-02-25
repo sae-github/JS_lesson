@@ -136,7 +136,7 @@ submitButton.addEventListener("click", (e) => {
   e.preventDefault();
   const inputValues = { username: userName.value, password: password.value, email: email.value };
   localStorage.setItem("morikenjuku",JSON.stringify(inputValues));
-  const path = "./register-done.html";
+  const path = "./member-done.html";
   localStorage.setItem("registerDoneToken", "yayayayayayaooeoeore818181");
   window.location.href = `${path}?token=yayayayayayaooeoeore818181`;
 });
