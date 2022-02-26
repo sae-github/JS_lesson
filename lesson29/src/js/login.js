@@ -90,7 +90,9 @@ loginButton.addEventListener("click", (e) => {
   init(inputValues);
 });
 
-const isMatchUsernameOrEmail = (value, data) => value === data.username || data.email;
+const isMatchUsernameOrEmail = (value, data) => {
+  return value === data.username || value === data.email;
+}
 
 const isMatchPassword = (value, data) => value === data.password;
 
