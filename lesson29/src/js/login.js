@@ -90,17 +90,20 @@ loginButton.addEventListener("click", (e) => {
   init(inputValues);
 });
 
-const isMatchUsernameOrEmail = (value, data) => {
-  return value === data.username || value === data.email;
+const isMatchUsernameOrEmail = (value, { email, username }) => {
+  return value === username || value === email;
 }
 
-const isMatchPassword = (value, data) => value === data.password;
+const isMatchPassword = (data, { password }) => data === password;
 
 const checkUserData = (inputData) => {
   return new Promise((resolve, reject) => {
-    const { username, password } = inputData;
-    const userData = JSON.parse(localStorage.getItem("morikenjuku"));
-    if (isMatchUsernameOrEmail(username, userData) && isMatchPassword(password, userData)) {
+    const { username: inputUserName, password: inputPassword } = inputData;
+    const usersData = JSON.parse(localStorage.getItem("morikenjuku"));
+    const userCheckedResult = Object.values(usersData).some((data) => {
+      return isMatchUsernameOrEmail(inputUserName, data) && isMatchPassword(inputPassword, data);
+    });
+    if (userCheckedResult) {
       resolve({ token: "far0fja*ff]afaawfqrlzkfq@aq9283af", ok: true, code: 200 });
     } else {
       reject({ ok: false, code: 401 });

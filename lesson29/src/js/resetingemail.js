@@ -90,11 +90,6 @@ const togglePasswordButton = (e) => {
   }
 }
 
-const changeUserEmail = (userData) => {
-  userData.email = email.value;
-  localStorage.setItem("morikenjuku",JSON.stringify(userData));
-}
-
 passwordButton.addEventListener("click", togglePasswordButton);
 password.addEventListener("blur", isValidField);
 email.addEventListener("blur", isValidField);
@@ -103,15 +98,17 @@ confirmEmail.addEventListener("blur", isValidField);
 confirmEmail.addEventListener("focus", resetInputField);
 password.addEventListener("focus", resetInputField);
 
-changeButton.addEventListener("click",(e) => {
+changeButton.addEventListener("click", (e) => {
   e.preventDefault();
-  const userData = JSON.parse(localStorage.getItem("morikenjuku"));
-  if(password.value === userData.password) {
-    changeUserEmail(userData);
+  const usersData = JSON.parse(localStorage.getItem("morikenjuku"));
+  const matchedUserData = Object.values(usersData).find((data) => data.password === password.value);
+  if (matchedUserData) {
+    matchedUserData.email = email.value;
+    localStorage.setItem("morikenjuku", JSON.stringify(usersData));
     window.location.href = `./resetmaildone.html?token=${localStorage.token}`;
   } else {
     password.parentElement.classList.remove("valid");
     changeButton.disabled = true;
-    addInvalidMessage(password,"パスワードが正しくありません");
+    addInvalidMessage(password, "パスワードが正しくありません");
   }
 });

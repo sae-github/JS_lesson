@@ -123,6 +123,8 @@ const togglePasswordButton = (e) => {
   }
 }
 
+const isEmailRegistered = (usersData) => Object.keys(usersData).some((key) => key === email.value);
+
 passwordButton.addEventListener("click", togglePasswordButton);
 password.addEventListener("blur", isValidField);
 email.addEventListener("blur", isValidField);
@@ -134,8 +136,18 @@ password.addEventListener("focus", resetInputField);
 
 submitButton.addEventListener("click", (e) => {
   e.preventDefault();
+  let usersData = JSON.parse(localStorage.getItem("morikenjuku"));
+  if (usersData && isEmailRegistered(usersData)) {
+    email.parentElement.classList.remove("valid");
+    addInvalidMessage(email, "既に登録されているメールアドレスです");
+    submitButton.disabled = "true";
+    return;
+  }
+  usersData = usersData ?? {};
   const inputValues = { username: userName.value, password: password.value, email: email.value };
-  localStorage.setItem("morikenjuku",JSON.stringify(inputValues));
+  usersData[email.value] = inputValues;
+  localStorage.setItem("morikenjuku", JSON.stringify(usersData));
+  
   const path = "./member-done.html";
   localStorage.setItem("registerDoneToken", "yayayayayayaooeoeore818181");
   window.location.href = `${path}?token=yayayayayayaooeoeore818181`;
