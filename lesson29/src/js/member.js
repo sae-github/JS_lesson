@@ -123,7 +123,19 @@ const togglePasswordButton = (e) => {
   }
 }
 
-const isEmailRegistered = (usersData) => Object.keys(usersData).some((key) => key === emailField.value);
+const isEmailRegistered = (usersData) => {
+  return Object.values(usersData).some(({ email }) => email === emailField.value);
+};
+
+const createRandomStr = () => {
+  const length = 8;
+  const source = "abcdefghijklmnopqrstuvwxyz0123456789";
+  let result = "";
+  for (let i = 0; i < length; i++) {
+    result += source[Math.floor(Math.random() * source.length)];
+  }
+  return result;
+}
 
 passwordButton.addEventListener("click", togglePasswordButton);
 passwordField.addEventListener("blur", isValidField);
@@ -138,16 +150,17 @@ submitButton.addEventListener("click", (e) => {
   e.preventDefault();
   let usersData = JSON.parse(localStorage.getItem("morikenjuku"));
   if (usersData && isEmailRegistered(usersData)) {
-    email.parentElement.classList.remove("valid");
+    emailField.parentElement.classList.remove("valid");
     addInvalidMessage(emailField, "既に登録されているメールアドレスです");
     submitButton.disabled = "true";
     return;
   }
   usersData = usersData ?? {};
-  const inputValues = { username: userField.value, password: passwordField.value, email: emailField.value };
-  usersData[emailField.value] = inputValues;
+  const randomStr = createRandomStr();
+  const inputValues = { username: userField.value, password: passwordField.value, email: emailField.value, token: randomStr };
+  usersData[randomStr] = inputValues;
   localStorage.setItem("morikenjuku", JSON.stringify(usersData));
-  
+
   const path = "./member-done.html";
   localStorage.setItem("registerDoneToken", "yayayayayayaooeoeore818181");
   window.location.href = `${path}?token=yayayayayayaooeoeore818181`;

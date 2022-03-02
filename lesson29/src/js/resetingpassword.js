@@ -88,6 +88,9 @@ const togglePasswordButton = (e) => {
   }
 };
 
+const isUserPassword = (data) => data[localStorage.getItem("token")].password === passwordField.value;
+
+
 passwordButtons.forEach((button) => {
   button.addEventListener("click", togglePasswordButton);
 });
@@ -101,9 +104,9 @@ passwordField.addEventListener("focus", resetInputField);
 changeButton.addEventListener("click", (e) => {
   e.preventDefault();
   const usersData = JSON.parse(localStorage.getItem("morikenjuku"));
-  const matchedUserData = Object.values(usersData).find((data) => data.password === passwordField.value);
-  if (matchedUserData) {
-    matchedUserData.password = newPasswordField.value;
+  const loginToken = localStorage.getItem("token");
+  if (isUserPassword(usersData)) {
+    usersData[loginToken].password = newPasswordField.value;
     localStorage.setItem("morikenjuku", JSON.stringify(usersData));
     window.location.href = `./resetpassworddone.html?token=${localStorage.token}`;
   } else {

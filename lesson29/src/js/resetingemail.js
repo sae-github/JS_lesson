@@ -101,7 +101,9 @@ passwordField.addEventListener("focus", resetInputField);
 changeButton.addEventListener("click", (e) => {
   e.preventDefault();
   const usersData = JSON.parse(localStorage.getItem("morikenjuku"));
-  const matchedUserData = Object.values(usersData).find((data) => data.password === passwordField.value);
+  const matchedUserData = Object.values(usersData).find(
+    (data) => data.password === passwordField.value
+  );
   if (matchedUserData) {
     matchedUserData.email = emailField.value;
     localStorage.setItem("morikenjuku", JSON.stringify(usersData));

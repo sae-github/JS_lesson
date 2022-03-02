@@ -7,7 +7,7 @@ if (localStorage.getItem("token")) window.location.href = "./index.html";
 
 const constraint = {
   username: {
-    validation: () => isBlankInInput(userName.value),
+    validation: () => isBlankInInput(userField.value),
     invalidMessage: "未入力です"
   },
   password: {
@@ -90,26 +90,31 @@ loginButton.addEventListener("click", (e) => {
   init(inputValues);
 });
 
-const isMatchUsernameOrEmail = (value, { email, username }) => {
-  return value === username || value === email;
-}
+const isMatchUsernameOrEmail = ({ username, email }, inputValue) => {
+  return username === inputValue || email === inputValue;
+};
 
-const isMatchPassword = (data, { password }) => data === password;
+const isMatchPassword = ({ password }, inputPassword) => password === inputPassword;
+
+const findLoginUser = (usersData, { username, password }) => {
+  return Object.values(usersData).find((data) => {
+    return (
+      isMatchUsernameOrEmail(data, username) && isMatchPassword(data, password)
+    );
+  });
+};
 
 const checkUserData = (inputData) => {
   return new Promise((resolve, reject) => {
-    const { username: inputUserName, password: inputPassword } = inputData;
     const usersData = JSON.parse(localStorage.getItem("morikenjuku"));
-    const userCheckedResult = Object.values(usersData).some((data) => {
-      return isMatchUsernameOrEmail(inputUserName, data) && isMatchPassword(inputPassword, data);
-    });
-    if (userCheckedResult) {
-      resolve({ token: "far0fja*ff]afaawfqrlzkfq@aq9283af", ok: true, code: 200 });
+    const foundLoginUser = findLoginUser(usersData, inputData);
+    if (foundLoginUser) {
+      resolve({ token: foundLoginUser.token, ok: true, code: 200 });
     } else {
       reject({ ok: false, code: 401 });
     }
-  })
-}
+  });
+};
 
 const getToken = async (inputData) => {
   try {
