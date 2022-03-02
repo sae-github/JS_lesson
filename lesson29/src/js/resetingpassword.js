@@ -90,7 +90,6 @@ const togglePasswordButton = (e) => {
 
 const isUserPassword = (data) => data[localStorage.getItem("token")].password === passwordField.value;
 
-
 passwordButtons.forEach((button) => {
   button.addEventListener("click", togglePasswordButton);
 });

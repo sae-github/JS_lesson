@@ -90,6 +90,8 @@ const togglePasswordButton = (e) => {
   }
 }
 
+const isUserPassword = (data) => data[localStorage.getItem("token")].password === passwordField.value;
+
 passwordButton.addEventListener("click", togglePasswordButton);
 passwordField.addEventListener("blur", isValidField);
 emailField.addEventListener("blur", isValidField);
@@ -101,11 +103,9 @@ passwordField.addEventListener("focus", resetInputField);
 changeButton.addEventListener("click", (e) => {
   e.preventDefault();
   const usersData = JSON.parse(localStorage.getItem("morikenjuku"));
-  const matchedUserData = Object.values(usersData).find(
-    (data) => data.password === passwordField.value
-  );
-  if (matchedUserData) {
-    matchedUserData.email = emailField.value;
+  const loginToken = localStorage.getItem("token");
+  if (isUserPassword(usersData)) {
+    usersData[loginToken].email = emailField.value;
     localStorage.setItem("morikenjuku", JSON.stringify(usersData));
     window.location.href = `./resetmaildone.html?token=${localStorage.token}`;
   } else {
