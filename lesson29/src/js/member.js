@@ -5,9 +5,9 @@ const overLay = document.getElementById("js-overlay");
 const closeButton = document.getElementById("js-modal-close");
 const rules = document.getElementById("js-rules");
 const body = document.querySelector("body");
-const userName = document.getElementById("username");
-const email = document.getElementById("email");
-const password = document.getElementById("password");
+const userField = document.getElementById("username");
+const emailField = document.getElementById("email");
+const passwordField = document.getElementById("password");
 const passwordButton = document.getElementById("js-password-icon");
 
 
@@ -39,21 +39,21 @@ const constraint = {
   username: {
     validation: () => {
       const limitNumber = 16;
-      return isLimitTextLength(userName.value, limitNumber);
+      return isLimitTextLength(userField.value, limitNumber);
     },
     invalidMessage: "ユーザー名は15文字以下にしてください。"
   },
   email: {
     validation: () => {
       const reg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[A-Za-z]+(\.[A-Za-z]+?)?$/g;
-      return isInvalidRegex(reg, email.value);
+      return isInvalidRegex(reg, emailField.value);
     },
     invalidMessage: "メールアドレスの形式になっていません"
   },
   password: {
     validation: () => {
       const reg = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[a-zA-Z0-9]{8,}$/g;
-      return isInvalidRegex(reg, password.value);
+      return isInvalidRegex(reg, passwordField.value);
     },
     invalidMessage: "8文字以上の大小の英数字を交ぜたものにしてください。"
   }
@@ -113,39 +113,39 @@ const toggleDisableSubmitButton = () => {
 const togglePasswordButton = (e) => {
   const target = e.target;
   if (target.classList.contains("is-hide")) {
-    password.type = "text";
+    passwordField.type = "text";
     target.classList.remove("is-hide");
     target.classList.add("is-show");
   } else {
-    password.type = "password";
+    passwordField.type = "password";
     target.classList.remove("is-show");
     target.classList.add("is-hide");
   }
 }
 
-const isEmailRegistered = (usersData) => Object.keys(usersData).some((key) => key === email.value);
+const isEmailRegistered = (usersData) => Object.keys(usersData).some((key) => key === emailField.value);
 
 passwordButton.addEventListener("click", togglePasswordButton);
-password.addEventListener("blur", isValidField);
-email.addEventListener("blur", isValidField);
-userName.addEventListener("blur", isValidField);
+passwordField.addEventListener("blur", isValidField);
+emailField.addEventListener("blur", isValidField);
+userField.addEventListener("blur", isValidField);
 checkBox.addEventListener("change", toggleDisableSubmitButton);
-userName.addEventListener("focus", resetInputField);
-email.addEventListener("focus", resetInputField);
-password.addEventListener("focus", resetInputField);
+userField.addEventListener("focus", resetInputField);
+emailField.addEventListener("focus", resetInputField);
+passwordField.addEventListener("focus", resetInputField);
 
 submitButton.addEventListener("click", (e) => {
   e.preventDefault();
   let usersData = JSON.parse(localStorage.getItem("morikenjuku"));
   if (usersData && isEmailRegistered(usersData)) {
     email.parentElement.classList.remove("valid");
-    addInvalidMessage(email, "既に登録されているメールアドレスです");
+    addInvalidMessage(emailField, "既に登録されているメールアドレスです");
     submitButton.disabled = "true";
     return;
   }
   usersData = usersData ?? {};
-  const inputValues = { username: userName.value, password: password.value, email: email.value };
-  usersData[email.value] = inputValues;
+  const inputValues = { username: userField.value, password: passwordField.value, email: emailField.value };
+  usersData[emailField.value] = inputValues;
   localStorage.setItem("morikenjuku", JSON.stringify(usersData));
   
   const path = "./member-done.html";

@@ -1,5 +1,5 @@
-const userName = document.getElementById("username");
-const password = document.getElementById("password");
+const userField = document.getElementById("username");
+const passwordField = document.getElementById("password");
 const loginButton = document.getElementById("js-login-button");
 const passwordButton = document.getElementById("js-password-icon");
 
@@ -13,7 +13,7 @@ const constraint = {
   password: {
     validation: () => {
       const reg = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[a-zA-Z0-9]{8,}$/g;
-      return isInvalidRegex(reg, password.value);
+      return isInvalidRegex(reg, passwordField.value);
     },
     invalidMessage: "8文字以上の大小の英数字を交ぜたものにしてください。"
   }
@@ -65,27 +65,27 @@ const resetInputField = (e) => {
 const togglePasswordButton = (e) => {
   const target = e.target;
   if (target.classList.contains("is-hide")) {
-    password.type = "text";
+    passwordField.type = "text";
     target.classList.remove("is-hide");
     target.classList.add("is-show");
   } else {
-    password.type = "password";
+    passwordField.type = "password";
     target.classList.remove("is-show");
     target.classList.add("is-hide");
   }
 }
 
 passwordButton.addEventListener("click", togglePasswordButton);
-password.addEventListener("blur", isValidField);
-userName.addEventListener("blur", isValidField);
-userName.addEventListener("focus", resetInputField);
-password.addEventListener("focus", resetInputField);
+passwordField.addEventListener("blur", isValidField);
+userField.addEventListener("blur", isValidField);
+userField.addEventListener("focus", resetInputField);
+passwordField.addEventListener("focus", resetInputField);
 
 loginButton.addEventListener("click", (e) => {
   e.preventDefault();
   const inputValues = {
-    username: userName.value,
-    password: password.value
+    username: userField.value,
+    password: passwordField.value
   }
   init(inputValues);
 });

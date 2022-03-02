@@ -1,28 +1,28 @@
 const passwordButtons = [...document.querySelectorAll(".js-password-icon")];
-const confirmNewPassword = document.getElementById("confirmNewPassword");
-const newPassword = document.getElementById("newPassword");
-const password = document.getElementById("password");
+const confirmPasswordField = document.getElementById("confirmNewPassword");
+const newPasswordField = document.getElementById("newPassword");
+const passwordField = document.getElementById("password");
 const changeButton = document.getElementById("js-change-button");
 
 const constraint = {
   password: {
     validation: () => {
       const reg = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[a-zA-Z0-9]{8,}$/g;
-      return !reg.test(password.value);
+      return !reg.test(passwordField.value);
     },
     invalidMessage: "8文字以上の大小の英数字を交ぜたものにしてください。"
   },
   newPassword: {
     validation: () => {
       const reg = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[a-zA-Z0-9]{8,}$/g;
-      return !reg.test(newPassword.value);
+      return !reg.test(newPasswordField.value);
     },
     invalidMessage: "8文字以上の大小の英数字を交ぜたものにしてください。"
   },
   confirmNewPassword: {
     validation: () => {
-      const confirmTrimmedValue = confirmNewPassword.value.trim();
-      const passwordTrimmedValue = newPassword.value.trim();
+      const confirmTrimmedValue = confirmPasswordField.value.trim();
+      const passwordTrimmedValue = newPasswordField.value.trim();
       return confirmTrimmedValue !== passwordTrimmedValue;
     },
     invalidMessage: "入力されたパスワードが一致してません"
@@ -91,24 +91,24 @@ const togglePasswordButton = (e) => {
 passwordButtons.forEach((button) => {
   button.addEventListener("click", togglePasswordButton);
 });
-password.addEventListener("blur", isValidField);
-newPassword.addEventListener("blur", isValidField);
-confirmNewPassword.addEventListener("blur", isValidField);
-newPassword.addEventListener("focus", resetInputField);
-confirmNewPassword.addEventListener("focus", resetInputField);
-password.addEventListener("focus", resetInputField);
+passwordField.addEventListener("blur", isValidField);
+newPasswordField.addEventListener("blur", isValidField);
+confirmPasswordField.addEventListener("blur", isValidField);
+newPasswordField.addEventListener("focus", resetInputField);
+confirmPasswordField.addEventListener("focus", resetInputField);
+passwordField.addEventListener("focus", resetInputField);
 
 changeButton.addEventListener("click", (e) => {
   e.preventDefault();
   const usersData = JSON.parse(localStorage.getItem("morikenjuku"));
-  const matchedUserData = Object.values(usersData).find((data) => data.password === password.value);
+  const matchedUserData = Object.values(usersData).find((data) => data.password === passwordField.value);
   if (matchedUserData) {
-    matchedUserData.password = newPassword.value;
+    matchedUserData.password = newPasswordField.value;
     localStorage.setItem("morikenjuku", JSON.stringify(usersData));
     window.location.href = `./resetpassworddone.html?token=${localStorage.token}`;
   } else {
-    password.parentElement.classList.remove("valid");
+    passwordField.parentElement.classList.remove("valid");
     changeButton.disabled = true;
-    addInvalidMessage(password, "パスワードが正しくありません");
+    addInvalidMessage(passwordField, "パスワードが正しくありません");
   }
 });
