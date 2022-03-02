@@ -3,8 +3,6 @@ const passwordField = document.getElementById("password");
 const loginButton = document.getElementById("js-login-button");
 const passwordButton = document.getElementById("js-password-icon");
 
-if (localStorage.getItem("token")) window.location.href = "./index.html";
-
 const constraint = {
   username: {
     validation: () => isBlankInInput(userField.value),
