@@ -10,7 +10,6 @@ const emailField = document.getElementById("email");
 const passwordField = document.getElementById("password");
 const passwordButton = document.getElementById("js-password-icon");
 
-
 const closeModal = () => {
   body.classList.remove("modal-open");
 };
@@ -127,16 +126,6 @@ const isEmailRegistered = (usersData) => {
   return Object.values(usersData).some(({ email }) => email === emailField.value);
 };
 
-const createRandomStr = () => {
-  const length = 8;
-  const source = "abcdefghijklmnopqrstuvwxyz0123456789";
-  let result = "";
-  for (let i = 0; i < length; i++) {
-    result += source[Math.floor(Math.random() * source.length)];
-  }
-  return result;
-}
-
 passwordButton.addEventListener("click", togglePasswordButton);
 passwordField.addEventListener("blur", isValidField);
 emailField.addEventListener("blur", isValidField);
@@ -156,12 +145,13 @@ submitButton.addEventListener("click", (e) => {
     return;
   }
   usersData = usersData ?? {};
-  const randomStr = createRandomStr();
-  const inputValues = { username: userField.value, password: passwordField.value, email: emailField.value, token: randomStr };
-  usersData[randomStr] = inputValues;
+  const userToken = chance.apple_token();
+  const inputValues = { username: userField.value, password: passwordField.value, email: emailField.value, token: userToken };
+  usersData[userToken] = inputValues;
   localStorage.setItem("morikenjuku", JSON.stringify(usersData));
 
   const path = "./member-done.html";
-  localStorage.setItem("registerDoneToken", "yayayayayayaooeoeore818181");
-  window.location.href = `${path}?token=yayayayayayaooeoeore818181`;
+  const registerDoneToken = chance.apple_token();
+  localStorage.setItem("registerDoneToken", registerDoneToken);
+  window.location.href = `${path}?token=${registerDoneToken}`;
 });
