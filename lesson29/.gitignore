@@ -6,6 +6,5 @@ package-lock.json
 package.json
 *.local
 vite.config.js
-chance.min.js
 
 

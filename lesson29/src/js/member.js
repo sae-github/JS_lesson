@@ -1,3 +1,5 @@
+import { Chance } from "chance";
+const chance = new Chance();
 const modalContent = document.getElementById("js-modal-content");
 const submitButton = document.getElementById("js-submit-button");
 const checkBox = document.querySelector(".js-check-box");
