@@ -1,4 +1,4 @@
-const email = document.getElementById("email");
+const emailField = document.getElementById("email");
 const submitButton = document.getElementById("js-submit-button");
 
 const isBlankInInput = (value) => value.trim() === "";
@@ -42,9 +42,8 @@ const emailValidation = (e) => {
   submitButton.disabled = false;
 };
 
-email.addEventListener("blur", emailValidation);
-email.addEventListener("focus", resetInputField);
-
+emailField.addEventListener("blur", emailValidation);
+emailField.addEventListener("focus", resetInputField);
 
 submitButton.addEventListener("click", (e) => {
   e.preventDefault();
@@ -55,5 +54,4 @@ submitButton.addEventListener("click", (e) => {
   } else {
     window.location.href = "../notregistereduser.html";
   }
-
 });

@@ -1,21 +1,21 @@
 
 const passwordButtons = [...document.querySelectorAll(".js-password-icon")];
-const password = document.getElementById("password");
 const submitButton = document.getElementById("js-submit-button");
-const confirmPassword = document.getElementById("confirmPassword");
+const passwordField = document.getElementById("password");
+const confirmPasswordField = document.getElementById("confirmPassword");
 
 const constraint = {
   password: {
     validation: () => {
       const reg = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[a-zA-Z0-9]{8,}$/g;
-      return isInvalidRegex(reg, password.value);
+      return isInvalidRegex(reg, passwordField.value);
     },
     invalidMessage: "8文字以上の大小の英数字を交ぜたものにしてください。"
   },
   confirmPassword: {
     validation: () => {
-      const confirmTrimmedValue = confirmPassword.value.trim();
-      const passwordTrimmedValue = password.value.trim();
+      const confirmTrimmedValue = confirmPasswordField.value.trim();
+      const passwordTrimmedValue = passwordField.value.trim();
       return confirmTrimmedValue !== passwordTrimmedValue
     },
     invalidMessage: "入力されたパスワードが一致してません"
@@ -98,14 +98,14 @@ checkUrlParams();
 passwordButtons.forEach(button => {
   button.addEventListener("click", togglePasswordButton);
 });
-password.addEventListener("blur", isValidField);
-password.addEventListener("focus", resetInputField);
-confirmPassword.addEventListener("blur", isValidField);
-confirmPassword.addEventListener("focus", resetInputField);
+passwordField.addEventListener("blur", isValidField);
+passwordField.addEventListener("focus", resetInputField);
+confirmPasswordField.addEventListener("blur", isValidField);
+confirmPasswordField.addEventListener("focus", resetInputField);
 
 const changeUserPasswordInStorage = () => {
   const userData = JSON.parse(localStorage.morikenjuku);
-  userData.password = password.value;
+  userData.password = passwordField.value;
   localStorage.setItem("morikenjuku", JSON.stringify(userData));
 }
 
@@ -117,9 +117,3 @@ submitButton.addEventListener("click", (e) => {
   const path = "./password-done.html";
   window.location.href = `${path}?token=hoge123aaaa`;
 });
-
-
-
-
-
-
