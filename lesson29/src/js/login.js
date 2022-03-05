@@ -1,19 +1,17 @@
-const userName = document.getElementById("username");
-const password = document.getElementById("password");
+const userField = document.getElementById("username");
+const passwordField = document.getElementById("password");
 const loginButton = document.getElementById("js-login-button");
 const passwordButton = document.getElementById("js-password-icon");
 
-if (localStorage.getItem("token")) window.location.href = "./index.html";
-
 const constraint = {
   username: {
-    validation: () => isBlankInInput(userName.value),
+    validation: () => isBlankInInput(userField.value),
     invalidMessage: "未入力です"
   },
   password: {
     validation: () => {
       const reg = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[a-zA-Z0-9]{8,}$/g;
-      return isInvalidRegex(reg, password.value);
+      return isInvalidRegex(reg, passwordField.value);
     },
     invalidMessage: "8文字以上の大小の英数字を交ぜたものにしてください。"
   }
@@ -65,48 +63,56 @@ const resetInputField = (e) => {
 const togglePasswordButton = (e) => {
   const target = e.target;
   if (target.classList.contains("is-hide")) {
-    password.type = "text";
+    passwordField.type = "text";
     target.classList.remove("is-hide");
     target.classList.add("is-show");
   } else {
-    password.type = "password";
+    passwordField.type = "password";
     target.classList.remove("is-show");
     target.classList.add("is-hide");
   }
 }
 
 passwordButton.addEventListener("click", togglePasswordButton);
-password.addEventListener("blur", isValidField);
-userName.addEventListener("blur", isValidField);
-userName.addEventListener("focus", resetInputField);
-password.addEventListener("focus", resetInputField);
+passwordField.addEventListener("blur", isValidField);
+userField.addEventListener("blur", isValidField);
+userField.addEventListener("focus", resetInputField);
+passwordField.addEventListener("focus", resetInputField);
 
 loginButton.addEventListener("click", (e) => {
   e.preventDefault();
   const inputValues = {
-    username: userName.value,
-    password: password.value
+    username: userField.value,
+    password: passwordField.value
   }
   init(inputValues);
 });
 
-const isMatchUsernameOrEmail = (value, data) => {
-  return value === data.username || value === data.email;
-}
+const isMatchUsernameOrEmail = ({ username, email }, inputValue) => {
+  return username === inputValue || email === inputValue;
+};
 
-const isMatchPassword = (value, data) => value === data.password;
+const isMatchPassword = ({ password }, inputPassword) => password === inputPassword;
+
+const findLoginUser = (usersData, { username, password }) => {
+  return Object.values(usersData).find((data) => {
+    return (
+      isMatchUsernameOrEmail(data, username) && isMatchPassword(data, password)
+    );
+  });
+};
 
 const checkUserData = (inputData) => {
   return new Promise((resolve, reject) => {
-    const { username, password } = inputData;
-    const userData = JSON.parse(localStorage.getItem("morikenjuku"));
-    if (isMatchUsernameOrEmail(username, userData) && isMatchPassword(password, userData)) {
-      resolve({ token: "far0fja*ff]afaawfqrlzkfq@aq9283af", ok: true, code: 200 });
+    const usersData = JSON.parse(localStorage.getItem("morikenjuku"));
+    const foundLoginUser = findLoginUser(usersData, inputData);
+    if (foundLoginUser) {
+      resolve({ token: foundLoginUser.token, ok: true, code: 200 });
     } else {
       reject({ ok: false, code: 401 });
     }
-  })
-}
+  });
+};
 
 const getToken = async (inputData) => {
   try {
