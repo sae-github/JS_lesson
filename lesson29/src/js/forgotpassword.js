@@ -42,15 +42,22 @@ const emailValidation = (e) => {
   submitButton.disabled = false;
 };
 
+const findUserEmailMatch = (usersData) => {
+  return Object.values(usersData).find(({ email }) => email === emailField.value);
+}
+
 emailField.addEventListener("blur", emailValidation);
 emailField.addEventListener("focus", resetInputField);
 
 submitButton.addEventListener("click", (e) => {
   e.preventDefault();
-  if(localStorage.getItem("morikenjuku")) {
+  const usersData = JSON.parse(localStorage.getItem("morikenjuku"));
+  const matchedUserData = findUserEmailMatch(usersData);
+  if (matchedUserData) {
+    const userToken = matchedUserData.token;
     const path = "../register/password.html";
-    localStorage.setItem("resetPasswordToken","482r22fafah");
-    window.location.href = `${path}?token=482r22fafah`;
+    localStorage.setItem("resetPasswordToken", userToken);
+    window.location.href = `${path}?token=${userToken}`;
   } else {
     window.location.href = "../notregistereduser.html";
   }

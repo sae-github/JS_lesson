@@ -2,6 +2,8 @@ const passwordButtons = [...document.querySelectorAll(".js-password-icon")];
 const submitButton = document.getElementById("js-submit-button");
 const passwordField = document.getElementById("password");
 const confirmPasswordField = document.getElementById("confirmPassword");
+import { Chance } from "chance";
+const chance = new Chance()
 
 const constraint = {
   password: {
@@ -102,17 +104,19 @@ passwordField.addEventListener("focus", resetInputField);
 confirmPasswordField.addEventListener("blur", isValidField);
 confirmPasswordField.addEventListener("focus", resetInputField);
 
-const changeUserPasswordInStorage = () => {
-  const userData = JSON.parse(localStorage.morikenjuku);
-  userData.password = passwordField.value;
-  localStorage.setItem("morikenjuku", JSON.stringify(userData));
+const changeUserPassword = () => {
+  const usersData = JSON.parse(localStorage.getItem("morikenjuku"));
+  const token = localStorage.getItem("resetPasswordToken");
+  usersData[token].password = passwordField.value;
+  localStorage.setItem("morikenjuku", JSON.stringify(usersData));
 }
 
 submitButton.addEventListener("click", (e) => {
   e.preventDefault();
-  changeUserPasswordInStorage();
+  changeUserPassword();
   localStorage.removeItem("resetPasswordToken");
-  localStorage.setItem("forgotPasswordDoneToken", "hoge123aaaa");
+  const forgotPasswordDoneToken = chance.apple_token();
+  localStorage.setItem("forgotPasswordDoneToken", forgotPasswordDoneToken);
   const path = "./password-done.html";
-  window.location.href = `${path}?token=hoge123aaaa`;
+  window.location.href = `${path}?token=${forgotPasswordDoneToken}`;
 });
