@@ -275,6 +275,86 @@
 </a>
 </td>
 </tr>
+  
+<tr>
+<td>
+<a href="https://github.com/sae-github/JS_lesson/tree/main/lesson19">Lesson19</a>
+</td>
+<td>
+ニュースUIとスライドショーを合わせる<br>
+課題16〜18で作成したコンポーネントを合わせたページの作成
+</td>
+<td>
+<a href="https://codesandbox.io/s/js-lesson19-gelvt?fontsize=14&hidenavigation=1&theme=dark">
+<img alt="Edit JS_lesson19" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td>
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="https://github.com/sae-github/JS_lesson/tree/main/lesson20">Lesson20</a>
+</td>
+<td>
+ユーザーテーブル作成
+<ul>
+<li>画面遷移してから3秒後に解決されるPromiseが返すオブジェクトを元に作成</li>
+<li>カラム名など(id, 名前等)もdataで表現して受け取り、フロント側で加工して表示</li>
+</ul>
+</td>
+<td>
+<a href="https://codesandbox.io/s/lesson20-85z27?fontsize=14&hidenavigation=1&theme=dark">
+<img alt="Edit Lesson20" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td>
+<a href="https://itosae.com/js_lesson20/" target="_blank" rel="noopener noreferrer">
+<img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png">
+<a>
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="https://github.com/sae-github/JS_lesson/tree/main/lesson21">Lesson21</a>
+</td>
+<td>
+ユーザーテーブルにソート機能を追加
+<ul>
+<li>idがソートできる機能を実装</li>
+<li>通常▶︎昇順▶︎降順の順でソートする</li>
+</ul>
+</td>
+<td>
+<a href="https://codesandbox.io/s/lesson21-ebikn?fontsize=14&hidenavigation=1&theme=dark">
+<img alt="Edit Lesson21" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td rowspan="2">
+<a href="https://itosae.com/js_lesson21_22/" target="_blank" rel="noopener noreferrer">
+<img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png">
+</a>
+</td> 
+</tr>
+
+<tr>
+<td>
+<a href="https://github.com/sae-github/JS_lesson/tree/main/lesson22">Lesson22</a>
+</td>
+<td>
+<p>ソート機能を年齢の項目にも追加する</p>
+<a href="https://gyazo.com/6b47c048cde0d229f273190c314eb87c">
+<img src="https://i.gyazo.com/6b47c048cde0d229f273190c314eb87c.gif" alt="Image from Gyazo" width="300"/>
+</a>
+</td>
+<td>
+<a href="https://codesandbox.io/s/lesson22-9b83p?fontsize=14&hidenavigation=1&theme=dark">
+<img alt="Edit Lesson22" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+</tr>
 
 </tbody>
 </table>
