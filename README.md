@@ -238,7 +238,6 @@
 <li>それぞれは.z-indexで重ねた状態。矢印画像をクリックを押すとスライド画像が変わる</li>
 <li>5枚中何枚目かを表示して、5/5の場合Nextの矢印はdisabledにする。1/5枚の時はBackボタンはdisabledにする</li>
 </ul>
-<a href="https://gyazo.com/8d7dc0d7dd213a48495aeb79dab04957"><img src="https://i.gyazo.com/8d7dc0d7dd213a48495aeb79dab04957.gif" alt="Image from Gyazo" width="300"/></a>
 </td>
 <td>
 <a href="https://codesandbox.io/s/js-lesson17-part2-mznov?fontsize=14&hidenavigation=1&theme=dark">
