@@ -234,9 +234,9 @@
 </td>
 <td>スライドショー作成
 <ul>
-  <li>画面遷移してから3秒後に解決されるPromiseが返すオブジェクトを元にimgタグを5つつくる</li>
-  <li>それぞれは.z-indexで重ねた状態。矢印画像をクリックを押すとスライド画像が変わる</li>
-  <li>5枚中何枚目かを表示して、5/5の場合Nextの矢印はdisabledにする。1/5枚の時はBackボタンはdisabledにする</li>
+<li>画面遷移してから3秒後に解決されるPromiseが返すオブジェクトを元にimgタグを5つつくる</li>
+<li>それぞれは.z-indexで重ねた状態。矢印画像をクリックを押すとスライド画像が変わる</li>
+<li>5枚中何枚目かを表示して、5/5の場合Nextの矢印はdisabledにする。1/5枚の時はBackボタンはdisabledにする</li>
 </ul>
 <a href="https://gyazo.com/8d7dc0d7dd213a48495aeb79dab04957"><img src="https://i.gyazo.com/8d7dc0d7dd213a48495aeb79dab04957.gif" alt="Image from Gyazo" width="300"/></a>
 </td>
@@ -246,7 +246,34 @@
 </a>
 </td>
 <td>
-<a href="https://itosae.com/js_lesson17/" target="_blank" rel="noopener noreferrer"><img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png"></a>
+<a href="https://itosae.com/js_lesson17/" target="_blank" rel="noopener noreferrer">
+<img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png">
+<a>
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="https://github.com/sae-github/JS_lesson/tree/main/lesson18">Lesson18</a>
+</td>
+<td>スライドショーにドットのページネーションを追加
+<p>それぞれのドットはクリッカブルで、押下すると画像が切り替わる。それに伴い、カウンターも切り替わる。<br>
+3秒毎に次のスライドに自動で切り替わるauto機能も追加する
+</p>
+<a href="https://gyazo.com/aa26ed5661fa7e2470509b194bb19279"><img src="https://i.gyazo.com/aa26ed5661fa7e2470509b194bb19279.gif" alt="Image from Gyazo" width="300"/></a>
+</td>
+<td>
+<a href="https://codesandbox.io/s/js-lesson18-part2-1hd28?fontsize=14&hidenavigation=1&theme=dark">
+  <img alt="Edit JS_lesson18 part2" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td>
+<a href="https://itosae.com/js_lesson18-1/" target="_blank" rel="noopener noreferrer">
+<img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png">
+<a>
+<a href="https://itosae.com/js_lesson18-2/" target="_blank" rel="noopener noreferrer">
+<img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png">
+</a>
 </td>
 </tr>
 
