@@ -164,7 +164,9 @@
   <img alt="Edit JS_lesson13" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
 </td>
-<td><a href="https://itosae.com/js_lesson13/" target="_blank" rel="noopener noreferrer"><img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png"></a></td>
+<td>
+<a href="https://itosae.com/js_lesson13/" target="_blank" rel="noopener noreferrer"><img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png"></a>
+</td>
 </tr>
 
 
@@ -207,6 +209,7 @@
 <li>htmlはulのみ</li>
 <li>コメントアイコンをクリックするモーダルが表示され、コメント内容とコアイコンが表示</li>
 </ul>
+  <a href="https://gyazo.com/e4bd89e3d8a989fb7b919a5c4c7b9d36"><img src="https://i.gyazo.com/e4bd89e3d8a989fb7b919a5c4c7b9d36.gif" alt="Image from Gyazo" width="300"/></a>
 </td>
 
 <td>
@@ -223,9 +226,29 @@
 <img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png">
 </a>
 </td>
-
 </tr>
-
+  
+<tr>
+<td>
+<a href="https://github.com/sae-github/JS_lesson/tree/main/lesson17">Lesson17</a>
+</td>
+<td>スライドショー作成
+<ul>
+  <li>画面遷移してから3秒後に解決されるPromiseが返すオブジェクトを元にimgタグを5つつくる</li>
+  <li>それぞれは.z-indexで重ねた状態。矢印画像をクリックを押すとスライド画像が変わる</li>
+  <li>5枚中何枚目かを表示して、5/5の場合Nextの矢印はdisabledにする。1/5枚の時はBackボタンはdisabledにする</li>
+</ul>
+<a href="https://gyazo.com/8d7dc0d7dd213a48495aeb79dab04957"><img src="https://i.gyazo.com/8d7dc0d7dd213a48495aeb79dab04957.gif" alt="Image from Gyazo" width="300"/></a>
+</td>
+<td>
+<a href="https://codesandbox.io/s/js-lesson17-part2-mznov?fontsize=14&hidenavigation=1&theme=dark">
+<img alt="Edit JS_lesson17 part2" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td>
+<a href="https://itosae.com/js_lesson17/" target="_blank" rel="noopener noreferrer"><img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png"></a>
+</td>
+</tr>
 
 </tbody>
 </table>
