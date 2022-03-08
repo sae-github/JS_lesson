@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/utils/loginUserIcon.js" defer></script>
+  <script src="./js/userMenu.js" defer></script>
+  <script src="./js/logout.js" defer></script>
+  <script src="./js/resetingicon.js" defer></script>
+</head>
+
+<body>
+  <main>
+    <header class="header">
+      <div class="header__inner">
+        <div class="header__menu">
+          <a href="./index.html" class="header__home-icon-wrapper">
+            <img src="./img/home-icon.svg" alt="">
+          </a>
+          <div class="header__user-menu" id="js-header-user-menu">
+            <div class="header__user-icon-wrapper"><img src="./img/user-icon.png" alt=""></div>
+            <span class="header__arrow-icon"></span>
+            <ul class="drop-down-menu" id="js-drop-down-menu">
+              <li class="drop-down-menu__item"><a href="./resetingemail.html">メールアドレス変更</a></li>
+              <li class="drop-down-menu__item"><a href="./resetingpassword.html">パスワード変更</a></li>
+              <li class="drop-down-menu__item"><a href="./resetingicon.html" id="">アイコンの変更</a></li>
+              <li class="drop-down-menu__item"><a href="" id="js-logout">ログアウト</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="reseting-page">
+      <div class="inner reseting-page__inner">
+        <div class="side-nav">
+          <div class="side-nav__inner">
+            <div class="side-nav__icon-wrapper">
+              <img src="./img/profile-icon.png" alt="" id="js-profile-icon">
+            </div>
+            <ul class="side-nav__list">
+              <li class="side-nav__item"><a href="./resetingemail.html">メールアドレス変更</a></li>
+              <li class="side-nav__item"><a href="./resetingpassword.html">パスワード変更</a></li>
+              <li class="side-nav__item is-active"><a href="./resetingicon.html">アイコンの変更</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="reseting-form">
+          <div class="reseting-form__inner">
+            <p class="reseting-form__title">アイコンの変更</p>
+            <p class="reseting-form__message">下記に画像をアップロードをしてください</p>
+            <div class="form-wrapper" id="js-form-wrapper">
+              <form action="" id="">
+                <div class="upload" id="js-upload-box">
+                  <div class="upload__inner" id="js-upload-box-inner">
+                    <div class="upload__image-wrapper">
+                      <img src="./img/upload-icon.png" alt="">
+                    </div>
+                    <p class="upload__text">Drag and drop image here</p>
+                    <p class="upload__text">or</p>
+                    <div class="form-field">
+                      <input type="file" name="file" id="file" class="file-field">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-foot" id="js-form-foot">
+                  <button id="js-change-button" class="" type="submit" disabled>
+                    変更する
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>
