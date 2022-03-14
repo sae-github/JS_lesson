@@ -8,12 +8,70 @@
   <title>Document</title>
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/slideMenu.js" defer></script>
   <script src="./js/login.js" defer></script>
 </head>
 
 <body>
-  
+
   <main>
+    <header class="header">
+      <div class="header__inner">
+        <button type="button" class="hamburger-button" id="js-slide-open-button" aria-expanded="false">
+          <span class="hamburger-button__line"></span>
+        </button>
+        <nav class="global-menu" id="js-global-menu" aria-hidden="true">
+          <ul class="global-menu__nav-list">
+            <li class="global-menu__nav-item">
+              <a href="./login.html">
+                <span class="global-menu__en"><img src="./img/login-icon.svg" alt=""
+                    class="global-menu__nav-icon">login</span>
+                <span class="global-menu__jp">ログイン</span>
+              </a>
+            </li>
+            <li class="global-menu__nav-item">
+              <a href="./register/member.html">
+                <span class="global-menu__en"><img src="./img/register-icon.svg" alt=""
+                    class="global-menu__nav-icon">sign
+                  up</span>
+                <span class="global-menu__jp">会員登録</span>
+              </a>
+            </li>
+            <li class="global-menu__nav-item">
+              <a href="/bookmark.html">
+                <span class="global-menu__en"><img src="./img/bookmark-icon.svg" alt=""
+                    class="global-menu__nav-icon">book
+                  mark</span>
+                <span class="global-menu__jp">ブックマーク</span>
+              </a>
+            </li>
+            <li class="global-menu__nav-item">
+              <a href="/message.html">
+                <span class="global-menu__en"><img src="./img/mail-icon.svg" alt=""
+                    class="global-menu__nav-icon">message</span>
+                <span class="global-menu__jp">メッセージ</span></a>
+            </li>
+          </ul>
+          <ul class="global-menu__sub-list">
+            <li><a href="">dummy</a></li>
+            <li><a href="">dummy</a></li>
+            <li><a href="">dummy</a></li>
+            <li><a href="">dummy</a></li>
+            <li><a href="">dummy</a></li>
+            <li><a href="">dummy</a></li>
+            <li><a href="">dummy</a></li>
+            <li><a href="">dummy</a></li>
+            <li><a href="">dummy</a></li>
+            <li><a href="">dummy</a></li>
+            <li><a href="">dummy</a></li>
+            <li><a href="">dummy</a></li>
+            <li><a href="">dummy</a></li>
+            <li><a href="">dummy</a></li>
+            <li><a href="">aaaaaaaa</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
     <div class="login-page">
       <div class="inner">
         <div class="login-form">
@@ -55,6 +113,8 @@
         </div>
       </div>
     </div>
+    <div class="overlay" id="js-overlay"></div>
+
   </main>
 </body>
 
