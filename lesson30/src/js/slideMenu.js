@@ -8,7 +8,7 @@ const openSlideMenu = () => {
   body.classList.add("slideMenu-open");
 }
 
-const CloseSlideMenu = () => {
+const closeSlideMenu = () => {
   slideMenu.setAttribute("aria-hidden", true);
   body.classList.remove("slideMenu-open");
 }
@@ -20,4 +20,4 @@ const isOpenSlideMenu = () => {
 const toggleSlideMenu = () => isOpenSlideMenu() ? CloseSlideMenu() : openSlideMenu();
 
 toggleButtonInSlideMenu.addEventListener("click", toggleSlideMenu);
-overLay.addEventListener("click", CloseSlideMenu);
+overLay.addEventListener("click", closeSlideMenu);
