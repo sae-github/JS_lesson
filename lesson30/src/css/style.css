@@ -604,7 +604,7 @@ button:disabled {
 }
 
 .login-page,
-.register {
+.register,.forgot-page,.register-password,.p-password-done ,.register-done{
   margin-top: 50px;
 }
 
