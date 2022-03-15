@@ -345,8 +345,8 @@
 </td>
 <td>
 <p>ソート機能を年齢の項目にも追加する</p>
-<a href="https://gyazo.com/6b47c048cde0d229f273190c314eb87c">
-<img src="https://i.gyazo.com/6b47c048cde0d229f273190c314eb87c.gif" alt="Image from Gyazo" width="300"/>
+<a href="https://i.postimg.cc/sxy9FHFM/6b47c048cde0d229f273190c314eb87c.gif">
+<img src="https://i.postimg.cc/sxy9FHFM/6b47c048cde0d229f273190c314eb87c.gif" alt="Image from Gyazo" width="300"/>
 </a>
 </td>
 <td>
@@ -354,6 +354,52 @@
 <img alt="Edit Lesson22" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
 </td>
+</tr>
+
+<tr>
+<td>
+<a href="https://github.com/sae-github/JS_lesson/tree/main/lesson24">Lesson24</a>
+</td>
+<td>
+<p>会員登録画面作成</p>
+<ul>
+<li>利用規約を押すと、モーダルが立ち上がり内容が表示。スクロールが一番下へ行ったら 利用規約に同意するチェックボックスがcheckedになる。<br>もしモーダルを開いてもスクロールが下まで行っていなければ checkedはfalseのまま。checkedがtrueの場合、送信ボタンを押下することができ 完了ページへ遷移
+</li>
+</ul>
+</td>
+<td>
+<a href="https://codesandbox.io/s/lesson24-moufq?fontsize=14&hidenavigation=1&theme=dark">
+  <img alt="Edit Lesson24" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td><a href="https://itosae.com/js_lesson24/" target="_blank" rel="noopener noreferrer">
+<img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png">
+</a></td> 
+</tr>
+  
+<tr>
+<td>
+<a href="https://github.com/sae-github/JS_lesson/tree/main/lesson25">Lesson25</a>
+</td>
+<td>
+<p>会員登録画面にバリデーションを追加</p>
+<ul>
+<li>初期状態は送信ボタンとチェックボックスはdisabled</li>
+<li>ユーザー名は16文字未満とし、もしinvalidならバリデーションテキストは 「ユーザー名は15文字以下にしてください。」</li>
+<li>メールアドレスは一般的なメール形式のバリデーションにしてください。もしinvalidならバリデーションテキストは「メールアドレスの形式になっていません。」</li>
+<li>パスワードのバリデーションは8文字以上の大小の英数字を交ぜたものとし、もしinvalidならバリデーションテキストは「8文字以上の大小の英数字を交ぜたものにしてください。」</li>
+<li>利用規約のスクロール実装に併せて、チェックボックスのdisabledは外し、checkedになる(課題24で実装)</li>
+<li>全ての入力がvalidの場合にのみ送信ボタンは緑色になり押下でき、完了ページに遷移できる。</li>
+</ul>
+</td>
+<td>
+<a href="https://codesandbox.io/s/js-lesson25-2cz5u?fontsize=14&hidenavigation=1&theme=dark">
+  <img alt="Edit JS_lesson25" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td><a href="https://itosae.com/js_lesson25/" target="_blank" rel="noopener noreferrer">
+<img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png">
+</a></td> 
 </tr>
 
 </tbody>
