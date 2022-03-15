@@ -5,7 +5,7 @@ body {
     "Noto Sans JP", "Meiryo", "メイリオ", "ＭＳ Ｐゴシック", sans-serif;
 }
 
-body.modal-open,
+.modal-open,
 .drawer-menu-open {
   overflow: hidden;
 }
@@ -310,9 +310,9 @@ a {
   visibility: hidden;
 }
 
-body.modal-open .modal,
-body.modal-open .overlay,
-.drawer-menu-open .overlay {
+.modal-open .modal,
+.modal-open .overlay,
+.drawer-menu-open .drawer-overlay {
   opacity: 1;
   visibility: visible;
 }
@@ -514,7 +514,8 @@ button:disabled {
   cursor: pointer;
 }
 
-.overlay {
+.overlay,
+.drawer-overlay {
   position: fixed;
   left: 0;
   top: 0;
@@ -581,9 +582,13 @@ button:disabled {
   background: linear-gradient(to top, #fdfbfb 0%, #ebedee 100%);
 }
 
-body.modal-open .rules-modal {
+.modal-open .rules-modal {
   opacity: 1;
   visibility: visible;
+}
+
+.modal-open header {
+  z-index: 0;
 }
 
 .invalid-message {
@@ -599,7 +604,7 @@ body.modal-open .rules-modal {
 }
 
 .login-page,
-.register{
+.register {
   margin-top: 50px;
 }
 

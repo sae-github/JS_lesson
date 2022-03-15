@@ -1,5 +1,5 @@
 const body = document.body;
-const overLay = document.getElementById("js-overlay");
+const overLay = document.getElementById("js-drawer-overlay");
 const drawerMenu = document.getElementById("js-drawer-menu");
 const toggleButtonInDrawerMenu = document.getElementById("js-drawer-open-button");
 
