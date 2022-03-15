@@ -52,7 +52,7 @@ emailField.addEventListener("focus", resetInputField);
 submitButton.addEventListener("click", (e) => {
   e.preventDefault();
   const usersData = JSON.parse(localStorage.getItem("morikenjuku"));
-  const matchedUserData = findUserEmailMatch(usersData);
+  const matchedUserData = usersData && findUserEmailMatch(usersData);
   if (matchedUserData) {
     const userToken = matchedUserData.token;
     const path = "../register/password.html";
