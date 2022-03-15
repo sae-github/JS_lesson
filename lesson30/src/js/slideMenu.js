@@ -1,12 +1,12 @@
 const body = document.body;
 const overLay = document.getElementById("js-overlay");
-const slideMenu = document.getElementById("js-global-menu");
-const toggleButtonInSlideMenu = document.getElementById("js-slide-open-button");
+const drawerMenu = document.getElementById("js-drawer-menu");
+const toggleButtonInDrawerMenu = document.getElementById("js-drawer-open-button");
 
-const toggleSlideMenu = () => {
-  slideMenu.toggleAttribute("aria-hidden");
-  body.classList.toggle("slideMenu-open");
+const toggleDrawerMenu = () => {
+  drawerMenu.toggleAttribute("aria-hidden");
+  body.classList.toggle("drawer-menu-open");
 }
 
-toggleButtonInSlideMenu.addEventListener("click", toggleSlideMenu);
-overLay.addEventListener("click", toggleSlideMenu);
+toggleButtonInDrawerMenu.addEventListener("click", toggleDrawerMenu);
+overLay.addEventListener("click", toggleDrawerMenu);

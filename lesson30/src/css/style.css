@@ -6,7 +6,7 @@ body {
 }
 
 body.modal-open,
-.slideMenu-open {
+.drawer-menu-open {
   overflow: hidden;
 }
 
@@ -312,7 +312,7 @@ a {
 
 body.modal-open .modal,
 body.modal-open .overlay,
-.slideMenu-open .overlay {
+.drawer-menu-open .overlay {
   opacity: 1;
   visibility: visible;
 }
@@ -1052,7 +1052,7 @@ a.tab-menu__item {
   top: 10px;
 }
 
-.global-menu {
+.drawer-menu {
   width: 50%;
   box-sizing: border-box;
   max-width: 500px;
@@ -1069,72 +1069,72 @@ a.tab-menu__item {
   transition: ease-out 0.3s;
 }
 
-.slideMenu-open .global-menu {
+.drawer-menu-open .drawer-menu {
   left: 0;
   opacity: 1;
   transition: ease-out 0.3s;
 }
 
-.slideMenu-open .hamburger-button__line {
+.drawer-menu-open .hamburger-button__line {
   background-color: transparent;
   transition: 0.3s;
 }
 
-.slideMenu-open .hamburger-button__line::after,
-.slideMenu-open .hamburger-button__line::before {
+.drawer-menu-open .hamburger-button__line::after,
+.drawer-menu-open .hamburger-button__line::before {
   top: 0;
   transition: 0.3s;
 }
 
-.slideMenu-open .hamburger-button__line::before {
+.drawer-menu-open .hamburger-button__line::before {
   transform: rotate(28deg);
 }
 
-.slideMenu-open .hamburger-button__line::after {
+.drawer-menu-open .hamburger-button__line::after {
   transform: rotate(-28deg);
 }
 
-.global-menu__nav-icon {
+.drawer-menu__nav-icon {
   width: 30px;
   height: 30px;
   margin-right: 10px;
 }
 
-.global-menu__nav-item + .global-menu__nav-item {
+.drawer-menu__nav-item + .drawer-menu__nav-item {
   margin-top: 20px;
 }
 
-.global-menu__nav-item a {
+.drawer-menu__nav-item a {
   display: block;
 }
 
-.global-menu__en {
+.drawer-menu__en {
   font-size: 40px;
   font-weight: bold;
 }
 
-.global-menu__en,
-.global-menu__jp {
+.drawer-menu__en,
+.drawer-menu__jp {
   display: block;
   color: #413c54;
   transition: 0.3s;
 }
 
-.global-menu__nav-item a:hover .global-menu__en,
-.global-menu__nav-item a:hover .global-menu__jp {
+.drawer-menu__nav-item a:hover .drawer-menu__en,
+.drawer-menu__nav-item a:hover .drawer-menu__jp {
   letter-spacing: 0.1em;
 }
 
-.global-menu__sub-list {
+.drawer-menu__sub-list {
   border-top: 1px solid #000;
   margin-top: 30px;
 }
 
-.global-menu__sub-list li {
+.drawer-menu__sub-list li {
   margin-top: 20px;
 }
 
-.global-menu__sub-list li a {
+.drawer-menu__sub-list li a {
   padding: 10px 0;
   font-size: 20px;
 }
@@ -1220,13 +1220,13 @@ a.tab-menu__item {
     padding: 50px 0;
   }
 
-  .global-menu {
+  .drawer-menu {
     width: 100%;
     max-width: 100%;
     padding: 30px 20px;
   }
 
-  .global-menu__en {
+  .drawer-menu__en {
     font-size: 25px;
   }
 }
