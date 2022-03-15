@@ -345,9 +345,7 @@
 </td>
 <td>
 <p>ソート機能を年齢の項目にも追加する</p>
-<a href="https://i.postimg.cc/sxy9FHFM/6b47c048cde0d229f273190c314eb87c.gif">
 <img src="https://i.postimg.cc/sxy9FHFM/6b47c048cde0d229f273190c314eb87c.gif" alt="Image from Gyazo" width="300"/>
-</a>
 </td>
 <td>
 <a href="https://codesandbox.io/s/lesson22-9b83p?fontsize=14&hidenavigation=1&theme=dark">
