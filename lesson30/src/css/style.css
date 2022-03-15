@@ -5,7 +5,8 @@ body {
     "Noto Sans JP", "Meiryo", "メイリオ", "ＭＳ Ｐゴシック", sans-serif;
 }
 
-body.modal-open {
+.modal-open,
+.drawer-menu-open {
   overflow: hidden;
 }
 
@@ -309,8 +310,9 @@ a {
   visibility: hidden;
 }
 
-body.modal-open .modal,
-body.modal-open .overlay {
+.modal-open .modal,
+.modal-open .overlay,
+.drawer-menu-open .drawer-overlay {
   opacity: 1;
   visibility: visible;
 }
@@ -512,7 +514,8 @@ button:disabled {
   cursor: pointer;
 }
 
-.overlay {
+.overlay,
+.drawer-overlay {
   position: fixed;
   left: 0;
   top: 0;
@@ -545,7 +548,7 @@ button:disabled {
 }
 
 .rules-modal__content {
-  height: 90%;
+  height: 80%;
   overflow: auto;
   padding: 20px;
 }
@@ -579,9 +582,13 @@ button:disabled {
   background: linear-gradient(to top, #fdfbfb 0%, #ebedee 100%);
 }
 
-body.modal-open .rules-modal {
+.modal-open .rules-modal {
   opacity: 1;
   visibility: visible;
+}
+
+.modal-open header {
+  z-index: 0;
 }
 
 .invalid-message {
@@ -594,6 +601,11 @@ body.modal-open .rules-modal {
 .register-password,
 .reseting-page {
   padding: 100px 0;
+}
+
+.login-page,
+.register,.forgot-page,.register-password,.p-password-done ,.register-done{
+  margin-top: 50px;
 }
 
 .login-form,
@@ -1006,6 +1018,132 @@ a.tab-menu__item {
   margin-top: 10px;
 }
 
+.hamburger-button {
+  display: block;
+  background: transparent;
+  border: none;
+  width: 50px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.hamburger-button__line {
+  display: block;
+  margin-top: 5px;
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 5px;
+  position: relative;
+}
+
+.hamburger-button__line::before,
+.hamburger-button__line::after {
+  position: absolute;
+  border-radius: 5px;
+  content: "";
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  left: 0;
+  transition: 0.3s;
+}
+
+.hamburger-button__line::before {
+  top: -10px;
+}
+
+.hamburger-button__line::after {
+  top: 10px;
+}
+
+.drawer-menu {
+  width: 50%;
+  box-sizing: border-box;
+  max-width: 500px;
+  height: calc(100vh - 50px);
+  background-color: #fff;
+  position: fixed;
+  z-index: 20;
+  top: 50px;
+  padding: 60px 20px 20px 60px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  left: -100%;
+  overflow-y: auto;
+  transition: ease-out 0.3s;
+}
+
+.drawer-menu-open .drawer-menu {
+  left: 0;
+  opacity: 1;
+  transition: ease-out 0.3s;
+}
+
+.drawer-menu-open .hamburger-button__line {
+  background-color: transparent;
+  transition: 0.3s;
+}
+
+.drawer-menu-open .hamburger-button__line::after,
+.drawer-menu-open .hamburger-button__line::before {
+  top: 0;
+  transition: 0.3s;
+}
+
+.drawer-menu-open .hamburger-button__line::before {
+  transform: rotate(28deg);
+}
+
+.drawer-menu-open .hamburger-button__line::after {
+  transform: rotate(-28deg);
+}
+
+.drawer-menu__nav-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.drawer-menu__nav-item + .drawer-menu__nav-item {
+  margin-top: 20px;
+}
+
+.drawer-menu__nav-item a {
+  display: block;
+}
+
+.drawer-menu__en {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.drawer-menu__en,
+.drawer-menu__jp {
+  display: block;
+  color: #413c54;
+  transition: 0.3s;
+}
+
+.drawer-menu__nav-item a:hover .drawer-menu__en,
+.drawer-menu__nav-item a:hover .drawer-menu__jp {
+  letter-spacing: 0.1em;
+}
+
+.drawer-menu__sub-list {
+  border-top: 1px solid #000;
+  margin-top: 30px;
+}
+
+.drawer-menu__sub-list li {
+  margin-top: 20px;
+}
+
+.drawer-menu__sub-list li a {
+  padding: 10px 0;
+  font-size: 20px;
+}
+
 @media screen and (max-width: 768px) {
   .news__title {
     font-size: 30px;
@@ -1083,7 +1221,24 @@ a.tab-menu__item {
     margin-top: 0;
   }
 
+  .login-form,
+  .register-form,
+  .forgot-page__wrapper,
+  .register-password__wrapper {
+    width: auto;
+  }
+
   .reseting-page {
     padding: 50px 0;
+  }
+
+  .drawer-menu {
+    width: 100%;
+    max-width: 100%;
+    padding: 30px 20px;
+  }
+
+  .drawer-menu__en {
+    font-size: 25px;
   }
 }

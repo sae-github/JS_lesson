@@ -7,11 +7,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../css/reset.css" />
   <link rel="stylesheet" href="../css/style.css" />
+  <script src="../js/drawer-menu.js" defer></script>
   <script src="../js/member.js" type="module" defer></script>
   <title>Document</title>
 </head>
 
 <body>
+  <header class="header">
+    <div class="header__inner">
+      <button type="button" class="hamburger-button" id="js-drawer-open-button" aria-expanded="false">
+        <span class="hamburger-button__line"></span>
+      </button>
+      <nav class="drawer-menu" id="js-drawer-menu" aria-hidden="true">
+        <ul class="drawer-menu__nav-list">
+          <li class="drawer-menu__nav-item">
+            <a href="../login.html">
+              <span class="drawer-menu__en"><img src="../img/login-icon.svg" alt=""
+                  class="drawer-menu__nav-icon">login</span>
+              <span class="drawer-menu__jp">ログイン</span>
+            </a>
+          </li>
+          <li class="drawer-menu__nav-item">
+            <a href="./member.html">
+              <span class="drawer-menu__en">
+                <img src="../img/register-icon.svg" alt="" class="drawer-menu__nav-icon">sign
+                up</span>
+              <span class="drawer-menu__jp">会員登録</span>
+            </a>
+          </li>
+        </ul>
+        <ul class="drawer-menu__sub-list">
+          <li><a href="">dummy</a></li>
+          <li><a href="">dummy</a></li>
+          <li><a href="">dummy</a></li>
+          <li><a href="">dummy</a></li>
+          <li><a href="">dummy</a></li>
+          <li><a href="">dummy</a></li>
+          <li><a href="">dummy</a></li>
+          <li><a href="">dummy</a></li>
+          <li><a href="">dummy</a></li>
+          <li><a href="">dummy</a></li>
+          <li><a href="">dummy</a></li>
+          <li><a href="">dummy</a></li>
+          <li><a href="">dummy</a></li>
+          <li><a href="">dummy</a></li>
+          <li><a href="">aaaaaaaa</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
   <main>
     <div class="register">
       <div class="inner">
@@ -66,8 +110,8 @@
         </div>
       </div>
     </div>
-
     <div class="overlay" id="js-overlay"></div>
+    <div class="drawer-overlay" id="js-drawer-overlay"></div>
     <div class="rules-modal" id="js-modal">
       <div class="rules-modal__content" id="js-modal-content">
         <div>
