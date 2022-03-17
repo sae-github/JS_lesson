@@ -604,7 +604,11 @@ button:disabled {
 }
 
 .login-page,
-.register,.forgot-page,.register-password,.p-password-done ,.register-done{
+.register,
+.forgot-page,
+.register-password,
+.p-password-done,
+.register-done {
   margin-top: 50px;
 }
 
@@ -1069,15 +1073,25 @@ a.tab-menu__item {
   padding: 60px 20px 20px 60px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   opacity: 0;
-  left: -100%;
   overflow-y: auto;
-  transition: ease-out 0.3s;
 }
 
-.drawer-menu-open .drawer-menu {
-  left: 0;
+.drawer-menu.drawer--right {
+  right: -100%;
+}
+
+.drawer-menu.drawer--left {
+  left: -100%;
+}
+
+.drawer-menu-open .drawer-menu.drawer--right {
   opacity: 1;
-  transition: ease-out 0.3s;
+  right: 0;
+}
+
+.drawer-menu-open .drawer-menu.drawer--left {
+  opacity: 1;
+  left: 0;
 }
 
 .drawer-menu-open .hamburger-button__line {
