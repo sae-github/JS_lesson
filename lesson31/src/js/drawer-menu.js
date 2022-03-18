@@ -33,10 +33,9 @@ const switchDrawerDirect = (option) => {
 }
 
 const settingDrawerMenu = (options) => {
+  const defaultOption = { direct: "left", overLay: true, duration: 0.3 };
   const drawerOptions = {
-    direct: "left",
-    overLay: true,
-    duration: 0.3,
+    ...defaultOption,
     ...options
   }
   drawerOptions.overLay && renderOverLay();
