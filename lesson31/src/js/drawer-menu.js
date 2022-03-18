@@ -22,11 +22,6 @@ const renderOverLay = () => {
 
 const switchDrawerDirect = (option) => {
   switch (option) {
-    case "left":
-      {
-        drawerMenu.classList.add("drawer--left");
-        break;
-      }
     case "right":
       {
         drawerMenu.classList.add("drawer--right");
