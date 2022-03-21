@@ -1,4 +1,5 @@
 const archiveWrapper = document.getElementById("js-archive-wrapper");
+let defaultArticleList;
 
 const createElementWithClassName = (type, name) => {
   const element = document.createElement(type);
@@ -74,11 +75,11 @@ const createSelectOptions = (data) => {
 
 const renderSelectedCategoryList = (target, data) => {
   const archiveList = document.getElementById("js-archive-list");
-  archiveList.textContent = "";
   if (target.value === "default") {
-    data.forEach((d) => archiveList.appendChild(createArticleItem(d)));
+    archiveList.replaceWith(defaultArticleList.cloneNode(true));
     return;
   }
+  archiveList.textContent = "";
   const selectedCategoryData = data.find(({ category }) => category === target.value);
   archiveList.appendChild(createArticleItem(selectedCategoryData));
 }
@@ -131,6 +132,7 @@ const init = async () => {
   if (responseData) {
     renderCategorySelect(responseData);
     renderArchiveList(responseData);
+    defaultArticleList = document.getElementById("js-archive-list").cloneNode(true);
   }
 }
 
