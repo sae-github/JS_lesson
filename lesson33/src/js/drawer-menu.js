@@ -43,5 +43,5 @@ const settingDrawerMenu = (options = {}) => {
   drawerMenu.style.transitionDuration = `${drawerOptions.duration}s`;
 }
 
-settingDrawerMenu({ direct: "right" });
+settingDrawerMenu();
 toggleButtonInDrawerMenu.addEventListener("click", toggleDrawerMenu);
