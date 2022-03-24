@@ -1,6 +1,7 @@
 const body = document.body;
 const drawerMenu = document.getElementById("js-drawer-menu");
 const toggleButtonInDrawerMenu = document.getElementById("js-drawer-open-button");
+const drawerMenuNavigation = [...document.querySelectorAll(".drawer-menu__nav-link")];
 
 const toggleDrawerMenu = () => {
   drawerMenu.toggleAttribute("aria-hidden");
@@ -45,3 +46,38 @@ const settingDrawerMenu = (options = {}) => {
 
 settingDrawerMenu();
 toggleButtonInDrawerMenu.addEventListener("click", toggleDrawerMenu);
+
+const fadeInAnimation = (element, duration) => {
+  element.animate([{ opacity: 0 }, { opacity: 1 }], duration);
+};
+
+fadeInAnimation(body, 300);
+body.classList.remove("fade-in");
+
+const transformLoadingAnimation = (element, duration) => {
+  return element.animate(
+    [
+      { transform: "translate(0,-50%)" },
+      { transform: "translate(-100%,-50%)" }
+    ],
+    duration
+  );
+};
+
+const transitionPageAnimation = (href) => {
+  body.classList.add("fade-in", "transition-animation");
+  const loading = document.getElementById("js-transition-loading");
+  const loadingAnimation = transformLoadingAnimation(loading, 500);
+  loadingAnimation.addEventListener(
+    "finish",
+    () => (window.location.href = href)
+  );
+};
+
+drawerMenuNavigation.forEach((nav) => {
+  nav.addEventListener("click", (event) => {
+    event.preventDefault();
+    toggleDrawerMenu();
+    transitionPageAnimation(event.currentTarget.href);
+  });
+});

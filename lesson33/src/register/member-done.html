@@ -12,7 +12,7 @@
   <script src="../js/member-done.js" defer></script>
 </head>
 
-<body>
+<body class="fade-in">
   <header class="header">
     <div class="header__inner">
       <button type="button" class="hamburger-button" id="js-drawer-open-button" aria-expanded="false">
@@ -21,14 +21,14 @@
       <nav class="drawer-menu" id="js-drawer-menu" aria-hidden="true">
         <ul class="drawer-menu__nav-list">
           <li class="drawer-menu__nav-item">
-            <a href="../login.html">
+            <a href="../login.html" class="drawer-menu__nav-link">
               <span class="drawer-menu__en"><img src="../img/login-icon.svg" alt=""
                   class="drawer-menu__nav-icon">login</span>
               <span class="drawer-menu__jp">ログイン</span>
             </a>
           </li>
           <li class="drawer-menu__nav-item">
-            <a href="./member.html">
+            <a href="./member.html" class="drawer-menu__nav-link">
               <span class="drawer-menu__en">
                 <img src="../img/register-icon.svg" alt="" class="drawer-menu__nav-icon">sign
                 up</span>
@@ -39,6 +39,11 @@
       </nav>
     </div>
   </header>
+  
+  <div class="transition-loading" id="js-transition-loading">
+    <img src="../img/transition-loading.png" alt="" />
+  </div>
+
   <main>
     <div class="register-done">
       <div class="inner">
