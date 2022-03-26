@@ -39,7 +39,7 @@ const getJsonOrError = async (url) => {
 const getSlideImgData = async () => {
   return new Promise((resolve) => {
     setTimeout(
-      () => resolve(getJsonOrError("https://myjson.dit.upm.es/api/bins/h8k1")),
+      () => resolve(getJsonOrError("https://mocki.io/v1/58e0327a-ad48-4189-b16a-b76db1f3855a")),
       3000
     );
   });
