@@ -1,7 +1,7 @@
 const body = document.body;
 const drawerMenu = document.getElementById("js-drawer-menu");
 const toggleButtonInDrawerMenu = document.getElementById("js-drawer-open-button");
-const drawerMenuNavigation = [...document.querySelectorAll(".drawer-menu__nav-link")];
+const drawerMenuNavigation = [...document.querySelectorAll(".js-drawer-menu-nav-link")];
 
 const toggleDrawerMenu = () => {
   drawerMenu.toggleAttribute("aria-hidden");
