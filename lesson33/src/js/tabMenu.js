@@ -2,21 +2,28 @@ import { format, differenceInCalendarDays } from "date-fns";
 const tabMenu = document.getElementById("js-tab-menu");
 
 const API = {
-  news: "https://myjson.dit.upm.es/api/bins/few5",
-  book: "https://myjson.dit.upm.es/api/bins/49np",
-  travel: "https://myjson.dit.upm.es/api/bins/d2v5",
-  economy: "https://myjson.dit.upm.es/api/bins/hsm9"
+  news: "https://mocki.io/v1/bf8abfdc-ddea-439c-aaab-457498825424",
+  book: "https://mocki.io/v1/fd705623-201b-41a2-a791-109eda22744f",
+  travel: "https://mocki.io/v1/fdb362ca-3e0d-4e20-9b27-273488ccfcec",
+  economy: "https://mocki.io/v1/17e15f41-8c15-411f-8b3a-061585d5ca3b"
 };
 
 const articleAPI = {
-  "8b5ae244-cddb-4b94-a5cd-b1ca4201c945": "https://myjson.dit.upm.es/api/bins/9mk5",
-  "8b5ae244-cddb-4b94-a5cd-b1ca4201c946": "https://myjson.dit.upm.es/api/bins/ghh1",
-  "7cb39430-d000-4b2a-8bbd-29a6ff6c7694": "https://myjson.dit.upm.es/api/bins/cml1",
-  "7cb39430-d000-4b2a-8bbd-29a6ff6c7697": "https://myjson.dit.upm.es/api/bins/8ktt",
-  "4c42eb6a-dc41-4138-ac0a-49062e4a55e3": "https://myjson.dit.upm.es/api/bins/dakx",
-  "9d50f525-b5a3-469d-ad28-0bbaa3f38fcc": "https://myjson.dit.upm.es/api/bins/bkup",
-  "9d50f525-b5a3-469d-ad28-0bbaa3f38fce": "https://myjson.dit.upm.es/api/bins/9nep"
-}
+  "8b5ae244-cddb-4b94-a5cd-b1ca4201c945":
+    "https://mocki.io/v1/66b37941-000c-4fd0-bdb5-81173714cade",
+  "8b5ae244-cddb-4b94-a5cd-b1ca4201c946":
+    "https://mocki.io/v1/e22be28d-9112-41eb-8338-3259d8aae196",
+  "7cb39430-d000-4b2a-8bbd-29a6ff6c7694":
+    "https://mocki.io/v1/e00c4e51-674f-449e-b158-dde9280a3d29",
+  "7cb39430-d000-4b2a-8bbd-29a6ff6c7697":
+    "https://mocki.io/v1/8a05da70-1476-4441-ac9b-4f39a26525ae",
+  "4c42eb6a-dc41-4138-ac0a-49062e4a55e3":
+    "https://mocki.io/v1/04639593-ca4e-414a-ac5a-4a6363e5f74e",
+  "9d50f525-b5a3-469d-ad28-0bbaa3f38fcc":
+    "https://mocki.io/v1/6854f076-a6c3-482e-a515-e0351e593dd0",
+  "9d50f525-b5a3-469d-ad28-0bbaa3f38fce":
+    "https://mocki.io/v1/d8e8f5ae-fbab-4288-ad90-27da64237e59"
+};
 
 const createElementWithClassName = (type, className) => {
   const element = document.createElement(type);
