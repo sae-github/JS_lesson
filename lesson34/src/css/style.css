@@ -73,7 +73,7 @@ a {
   width: 200px;
   max-width: 100%;
   position: absolute;
-  right: 0;
+  right: 20px;
   padding: 10px;
   bottom: -128px;
   z-index: 50;
@@ -1335,6 +1335,86 @@ a.tab-menu__item {
   opacity: 0.7;
 }
 
+.article-wrapper {
+  padding: 100px 0;
+  background-color: #fff;
+  border-radius: 20px;
+  width: 70%;
+  max-width: 1000px;
+  margin: 100px auto 0;
+  padding: 30px 20px;
+  position: relative;
+}
+
+.article__title {
+  font-size: 28px;
+  padding-right: 75px;
+}
+
+.article__meta {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.article__date {
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+.article__category {
+  background-color: bisque;
+  padding: 0 10px;
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+.article__favorite-icon {
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 0;
+  padding: 20px;
+  background-color: #413c54;
+  border: none;
+}
+
+.article__favorite-icon:disabled {
+  cursor: auto;
+  background-color: #413c54;
+}
+
+.article__favorite-icon img {
+  width: 35px;
+  height: 35px;
+}
+
+.article__thumbnail {
+  max-width: 600px;
+  width: 60%;
+  margin: 20px auto 0;
+}
+
+.article__content {
+  margin-top: 10px;
+}
+
+.article-error-message {
+  text-align: center;
+  padding: 30px 0;
+}
+
+.loading-wrapper {
+  text-align: center;
+}
+
+.loading-wrapper img{
+  width: 30%;
+  max-width: 150px;
+  margin: 0 auto;
+}
+
+
 @media screen and (max-width: 768px) {
   .news__title {
     font-size: 30px;
@@ -1438,7 +1518,8 @@ a.tab-menu__item {
   .drawer-menu__en {
     font-size: 25px;
   }
-  .archive__box {
+  .archive__box,
+  .article-wrapper {
     width: auto;
   }
 
@@ -1448,5 +1529,33 @@ a.tab-menu__item {
 
   .archive__item-title {
     font-size: 16px;
+  }
+
+  .article-wrapper {
+    margin: 100px 10px 0;
+  }
+
+  .article__date {
+    margin-right: 10px;
+  }
+
+  .article__date,
+  .article__category {
+    font-size: 14px;
+  }
+
+  .article__favorite-icon {
+    padding: 10px 20px;
+    right: 0;
+    border-radius: 0px 10px 0px 10px;
+  }
+
+  .article__favorite-icon img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .article__title {
+    padding-right: 40px;
   }
 }
