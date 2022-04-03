@@ -149,7 +149,7 @@ const createArticleElements = ({ article }) => {
     const li = document.createElement("li");
     li.id = article[i].id;
     const anchor = document.createElement("a");
-    anchor.href = "#";
+    anchor.href = `./article.html?id=${article[i].id}`;
     anchor.insertAdjacentHTML("beforeend", article[i].title);
     articleFrag.appendChild(li).appendChild(anchor).after(metaWrapper);
   }
