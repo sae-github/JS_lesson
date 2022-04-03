@@ -73,8 +73,8 @@ const setFavoriteArticleDataInLocalStorage = () => {
       }
     }
   ]
-  const margeData = { ...favoriteArticlesData, [loginUserToken]: registeredFavoriteArticleData };
-  localStorage.setItem("favoriteArticles", JSON.stringify(margeData));
+  const mergedData = { ...favoriteArticlesData, [loginUserToken]: registeredFavoriteArticleData };
+  localStorage.setItem("favoriteArticles", JSON.stringify(mergedData));
 }
 
 const renderArticle = (data) => {
