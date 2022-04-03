@@ -51,10 +51,8 @@ const getArticleData = async (url) => {
   }
 }
 
-const registerFavoriteButton = () => {
+const changeFavoriteButtonToDisabled = () => {
   const favoriteButton = document.getElementById("js-favorite-button");
-  favoriteButton.classList.add("is-favorite");
-  favoriteButton.dataset.favoriteAction = "registered";
   favoriteButton.firstChild.src = "./img/star-icon--disabled.svg";
   favoriteButton.disabled = true;
 }
@@ -94,7 +92,7 @@ const addEventListenerForFavoriteButton = () => {
   const favoriteButton = document.getElementById("js-favorite-button");
   favoriteButton.addEventListener("click", (event) => {
     event.preventDefault();
-    registerFavoriteButton();
+    changeFavoriteButtonToDisabled();
     setFavoriteArticleDataInLocalStorage();
   });
 }
@@ -103,7 +101,6 @@ const renderFavoriteButton = () => {
   const favoriteButton = createElementWithClassName("button", "article__favorite-icon");
   const img = document.createElement("img");
   img.src = "./img/star-icon.svg";
-  favoriteButton.dataset.favoriteAction = "unregistered";
   favoriteButton.id = "js-favorite-button";
   articleWrapper.appendChild(favoriteButton).appendChild(img);
 }
@@ -137,8 +134,8 @@ const isRegisteredFavoriteArticle = () => {
   const loginUserToken = localStorage.getItem("token");
   const userFavoriteArticlesData = JSON.parse(localStorage.getItem("favoriteArticles"))?.[loginUserToken];
   return userFavoriteArticlesData && userFavoriteArticlesData.some((data) => data[currentArticleData.id])
-
 }
+
 const init = async () => {
   const api = "https://mocki.io/v1/caa7ab3a-f228-49f2-b522-4545cde742bd";
   const responseData = await getArticleData(api);
@@ -152,7 +149,7 @@ const init = async () => {
     renderArticle(currentArticleData);
     renderFavoriteButton();
     addEventListenerForFavoriteButton();
-    isRegisteredFavoriteArticle() && registerFavoriteButton();
+    isRegisteredFavoriteArticle() && changeFavoriteButtonToDisabled();
   }
 }
 
