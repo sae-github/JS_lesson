@@ -137,7 +137,7 @@ const isRegisteredFavoriteArticle = () => {
 }
 
 const init = async () => {
-  const api = "https://mocki.io/v1/caa7ab3a-f228-49f2-b522-4545cde742bd";
+  const api = "https://mocki.io/v1/9c2bbf94-fbb8-40f1-90c7-cc1870ac6cfa";
   const responseData = await getArticleData(api);
   const data = responseData?.data;
   if (data) {
