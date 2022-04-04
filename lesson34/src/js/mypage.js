@@ -104,11 +104,15 @@ const changeFavoriteArticlesInLocalStorage = (target) => {
 
   if (filteredFavoriteArticles.length === 0) {
     delete favoriteArticles[userToken];
-    isEmptyFavoriteArticles(favoriteArticles) && localStorage.removeItem("favoriteArticles");
+  } else {
+    favoriteArticles[userToken] = filteredFavoriteArticles;
+  }
+
+  if (isEmptyFavoriteArticles(favoriteArticles)) {
+    localStorage.removeItem("favoriteArticles");
     return;
   }
 
-  favoriteArticles[userToken] = filteredFavoriteArticles;
   localStorage.setItem("favoriteArticles", JSON.stringify(favoriteArticles));
 };
 
