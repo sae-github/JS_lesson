@@ -75,7 +75,7 @@ a {
   position: absolute;
   right: 20px;
   padding: 10px;
-  bottom: -128px;
+  bottom: -165px;
   z-index: 50;
   box-shadow: 0 8px 24px rgba(140, 149, 159, 0.2);
   border-radius: 5px;
@@ -1408,12 +1408,11 @@ a.tab-menu__item {
   text-align: center;
 }
 
-.loading-wrapper img{
+.loading-wrapper img {
   width: 30%;
   max-width: 150px;
   margin: 0 auto;
 }
-
 
 @media screen and (max-width: 768px) {
   .news__title {
