@@ -136,7 +136,6 @@ const favoriteArticleListHandler = async () => {
   } catch (error) {
     console.error(error);
     favoriteWrapper.appendChild(createErrorMessage(error));
-    return;
   } finally {
     removeLoading();
   }
