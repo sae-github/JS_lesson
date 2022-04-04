@@ -123,6 +123,8 @@ const addEventListenerOfFavoriteReleaseButton = () => {
       event.preventDefault();
       changeFavoriteArticlesInLocalStorage(event.target);
       event.target.closest("li").remove();
+      const favoriteArticles = [...document.querySelectorAll(".mypage__favorite-item")];
+      favoriteArticles.length === 0 && renderMessageOfNoFavoriteArticle();
     });
   });
 };
