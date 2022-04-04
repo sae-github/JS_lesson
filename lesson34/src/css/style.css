@@ -75,7 +75,7 @@ a {
   position: absolute;
   right: 20px;
   padding: 10px;
-  bottom: -128px;
+  bottom: -165px;
   z-index: 50;
   box-shadow: 0 8px 24px rgba(140, 149, 159, 0.2);
   border-radius: 5px;
@@ -610,7 +610,8 @@ button:disabled {
 
 .login-page,
 .register-password,
-.reseting-page {
+.reseting-page,
+.mypage {
   padding: 100px 0;
 }
 
@@ -960,15 +961,13 @@ a.tab-menu__item {
   width: 70%;
 }
 
-.reseting-page {
-  padding: 100px 0;
-}
-
-.reseting-page__inner {
+.reseting-page__inner,
+.mypage__inner {
   display: flex;
 }
 
-.reseting-form {
+.reseting-form,
+.mypage__box {
   background-color: #fff;
   border-radius: 0 20px 20px 0;
   width: 75%;
@@ -976,7 +975,8 @@ a.tab-menu__item {
   position: relative;
 }
 
-.reseting-form__inner {
+.reseting-form__inner,
+.mypage__box-inner {
   padding: 30px;
 }
 
@@ -985,7 +985,8 @@ a.tab-menu__item {
   margin-top: 30px;
 }
 
-.reseting-form__title {
+.reseting-form__title,
+.mypage__title {
   font-size: 18px;
   border-bottom: 1px solid #413c54;
   font-weight: bold;
@@ -1030,7 +1031,7 @@ a.tab-menu__item {
 }
 
 .side-nav__list {
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .hamburger-button {
@@ -1341,14 +1342,14 @@ a.tab-menu__item {
   border-radius: 20px;
   width: 70%;
   max-width: 1000px;
-  margin: 100px auto 0;
+  margin: 100px auto 30px;
   padding: 30px 20px;
   position: relative;
 }
 
 .article__title {
   font-size: 28px;
-  padding-right: 75px;
+  padding-right: 80px;
 }
 
 .article__meta {
@@ -1382,6 +1383,7 @@ a.tab-menu__item {
 .article__favorite-icon:disabled {
   cursor: auto;
   background-color: #413c54;
+  border: none;
 }
 
 .article__favorite-icon img {
@@ -1408,12 +1410,80 @@ a.tab-menu__item {
   text-align: center;
 }
 
-.loading-wrapper img{
+.loading-wrapper img {
   width: 30%;
   max-width: 150px;
   margin: 0 auto;
 }
 
+.mypage__favorite-list {
+  margin-top: 20px;
+}
+
+.mypage__favorite-item + .mypage__favorite-item {
+  margin-top: 30px;
+}
+
+.mypage__favorite-item:hover .mypage__favorite-img-wrapper img {
+  transform: scale(1.1);
+  transition-duration: 0.5s;
+}
+
+.mypage__favorite-img-wrapper {
+  width: 200px;
+  height: 160px;
+  flex-shrink: 0;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.mypage__favorite-img-wrapper img {
+  transition: 1s all;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mypage__favorite-item a {
+  display: flex;
+}
+
+.mypage__favorite-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 160px;
+}
+
+.mypage__favorite-date {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.mypage__favorite-button {
+  max-width: 100%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-top: auto;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  border: #393e46 1px solid;
+}
+
+.mypage__favorite-button:hover {
+  opacity: 0.7;
+}
+
+.mypage__favorite-button img {
+  width: 15px;
+  height: 15px;
+}
+
+.no-favorite {
+  margin-top: 20px;
+}
 
 @media screen and (max-width: 768px) {
   .news__title {
@@ -1432,6 +1502,7 @@ a.tab-menu__item {
   .news-tab__content > ul {
     width: 100%;
   }
+
   .news-tab__content > ul > li {
     font-size: 20px;
   }
@@ -1477,7 +1548,8 @@ a.tab-menu__item {
     margin-right: 20px;
   }
 
-  .reseting-page__inner {
+  .reseting-page__inner,
+  .mypage__inner {
     flex-direction: column;
   }
 
@@ -1486,16 +1558,18 @@ a.tab-menu__item {
     border-radius: 20px 20px 0 0;
   }
 
-  .reseting-form {
+  .reseting-form,
+  .mypage__box {
     width: 100%;
     border-radius: 0 0 20px 20px;
   }
+
   .side-nav__icon-wrapper {
     margin: 0;
   }
 
   .side-nav__list {
-    margin-top: 0;
+    margin-top: 20px;
   }
 
   .login-form,
@@ -1503,10 +1577,6 @@ a.tab-menu__item {
   .forgot-page__wrapper,
   .register-password__wrapper {
     width: auto;
-  }
-
-  .reseting-page {
-    padding: 50px 0;
   }
 
   .drawer-menu {
@@ -1518,6 +1588,7 @@ a.tab-menu__item {
   .drawer-menu__en {
     font-size: 25px;
   }
+
   .archive__box,
   .article-wrapper {
     width: auto;
@@ -1557,5 +1628,37 @@ a.tab-menu__item {
 
   .article__title {
     padding-right: 40px;
+  }
+
+  .mypage__favorite-img-wrapper {
+    width: 160px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .mypage__favorite-item a {
+    flex-direction: column;
+  }
+
+  .mypage__favorite-img-wrapper {
+    width: 100%;
+    margin-right: 0;
+    height: 150px;
+  }
+
+  .mypage__favorite-title {
+    margin-top: 5px;
+  }
+
+  .mypage__favorite-content {
+    height: auto;
+  }
+
+  .mypage__favorite-button {
+    margin-top: 10px;
+  }
+
+  .side-nav__inner {
+    padding: 10px;
   }
 }
