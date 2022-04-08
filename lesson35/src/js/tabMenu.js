@@ -1,4 +1,4 @@
-import { format, differenceInCalendarDays } from "date-fns";
+import { differenceInDays } from "date-fns";
 const tabMenu = document.getElementById("js-tab-menu");
 
 const API = {
@@ -47,11 +47,8 @@ const createErrorMessage = (error) => {
 };
 
 const fetchErrorHandling = async (response) => {
-  if (response.ok) {
-    return await response.json();
-  } else {
-    throw new Error("サーバーエラーが発生しました");
-  }
+  if (!response.ok) throw new Error("サーバーエラーが発生しました");
+  return await response.json();
 };
 
 const getJsonOrError = async (url) => {
@@ -100,7 +97,7 @@ const configUIfromFetchData = async () => {
   if (data) {
     tabMenu.after(createTabContent());
     tabMenu.appendChild(createTabMenu(data));
-    const hasSelectData = data.find((value) => value.select === true);
+    const hasSelectData = data.find((value) => value.select);
     const tab = document.getElementById(hasSelectData.category);
     tab.classList.add("tab-select");
     document.getElementById("js-tab-list").append(createArticleElements(hasSelectData));
@@ -110,14 +107,8 @@ const configUIfromFetchData = async () => {
 
 const isSpecifiedPeriod = (date) => {
   const newArrivalDays = 3;
-  const today = format(new Date(), "yyyy,MM,dd");
-  const articleDate = format(new Date(date), "yyyy,MM,dd");
-  const periodOfDays = differenceInCalendarDays(
-    new Date(today),
-    new Date(articleDate)
-  );
-  const result = periodOfDays <= newArrivalDays;
-  return result;
+  const differenceDays = differenceInDays(new Date(), new Date(date));
+  return differenceDays <= newArrivalDays;
 }
 
 const createNewLabel = () => {
@@ -145,12 +136,11 @@ const createArticleElements = ({ article }) => {
     const commentLength = article[i].comments.length;
     isSpecifiedPeriod(article[i].date) && metaWrapper.appendChild(createNewLabel());
     hasComment(commentLength) && metaWrapper.appendChild(createCommentLength(commentLength));
-
     const li = document.createElement("li");
     li.id = article[i].id;
     const anchor = document.createElement("a");
     anchor.href = `./article.html?id=${article[i].id}`;
-    anchor.insertAdjacentHTML("beforeend", article[i].title);
+    anchor.textContent = article[i].title;
     articleFrag.appendChild(li).appendChild(anchor).after(metaWrapper);
   }
   return articleFrag;
@@ -168,13 +158,12 @@ const createClickedTabContent = async (target) => {
   const json = await tryGetData(tabContent, API[targetId]);
   document.getElementById("js-tab-list").appendChild(createArticleElements(json));
   document.getElementById("js-tab-img").appendChild(createCategoryImg(json));
-  target.style.pointerEvents = "auto";
 }
 
-const tryGetData = async (parent, resource) => {
+const tryGetData = async (parent, api) => {
   parent.appendChild(createLoading());
   try {
-    return await getJsonOrError(resource);
+    return await getJsonOrError(api);
   } catch (e) {
     parent.appendChild(createErrorMessage(e));
   } finally {
@@ -225,14 +214,13 @@ const setClickEventForModalClose = (target) => {
 
 const openModalAndOverLay = () => {
   document.querySelector("body").classList.add("modal-open");
-
 }
 
 const setClickEventInCommentIcon = (target) => {
-  target.addEventListener("click", async (e) => {
+  target.addEventListener("click", async (event) => {
     openModalAndOverLay();
     const toAppendElement = document.getElementById("js-modal-inner");
-    const targetParentId = e.currentTarget.closest("li").id;
+    const targetParentId = event.currentTarget.closest("li").id;
     const commentData = await getComment(targetParentId, toAppendElement);
     toAppendElement.appendChild(createModalContent(commentData));
   });
@@ -269,23 +257,19 @@ const createModalContent = (commentData) => {
   return commentContentFrag;
 }
 
+tabMenu.addEventListener("click", (event) => {
+  const selectedTab = document.querySelector(".tab-select");
+  selectedTab.classList.remove("tab-select");
+  event.target.classList.add("tab-select");
+
+  const imgWrapper = document.getElementById("js-tab-img");
+  const tabContentList = document.getElementById("js-tab-list");
+
+  tabContentList.textContent = "";
+  imgWrapper.textContent = "";
+  createClickedTabContent(event.target);
+});
+
 configUIfromFetchData();
 addModal();
 addOverLay();
-
-tabMenu.addEventListener("click", (e) => {
-  const hasActiveClassElement = document.querySelector(".tab-select");
-  if (hasActiveClassElement && e.currentTarget !== e.target) {
-    hasActiveClassElement.classList.remove("tab-select");
-    e.target.classList.add("tab-select");
-
-    const imgWrapper = document.getElementById("js-tab-img");
-    const tabContentList = document.getElementById("js-tab-list");
-
-    tabContentList.textContent = "";
-    imgWrapper.textContent = "";
-    e.target.style.pointerEvents = "none";
-    createClickedTabContent(e.target);
-  }
-});
-
