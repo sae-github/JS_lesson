@@ -127,6 +127,6 @@ const init = async (inputData) => {
   const token = await getToken(inputData);
   if (token) {
     localStorage.setItem("token", token);
-    window.location.href = "./index.html";
+    window.location.href = "./loginuserpage.html";
   }
 }

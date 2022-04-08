@@ -5,7 +5,8 @@ const API = {
   news: "https://mocki.io/v1/8f25b166-c2e4-460e-b10d-43802067b457",
   book: "https://mocki.io/v1/50075330-2da2-45e0-8c02-9d55fa12e997",
   economy: "https://mocki.io/v1/9a0a7e47-bc46-46d7-80a6-f7daa1580275",
-  travel: "https://mocki.io/v1/7955e7c4-56fd-4ee6-8c8e-bda45aa38783"
+  travel: "https://mocki.io/v1/7955e7c4-56fd-4ee6-8c8e-bda45aa38783",
+  column: "https://mocki.io/v1/71671377-a8e4-4b78-a13e-21ebf3f8477f"
 };
 
 const articleAPI = {
@@ -22,7 +23,13 @@ const articleAPI = {
   "9d50f525-b5a3-469d-ad28-0bbaa3f38fcc":
     "https://mocki.io/v1/f11e19f2-5bd2-478f-9fcc-5a79d4591571",
   "9d50f525-b5a3-469d-ad28-0bbaa3f38fce":
-    "https://mocki.io/v1/dccb7735-bede-4915-96cc-7c02bfe9e454"
+    "https://mocki.io/v1/dccb7735-bede-4915-96cc-7c02bfe9e454",
+  "787adcb5-7515-483d-97c8-0998230fc064":
+    "https://mocki.io/v1/bc53749e-5827-4db1-ae62-280d0572d14c",
+  "787adcb5-7515-483d-97c8-0998230fc065":
+    "https://mocki.io/v1/d4937ffe-3b35-4377-a743-279f0e8623ec",
+  "787adcb5-7515-483d-97c8-0998230fc066":
+    "https://mocki.io/v1/e9a31364-1a37-4b34-af62-b75c4d954139"
 };
 
 const createElementWithClassName = (type, className) => {

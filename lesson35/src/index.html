@@ -5,57 +5,95 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/style.css">
-  <script>
-    if (!localStorage.getItem("token")) window.location.href = "./login.html";
-  </script>
-  <script src="./js/userMenu.js" defer></script>
-  <script src="./js/logout.js" defer></script>
-  <script src="./js/slideshow.js" defer></script>
-  <script type="module" src="./js/tabMenu.js"></script>
-  <title>Document</title>
+  <script src="./js/utils/authorizationcheck.js" type="module"></script>
+  <script src="./js/drawer-menu.js" defer></script>
+  <script src="./js/login.js" defer></script>
 </head>
 
-<body>
-
-  <header class="header">
-    <div class="header__inner">
-      <div class="header__menu">
-        <a href="./index.html" class="header__home-icon-wrapper">
-          <img src="./img/home-icon.svg" alt="">
-        </a>
-        <div class="header__user-menu" id="js-header-user-menu">
-          <div class="header__user-icon-wrapper"><img src="./img/user-icon.png" alt=""></div>
-          <span class="header__arrow-icon"></span>
-          <ul class="drop-down-menu" id="js-drop-down-menu">
-            <li class="drop-down-menu__item"><a href="./mypage.html">マイページ</a></li>
-            <li class="drop-down-menu__item"><a href="./resetingemail.html">メールアドレス変更</a></li>
-            <li class="drop-down-menu__item"><a href="./resetingpassword.html">パスワード変更</a></li>
-            <li class="drop-down-menu__item"><a href="" id="js-logout">ログアウト</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </header>
+<body class="fade-in">
 
   <main>
-    <div class="mv" id="js-mv">
-      <div class="mv__slide slide" id="js-slide">
-        <ul class="slide__list" id="js-slide-list">
-        </ul>
+    <header class="header">
+      <div class="header__inner">
+        <button type="button" class="hamburger-button" id="js-drawer-open-button" aria-expanded="false">
+          <span class="hamburger-button__line"></span>
+        </button>
+        <nav class="drawer-menu" id="js-drawer-menu" aria-hidden="true">
+          <ul class="drawer-menu__nav-list">
+            <li class="drawer-menu__nav-item">
+              <a href="./notloginuserpage.html" class="drawer-menu__nav-link js-drawer-menu-nav-link">
+                <span class="drawer-menu__en">top</span>
+                <span class="drawer-menu__jp">トップ</span>
+              </a>
+            </li>
+            <li class="drawer-menu__nav-item">
+              <a href="./index.html" class="drawer-menu__nav-link js-drawer-menu-nav-link">
+                <span class="drawer-menu__en"><img src="./img/login-icon.svg" alt=""
+                    class="drawer-menu__nav-icon">login</span>
+                <span class="drawer-menu__jp">ログイン</span>
+              </a>
+            </li>
+            <li class="drawer-menu__nav-item">
+              <a href="./register/member.html" class="drawer-menu__nav-link js-drawer-menu-nav-link">
+                <span class="drawer-menu__en"><img src="./img/register-icon.svg" alt=""
+                    class="drawer-menu__nav-icon">sign
+                  up</span>
+                <span class="drawer-menu__jp">会員登録</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
+    </header>
+
+    <div class="transition-loading" id="js-transition-loading">
+      <img src="../img/transition-loading.png" alt="" />
     </div>
-    <section class="news" id="js-news">
-      <div class="news__inner">
-        <h1 class="news__title">Today's News</h1>
-        <p class="news__sub-title"><span>Click on the comment icon to see the comments</span></p>
-        <p class="news__archive-link"><a href="./archive.html">Article All→</a></p>
-        <div class="news-tab">
-          <ul class="news-tab__menu" id="js-tab-menu"></ul>
+
+    <div class="login-page">
+      <div class="inner">
+        <div class="login-form">
+          <ul class="tab-menu">
+            <p class="tab-menu__item --selected">ログイン</p>
+            <a href="./register/member.html" class="tab-menu__item">会員登録</a>
+          </ul>
+          <div class="form-wrapper">
+            <form action="" id="js-login-form">
+              <dl>
+                <div class="form-item">
+                  <dt class="form-title">
+                    <label for="username">ユーザー名、またはメールアドレス</label>
+                  </dt>
+                  <dd class="form-field">
+                    <input type="text" id="username" placeholder="username or Email" required>
+                  </dd>
+                </div>
+                <div class="form-item">
+                  <dt class="form-title">
+                    <label for="password">パスワード</label>
+                  </dt>
+                  <dd class="form-field password-field">
+                    <input type="password" id="password" class="password" placeholder="password" required>
+                    <button class="password-icon is-hide" type="button" id="js-password-icon"></button>
+                  </dd>
+                </div>
+              </dl>
+              <div class="login-form__submit">
+                <button id="js-login-button" class="" type="submit" disabled>
+                  送信
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="login-page__foot">
+            <a href="./forgotpassword.html" class="forgot-link">パースワードをお忘れの方はこちら</a>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   </main>
 </body>
 
