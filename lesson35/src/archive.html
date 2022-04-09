@@ -8,6 +8,9 @@
   <title>Document</title>
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/style.css">
+  <script>
+    if (!localStorage.getItem("token")) window.location.href = "./notloginuserpage.html";
+  </script>
   <script src="./js/userMenu.js" defer></script>
   <script src="./js/logout.js" defer></script>
   <script src="./js/archive.js" defer></script>
