@@ -8,6 +8,7 @@
   <title>Document</title>
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/utils/authorizationcheck.js" type="module"></script>
   <script src="./js/drawer-menu.js" defer></script>
   <script src="./js/login.js" defer></script>
 </head>
@@ -22,6 +23,12 @@
         </button>
         <nav class="drawer-menu" id="js-drawer-menu" aria-hidden="true">
           <ul class="drawer-menu__nav-list">
+            <li class="drawer-menu__nav-item">
+              <a href="../notloginuserpage.html" class="drawer-menu__nav-link js-drawer-menu-nav-link">
+                <span class="drawer-menu__en">top</span>
+                <span class="drawer-menu__jp">トップ</span>
+              </a>
+            </li>
             <li class="drawer-menu__nav-item">
               <a href="./index.html" class="drawer-menu__nav-link js-drawer-menu-nav-link">
                 <span class="drawer-menu__en"><img src="./img/login-icon.svg" alt=""
