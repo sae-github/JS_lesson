@@ -27,6 +27,8 @@ const init = async () => {
     setLoginUserToLocalStorage(loginUser, userToken);
     localStorage.setItem("token", userToken);
     window.location.href = "loginuserpage.html";
+  } else {
+    window.location.href = "notloginuserpage.html";
   }
 }
 
