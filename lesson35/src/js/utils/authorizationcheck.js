@@ -1,6 +1,3 @@
-import { Chance } from "chance";
-const chance = new Chance();
-
 const findAuthorizationUser = async () => {
   try {
     const response = await fetch("https://mocki.io/v1/cec0626b-9b87-4101-9705-de38966b525c");
