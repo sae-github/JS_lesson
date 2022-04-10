@@ -1,10 +1,14 @@
 const findAuthorizationUser = async () => {
   try {
-    const response = await fetch("https://mocki.io/v1/cec0626b-9b87-4101-9705-de38966b525c");
+    const response = await fetch("https://mocki.io/v1/f6c5a4ee-1398-4e1b-9da5-4c4752f9c10b");
     // false用
-    // const response = await fetch("https://mocki.io/v1/d6a65c8c-130f-40d4-a091-ba364970f697");
+    // const response = await fetch("https://mocki.io/v1/b896bb0b-3cdd-4851-acca-470dfe84de00");
+    if (!response.ok) {
+      console.error(`${response.status}:${response.statusText}`);
+      return;
+    }
     const { data } = await response.json();
-    return data.find((d) => d.isAuthorization);
+    return data;
   } catch (err) {
     console.error(err);
   }
@@ -21,10 +25,10 @@ const setLoginUserToLocalStorage = (userData, userToken) => {
 }
 
 const init = async () => {
-  const loginUser = await findAuthorizationUser()
-  if (loginUser) {
-    const userToken = loginUser.id;
-    setLoginUserToLocalStorage(loginUser, userToken);
+  const userData = await findAuthorizationUser();
+  if (userData?.isAuthorization) {
+    const userToken = userData.id;
+    setLoginUserToLocalStorage(userData, userToken);
     localStorage.setItem("token", userToken);
     window.location.href = "loginuserpage.html";
   } else {
