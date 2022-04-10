@@ -9,4 +9,3 @@ const checkUrlParams = () => {
 
 checkUrlParams();
 localStorage.removeItem("forgotPasswordDoneToken");
-setTimeout(() => window.location.href = "../login.html", 3000);

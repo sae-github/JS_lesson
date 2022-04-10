@@ -6,10 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="./css/reset.css" />
-  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/style.css">
   <script src="./js/drawer-menu.js" defer></script>
-  <script src="./js/forgotpassword.js" defer></script>
+  <script src="./js/notloginuserpage.js" type="module"></script>
 </head>
 
 <body class="fade-in">
@@ -21,7 +21,7 @@
       <nav class="drawer-menu" id="js-drawer-menu" aria-hidden="true">
         <ul class="drawer-menu__nav-list">
           <li class="drawer-menu__nav-item">
-            <a href="../notloginuserpage.html" class="drawer-menu__nav-link js-drawer-menu-nav-link">
+            <a href="./notloginuserpage.html" class="drawer-menu__nav-link js-drawer-menu-nav-link">
               <span class="drawer-menu__en">top</span>
               <span class="drawer-menu__jp">トップ</span>
             </a>
@@ -50,28 +50,38 @@
   </div>
 
   <main>
-    <div class="forgot-page">
+    <div class="notloginuserpage" id="js-modal">
       <div class="inner">
-        <div class="forgot-page__wrapper">
-          <p class="forgot-page__title">パスワードをお忘れの方</p>
-          <p class="forgot-page__message">メールアドレスを入力してください。<br>再設定の手続きを行います</p>
-          <div class="form-wrapper">
-            <form id="js-form">
-              <dl>
-                <div class="form-item">
-                  <dt class="form-title"><label for="email">メールアドレス</label></dt>
-                  <dd class="form-field"><input type="email" id="email" placeholder="メールアドレスをご入力ください"></dd>
-                </div>
-                <div class="forgot-page__submit-button">
-                  <button type="submit" id="js-submit-button" disabled>送信</button>
-                </div>
-              </dl>
-            </form>
+        <ul class="notloginuserpage__link-list">
+          <li class="notloginuserpage__link-item"><a href="./register/member.html">会員登録</a></li>
+          <li class="notloginuserpage__link-item"><a href="./index.html">ログイン</a></li>
+        </ul>
+        <div class="notloginuserpage__head">
+          <p class="notloginuserpage__logo"><img src="./img/logo.png" alt=""></p>
+        </div>
+        <section class="news" id="js-news">
+          <div class="news__inner">
+            <div class="news-tab">
+              <ul class="news-tab__menu" id="js-tab-menu"></ul>
+            </div>
           </div>
-          <div class="form-foot">
-            <a href="./index.html" class="login-page-link">ログインページへ戻る</a>
+        </section>
+
+        <div class="notloginuser-modal">
+          <div class="notloginuser-modal__inner">
+            <p class="notloginuser-modal__text">
+              このページはログインユーザー限定です</p>
+            <div class="notloginuser-modal__img-wrapper">
+              <img src="./img/onegai_gomen_man.png" alt="">
+            </div>
+            <div class="notloginuser-modal__link-wrapper">
+              <a href="./index.html">ログイン</a>
+              <a href="./register/member.html">会員登録</a>
+            </div>
+            <button type="button" class="notloginuser-modal__close-button" id="js-modal-close-button">×</button>
           </div>
         </div>
+        <div class="overlay" id="js-overlay"></div>
       </div>
     </div>
   </main>

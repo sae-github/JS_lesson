@@ -5,15 +5,20 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/style.css">
-  <script src="./js/utils/tokencheck.js" defer></script>
+  <script>
+    if (!localStorage.getItem("token")) window.location.href = "./notloginuserpage.html";
+  </script>
   <script src="./js/userMenu.js" defer></script>
   <script src="./js/logout.js" defer></script>
+  <script src="./js/slideshow.js" defer></script>
+  <script type="module" src="./js/tabMenu.js"></script>
+  <title>Document</title>
 </head>
 
 <body>
+
   <header class="header">
     <div class="header__inner">
       <div class="header__menu">
@@ -34,30 +39,26 @@
     </div>
   </header>
 
-  <div class="reseting-page">
-    <div class="inner reseting-page__inner">
-      <div class="side-nav">
-        <div class="side-nav__inner">
-          <div class="side-nav__icon-wrapper">
-            <img src="./img/profile-icon.png" alt="">
-          </div>
-          <ul class="side-nav__list">
-            <li class="side-nav__item"><a href="./mypage.html">マイページ</a></li>
-            <li class="side-nav__item"><a href="./resetingemail.html">メールアドレス変更</a></li>
-            <li class="side-nav__item is-active"><a href="./resetingpassword.html">パスワード変更</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="reseting-form">
-        <div class="reseting-form__inner">
-          <p class="reseting-form__title">パスワードの変更</p>
-          <p class="reseting-form__message">パスワードの再登録が完了しました</p>
-        </div>
+  <main>
+    <div class="mv" id="js-mv">
+      <div class="mv__slide slide" id="js-slide">
+        <ul class="slide__list" id="js-slide-list">
+        </ul>
       </div>
     </div>
-
-
-  </div>
+    <section class="news" id="js-news">
+      <div class="news__inner">
+        <div class="inner">
+          <h1 class="news__title">Today's News</h1>
+          <p class="news__sub-title"><span>Click on the comment icon to see the comments</span></p>
+          <p class="news__archive-link"><a href="./archive.html">Article All→</a></p>
+          <div class="news-tab">
+            <ul class="news-tab__menu" id="js-tab-menu"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </body>
 
 </html>
