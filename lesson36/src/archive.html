@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <script>
+    if (!localStorage.getItem("token")) window.location.href = "./notloginuserpage.html";
+  </script>
+  <script src="./js/userMenu.js" defer></script>
+  <script src="./js/logout.js" defer></script>
+  <script src="./js/archive.js" defer></script>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <div class="header__menu">
+        <a href="./loginuserpage.html" class="header__home-icon-wrapper">
+          <img src="./img/home-icon.svg" alt="">
+        </a>
+        <div class="header__user-menu" id="js-header-user-menu">
+          <div class="header__user-icon-wrapper"><img src="./img/user-icon.png" alt=""></div>
+          <span class="header__arrow-icon"></span>
+          <ul class="drop-down-menu" id="js-drop-down-menu">
+            <li class="drop-down-menu__item"><a href="./mypage.html">マイページ</a></li>
+            <li class="drop-down-menu__item"><a href="./resetingemail.html">メールアドレス変更</a></li>
+            <li class="drop-down-menu__item"><a href="./resetingpassword.html">パスワード変更</a></li>
+            <li class="drop-down-menu__item"><a href="" id="js-logout">ログアウト</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="archive">
+      <div class="inner">
+        <div class="archive__box">
+          <p class="archive__title">Archive</p>
+          <div class="archive__wrapper" id="js-archive-wrapper"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+</body>
+
+</html>
