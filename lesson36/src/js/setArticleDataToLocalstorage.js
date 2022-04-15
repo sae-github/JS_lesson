@@ -1,4 +1,4 @@
-const articleWrapper = document.getElementById("js-article-wrapper");
+const articleWrapper = document.getElementById("js-article-List");
 let currentArticleData;
 
 const createElementWithClassName = (type, className) => {
@@ -7,17 +7,6 @@ const createElementWithClassName = (type, className) => {
   return element;
 };
 
-const createLoading = () => {
-  const loadingWrapper = createElementWithClassName("div", "loading-wrapper");
-  const loading = document.createElement("img");
-  loadingWrapper.id = "js-loading";
-  loading.src = "./img/loading-circle.gif";
-  loadingWrapper.appendChild(loading);
-  return loadingWrapper;
-};
-
-const removeLoading = () => document.getElementById("js-loading").remove();
-
 const createErrorMessage = (error) => {
   const errorMessage = createElementWithClassName("p", "article-error-message");
   errorMessage.textContent = error;
@@ -25,13 +14,13 @@ const createErrorMessage = (error) => {
 };
 
 const fetchErrorHandling = async (response) => {
-  if (response.ok) {
-    return await response.json();
-  } else {
+  if (!response.ok) {
     const responseMessage = `${response.status}:${response.statusText}`;
     articleWrapper.appendChild(createErrorMessage(responseMessage));
     console.error(responseMessage);
+    return;
   }
+  return await response.json();
 };
 
 const getJsonOrError = async (url) => {
@@ -41,13 +30,10 @@ const getJsonOrError = async (url) => {
 };
 
 const getArticleData = async (url) => {
-  articleWrapper.appendChild(createLoading());
   try {
     return await getJsonOrError(url)
   } catch (error) {
     articleWrapper.appendChild(createErrorMessage(`データの読み取りに失敗しました${error}`));
-  } finally {
-    removeLoading();
   }
 }
 
@@ -75,19 +61,6 @@ const setFavoriteArticleDataInLocalStorage = () => {
   localStorage.setItem("favoriteArticles", JSON.stringify(mergedData));
 }
 
-const renderArticle = (data) => {
-  const articleFragment = document.createDocumentFragment();
-  const article = createElementWithClassName("article", "article");
-  const articleTitle = createElementWithClassName("h1", "article__title");
-  const articleContent = createElementWithClassName("div", "article__content");
-  articleTitle.textContent = data.title;
-  articleContent.textContent = data.content;
-  articleFragment.appendChild(articleTitle).after(createArticleMeta(data));
-  data.thumbnail && articleFragment.appendChild(createArticleThumbnail(data));
-  articleFragment.appendChild(articleContent);
-  articleWrapper.appendChild(article).appendChild(articleFragment);
-}
-
 const addEventListenerForFavoriteButton = () => {
   const favoriteButton = document.getElementById("js-favorite-button");
   favoriteButton.addEventListener("click", (event) => {
@@ -103,22 +76,6 @@ const renderFavoriteButton = () => {
   img.src = "./img/star-icon.svg";
   favoriteButton.id = "js-favorite-button";
   articleWrapper.appendChild(favoriteButton).appendChild(img);
-}
-
-const createArticleMeta = ({ date }) => {
-  const articleMetaWrapper = createElementWithClassName("div", "article__meta");
-  const articleDate = createElementWithClassName("p", "article__date");
-  articleDate.textContent = date;
-  articleMetaWrapper.appendChild(articleDate);
-  return articleMetaWrapper;
-}
-
-const createArticleThumbnail = ({ thumbnail }) => {
-  const articleThumbnail = createElementWithClassName("p", "article__thumbnail");
-  const img = document.createElement("img");
-  img.src = thumbnail;
-  articleThumbnail.append(img);
-  return articleThumbnail;
 }
 
 const findArticleData = (data) => {
@@ -146,7 +103,6 @@ const init = async () => {
       articleWrapper.textContent = "指定されたURLは存在しませんでした。";
       return;
     }
-    renderArticle(currentArticleData);
     renderFavoriteButton();
     addEventListenerForFavoriteButton();
     isRegisteredFavoriteArticle() && changeFavoriteButtonToDisabled();

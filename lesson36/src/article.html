@@ -12,7 +12,7 @@
     if (!localStorage.getItem("token")) window.location.href = "./notloginuserpage.html";
   </script>
   <script src="./js/userMenu.js" defer></script>
-  <script src="./js/article.js" defer></script>
+  <script src="./js/setArticleDataToLocalstorage.js" defer></script>
   <script src="./js/logout.js" defer></script>
 </head>
 
@@ -37,7 +37,10 @@
     </div>
   </header>
   <main>
-    <div class="article-wrapper" id="js-article-wrapper"></div>
+    <div class="article-page">
+      <ul class="article-list" id="js-article-List" lang="en">
+      </ul>
+    </div>
   </main>
 </body>
 

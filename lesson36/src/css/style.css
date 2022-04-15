@@ -1338,7 +1338,7 @@ a.tab-menu__item {
   opacity: 0.7;
 }
 
-.article-wrapper {
+.article-list {
   padding: 100px 0;
   background-color: #fff;
   border-radius: 20px;
@@ -1347,29 +1347,6 @@ a.tab-menu__item {
   margin: 100px auto 30px;
   padding: 30px 20px;
   position: relative;
-}
-
-.article__title {
-  font-size: 28px;
-  padding-right: 80px;
-}
-
-.article__meta {
-  display: flex;
-  align-items: center;
-  margin-top: 5px;
-}
-
-.article__date {
-  font-size: 20px;
-  margin-right: 20px;
-}
-
-.article__category {
-  background-color: bisque;
-  padding: 0 10px;
-  display: inline-block;
-  text-transform: capitalize;
 }
 
 .article__favorite-icon {
@@ -1391,16 +1368,6 @@ a.tab-menu__item {
 .article__favorite-icon img {
   width: 35px;
   height: 35px;
-}
-
-.article__thumbnail {
-  max-width: 600px;
-  width: 60%;
-  margin: 20px auto 0;
-}
-
-.article__content {
-  margin-top: 10px;
 }
 
 .article-error-message {
@@ -1737,7 +1704,7 @@ a.tab-menu__item {
   }
 
   .archive__box,
-  .article-wrapper {
+  .article-list {
     width: auto;
   }
 
@@ -1749,17 +1716,8 @@ a.tab-menu__item {
     font-size: 16px;
   }
 
-  .article-wrapper {
+  .article-list {
     margin: 100px 10px 0;
-  }
-
-  .article__date {
-    margin-right: 10px;
-  }
-
-  .article__date,
-  .article__category {
-    font-size: 14px;
   }
 
   .article__favorite-icon {
@@ -1771,10 +1729,6 @@ a.tab-menu__item {
   .article__favorite-icon img {
     width: 20px;
     height: 20px;
-  }
-
-  .article__title {
-    padding-right: 40px;
   }
 
   .mypage__favorite-img-wrapper {
