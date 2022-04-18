@@ -53,7 +53,8 @@ const renderArticleItems = (articleData) => {
   });
 }
 
-let totalPosts;
+const post = { total: 0 }
+
 const endpointConfig = {
   path: "https://api.javascripttutorial.net/v1/quotes/",
   limit: 10,
@@ -92,7 +93,7 @@ const intersectHandler = ([entry]) => {
   if (!entry.isIntersecting) return;
   observeConfig.stopObserve(entry.target);
   const articleItems = document.querySelectorAll(".article__item");
-  if (articleItems.length < totalPosts) {
+  if (articleItems.length < post.total) {
     renderLoading();
     setTimeout(getArticleDataAndUpdate, 500);
   }
@@ -106,7 +107,7 @@ const init = async () => {
     articleList.append(createErrorMessage("表示する記事がありません"));
     return;
   }
-  totalPosts = articleData.total;
+  post.total = articleData.total;
   renderArticleItems(articleData.data);
   observeConfig.startObserve(articleList.lastElementChild, intersectHandler);
 }
