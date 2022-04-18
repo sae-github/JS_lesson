@@ -58,7 +58,7 @@ const endpointConfig = {
   path: "https://api.javascripttutorial.net/v1/quotes/",
   limit: 10,
   currentPage: 1,
-  setEndpoint: () => {
+  get endpoint() {
     const url = new URL(endpointConfig.path);
     url.searchParams.set("page", endpointConfig.currentPage);
     url.searchParams.set("limit", endpointConfig.limit);
@@ -80,7 +80,7 @@ const observeConfig = {
 
 const getArticleDataAndUpdate = async () => {
   ++endpointConfig.currentPage;
-  const articleData = await getArticleData(endpointConfig.setEndpoint());
+  const articleData = await getArticleData(endpointConfig.endpoint);
   removeLoading();
   if (articleData) {
     renderArticleItems(articleData.data);
@@ -100,7 +100,7 @@ const intersectHandler = ([entry]) => {
 
 const init = async () => {
   renderLoading();
-  const articleData = await getArticleData(endpointConfig.setEndpoint());
+  const articleData = await getArticleData(endpointConfig.endpoint);
   removeLoading();
   if (articleData.data.length === 0) {
     articleList.append(createErrorMessage("表示する記事がありません"));
