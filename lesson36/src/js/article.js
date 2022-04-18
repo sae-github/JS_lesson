@@ -59,9 +59,9 @@ const endpointConfig = {
   limit: 10,
   currentPage: 1,
   get endpoint() {
-    const url = new URL(endpointConfig.path);
-    url.searchParams.set("page", endpointConfig.currentPage);
-    url.searchParams.set("limit", endpointConfig.limit);
+    const url = new URL(this.path);
+    url.searchParams.set("page", this.currentPage);
+    url.searchParams.set("limit", this.limit);
     return url.href;
   }
 }
