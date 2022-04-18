@@ -1349,6 +1349,19 @@ a.tab-menu__item {
   position: relative;
 }
 
+.article__item {
+  padding: 10px;
+  font-size: 14px;
+}
+
+.article__item + .article__item {
+  border-top: rgba(0, 0, 0, 0.1) 1px solid;
+}
+
+.article__item-content {
+  margin-top: 10px;
+}
+
 .article__favorite-icon {
   cursor: pointer;
   position: absolute;
@@ -1373,6 +1386,11 @@ a.tab-menu__item {
 .article-error-message {
   text-align: center;
   padding: 30px 0;
+}
+
+.article-loading-wrapper {
+  width: 50px;
+  margin: 20px auto 0;
 }
 
 .loading-wrapper {
