@@ -1,8 +1,8 @@
+import { Chance } from "chance";
 const passwordButtons = [...document.querySelectorAll(".js-password-icon")];
 const submitButton = document.getElementById("js-submit-button");
 const passwordField = document.getElementById("password");
 const confirmPasswordField = document.getElementById("confirmPassword");
-import { Chance } from "chance";
 const chance = new Chance()
 
 const constraint = {
