@@ -1,8 +1,8 @@
 const findAuthorizationUser = async () => {
   try {
-    // const response = await fetch("https://mocki.io/v1/f6c5a4ee-1398-4e1b-9da5-4c4752f9c10b");
+    const response = await fetch("https://mocki.io/v1/f6c5a4ee-1398-4e1b-9da5-4c4752f9c10b");
     // false用
-    const response = await fetch("https://mocki.io/v1/b896bb0b-3cdd-4851-acca-470dfe84de00");
+    // const response = await fetch("https://mocki.io/v1/b896bb0b-3cdd-4851-acca-470dfe84de00");
     if (!response.ok) {
       console.error(`${response.status}:${response.statusText}`);
       return;
