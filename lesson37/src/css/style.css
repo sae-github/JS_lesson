@@ -475,6 +475,7 @@ label {
 
 .form-foot {
   margin-top: 10px;
+  position: relative;
 }
 
 input[type="text"],
@@ -528,6 +529,10 @@ button:disabled {
 
 .arrow-buttons > button:disabled {
   cursor: not-allowed;
+}
+
+.form-submit-button:disabled {
+  pointer-events: none;
 }
 
 .rules {
