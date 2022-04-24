@@ -658,26 +658,25 @@ button:disabled {
 }
 
 .tab-menu__item {
-  padding: 10px 20px;
   border-radius: 20px 20px 0 0;
   text-align: center;
   width: 30%;
-}
-
-a.tab-menu__item {
-  text-decoration: none;
-  display: block;
-}
-
-.tab-menu__item {
   border: 1px solid #fff;
   background-color: skyblue;
   color: #fff;
+  cursor: pointer;
+}
+
+.tab-menu__item > a {
+  text-decoration: none;
+  display: block;
+  padding: 10px 20px;
 }
 
 .tab-menu__item.--selected {
   background-color: #fff;
   color: #333;
+  padding: 10px 0;
 }
 
 .login-form__submit {
