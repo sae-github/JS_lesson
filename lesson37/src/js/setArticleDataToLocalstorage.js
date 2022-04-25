@@ -37,12 +37,6 @@ const getArticleData = async (url) => {
   }
 }
 
-const changeFavoriteButtonToDisabled = () => {
-  const favoriteButton = document.getElementById("js-favorite-button");
-  favoriteButton.firstChild.src = "./img/star-icon--disabled.svg";
-  favoriteButton.disabled = true;
-}
-
 const setFavoriteArticleDataInLocalStorage = () => {
   const loginUserToken = localStorage.getItem("token");
   const favoriteArticlesData = JSON.parse(localStorage.getItem("favoriteArticles")) ?? {};
@@ -61,21 +55,50 @@ const setFavoriteArticleDataInLocalStorage = () => {
   localStorage.setItem("favoriteArticles", JSON.stringify(mergedData));
 }
 
+const isEmptyFavoriteArticles = (favoriteArticles) => Object.keys(favoriteArticles).length === 0;
+
+const removeFavoriteArticleInLocalStorage = () => {
+  const loginUserToken = localStorage.getItem("token");
+  const favoriteArticlesData = JSON.parse(localStorage.getItem("favoriteArticles"));
+  const favoriteArticlesDataOfLoginUser = favoriteArticlesData[loginUserToken];
+
+  const currentArticleIndex = favoriteArticlesDataOfLoginUser.findIndex((data) => {
+    return Object.keys(data)[0] === currentArticleData.id;
+  });
+  favoriteArticlesDataOfLoginUser.splice(currentArticleIndex, 1);
+
+  if (favoriteArticlesDataOfLoginUser.length === 0) {
+    delete favoriteArticlesData[loginUserToken];
+  }
+
+  if (isEmptyFavoriteArticles(favoriteArticlesData)) {
+    localStorage.removeItem("favoriteArticles");
+    return;
+  }
+  const mergedData = { ...favoriteArticlesData, [loginUserToken]: favoriteArticlesDataOfLoginUser };
+  localStorage.setItem("favoriteArticles", JSON.stringify(mergedData));
+}
+
 const addEventListenerForFavoriteButton = () => {
   const favoriteButton = document.getElementById("js-favorite-button");
   favoriteButton.addEventListener("click", (event) => {
     event.preventDefault();
-    changeFavoriteButtonToDisabled();
+    const ariaPressed = JSON.parse(event.target.ariaPressed);
+    if (ariaPressed) {
+      event.target.ariaPressed = false;
+      removeFavoriteArticleInLocalStorage();
+      return;
+    }
+    event.target.ariaPressed = true;
     setFavoriteArticleDataInLocalStorage();
   });
 }
 
 const renderFavoriteButton = () => {
   const favoriteButton = createElementWithClassName("button", "article__favorite-icon");
-  const img = document.createElement("img");
-  img.src = "./img/star-icon.svg";
   favoriteButton.id = "js-favorite-button";
-  articleWrapper.appendChild(favoriteButton).appendChild(img);
+  favoriteButton.ariaPressed = isRegisteredFavoriteArticle() ? true : false;
+  articleWrapper.append(favoriteButton);
 }
 
 const findArticleData = (data) => {
@@ -105,7 +128,6 @@ const init = async () => {
     }
     renderFavoriteButton();
     addEventListenerForFavoriteButton();
-    isRegisteredFavoriteArticle() && changeFavoriteButtonToDisabled();
   }
 }
 

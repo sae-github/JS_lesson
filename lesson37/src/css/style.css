@@ -1391,20 +1391,18 @@ button:disabled {
   position: absolute;
   right: 20px;
   top: 0;
-  padding: 20px;
-  background-color: #413c54;
   border: none;
+  padding: 30px;
+  background: no-repeat center / 35px 30px;
+  background-color: #413c54;
 }
 
-.article__favorite-icon:disabled {
-  cursor: auto;
-  background-color: #413c54;
-  border: none;
+.article__favorite-icon[aria-pressed="true"] {
+  background-image: url(../img/star-icon--disabled.svg);
 }
 
-.article__favorite-icon img {
-  width: 35px;
-  height: 35px;
+.article__favorite-icon[aria-pressed="false"] {
+  background-image: url(../img/star-icon.svg);
 }
 
 .article-error-message {
@@ -1771,14 +1769,8 @@ button:disabled {
   }
 
   .article__favorite-icon {
-    padding: 10px 20px;
     right: 0;
     border-radius: 0px 10px 0px 10px;
-  }
-
-  .article__favorite-icon img {
-    width: 20px;
-    height: 20px;
   }
 
   .mypage__favorite-img-wrapper {
