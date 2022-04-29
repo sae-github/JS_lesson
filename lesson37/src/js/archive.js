@@ -123,8 +123,7 @@ const createArticleItem = (data) => {
 const createThumbnail = ({ thumbnail }) => {
   const thumbnailWrapper = createElementWithClassName("div", "archive__item-thumbnail");
   const img = document.createElement("img");
-  img.src = thumbnail;
-  thumbnail === "" && (img.src = "./img/no-image.jpeg");
+  img.src = thumbnail || "./img/no-image.jpeg";
   thumbnailWrapper.appendChild(img);
   return thumbnailWrapper;
 }
