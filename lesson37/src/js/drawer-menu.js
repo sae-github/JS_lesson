@@ -74,7 +74,7 @@ const transitionPageAnimation = (href) => {
   );
 };
 
-drawerMenuNavigation.forEach((nav) => {
+drawerMenuNavigations.forEach((nav) => {
   nav.addEventListener("click", (event) => {
     event.preventDefault();
     toggleDrawerMenu();
