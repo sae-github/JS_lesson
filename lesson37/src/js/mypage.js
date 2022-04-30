@@ -3,6 +3,12 @@ import { createElementWithClassName } from "./modules/createElementWithClassName
 const favoriteWrapper = document.getElementById("js-favorite-wrapper");
 const userToken = localStorage.getItem("token");
 
+const createErrorMessage = (error) => {
+  const errorMessage = createElementWithClassName("p", "article-error-message");
+  errorMessage.textContent = error;
+  return errorMessage;
+};
+
 const createLoading = () => {
   const loadingWrapper = createElementWithClassName("div", "loading-wrapper");
   const loading = document.createElement("img");
