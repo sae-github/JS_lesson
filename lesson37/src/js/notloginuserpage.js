@@ -1,4 +1,6 @@
 import { differenceInDays } from "date-fns";
+import { createElementWithClassName } from "./modules/createElementWithClassName";
+
 const tabMenu = document.getElementById("js-tab-menu");
 const overlay = document.getElementById("js-overlay");
 const modalCloseButton = document.getElementById("js-modal-close-button");
@@ -8,12 +10,6 @@ const API = {
   book: "https://mocki.io/v1/d2fce05d-c6ad-42c3-a8d1-d3b8b7d83084",
   economy: "https://mocki.io/v1/36806f47-f531-4e87-b77b-d20bae5eb98f",
   travel: "https://mocki.io/v1/4743c319-f3cd-4606-98fc-9b036453fb46"
-};
-
-const createElementWithClassName = (type, className) => {
-  const element = document.createElement(type);
-  element.className = className;
-  return element;
 };
 
 const createLoading = () => {

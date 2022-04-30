@@ -1,17 +1,7 @@
+import { createElementWithClassName } from "./modules/createElementWithClassName";
+
 const favoriteWrapper = document.getElementById("js-favorite-wrapper");
 const userToken = localStorage.getItem("token");
-
-const createElementWithClassName = (type, className) => {
-  const element = document.createElement(type);
-  element.className = className;
-  return element;
-};
-
-const createErrorMessage = (error) => {
-  const errorMessage = createElementWithClassName("p", "article-error-message");
-  errorMessage.textContent = error;
-  return errorMessage;
-};
 
 const createLoading = () => {
   const loadingWrapper = createElementWithClassName("div", "loading-wrapper");

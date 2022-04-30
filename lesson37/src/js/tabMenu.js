@@ -1,4 +1,6 @@
 import { differenceInDays } from "date-fns";
+import { createElementWithClassName } from "./modules/createElementWithClassName";
+
 const tabMenu = document.getElementById("js-tab-menu");
 const newsWrapper = document.getElementById("js-news-tab");
 
@@ -24,12 +26,6 @@ const articleAPI = {
     "https://mocki.io/v1/a908757b-8002-42ae-b572-5933a5b00b81",
   "9d50f525-b5a3-469d-ad28-0bbaa3f38fce":
     "https://mocki.io/v1/a53e046f-a838-454d-9e2d-696bce2b592c"
-};
-
-const createElementWithClassName = (type, className) => {
-  const element = document.createElement(type);
-  element.className = className;
-  return element;
 };
 
 const createLoading = () => {

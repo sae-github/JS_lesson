@@ -1,10 +1,6 @@
-const archiveWrapper = document.getElementById("js-archive-wrapper");
+import { createElementWithClassName } from "./modules/createElementWithClassName";
 
-const createElementWithClassName = (type, name) => {
-  const element = document.createElement(type);
-  element.className = name;
-  return element;
-}
+const archiveWrapper = document.getElementById("js-archive-wrapper");
 
 const renderLoading = (parent) => {
   const loading = createElementWithClassName("div", "archive-loading");

@@ -1,10 +1,6 @@
-const articleList = document.getElementById("js-article-List");
+import { createElementWithClassName } from "./modules/createElementWithClassName";
 
-const createElementWithClassName = (type, className) => {
-  const element = document.createElement(type);
-  element.className = className;
-  return element;
-};
+const articleList = document.getElementById("js-article-List");
 
 const createErrorMessage = (text) => {
   const errorMessage = createElementWithClassName("p", "article-error-message");

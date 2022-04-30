@@ -1,11 +1,7 @@
+import { createElementWithClassName } from "./modules/createElementWithClassName";
+
 const slideList = document.getElementById("js-slide-list");
 const slideWrapper = document.getElementById("js-slide");
-
-const createElementWithClassName = (type, className) => {
-  const element = document.createElement(type);
-  element.className = className;
-  return element;
-};
 
 const createLoading = () => {
   const loading = createElementWithClassName("img", "loading");
