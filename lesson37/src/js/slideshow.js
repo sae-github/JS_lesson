@@ -3,14 +3,14 @@ import { createElementWithClassName } from "./modules/createElementWithClassName
 const slideList = document.getElementById("js-slide-list");
 const slideWrapper = document.getElementById("js-slide");
 
-const createLoading = () => {
-  const loading = createElementWithClassName("img", "loading");
-  loading.id = "js-loading";
-  loading.src = "./img/loading-line.gif";
+const createLineLoading = () => {
+  const loading = createElementWithClassName("div", "loading-wrapper");
+  const img = document.createElement("img");
+  loading.classList.add("js-line-loading");
+  img.src = "./img/loading-line.gif";
+  loading.appendChild(img);
   return loading;
-};
-
-const removeLoading = () => document.getElementById("js-loading").remove();
+}
 
 const createErrorMessage = (error) => {
   const errorMessage = createElementWithClassName("p", "slide-error-message");
@@ -44,7 +44,7 @@ const getSlideImgData = async () => {
 };
 
 const tryGetSlideImgData = async () => {
-  slideWrapper.appendChild(createLoading());
+  slideWrapper.appendChild(createLineLoading());
   try {
     const slideImgData = await getSlideImgData();
     if (slideImgData.length === 0) {
@@ -55,7 +55,7 @@ const tryGetSlideImgData = async () => {
   } catch (e) {
     slideWrapper.appendChild(createErrorMessage(e));
   } finally {
-    removeLoading();
+    document.querySelector(".js-line-loading").remove();
   }
 };
 

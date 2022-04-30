@@ -1,5 +1,6 @@
 import { differenceInDays } from "date-fns";
 import { createElementWithClassName } from "./modules/createElementWithClassName";
+import { loading } from "./modules/loading";
 
 const tabMenu = document.getElementById("js-tab-menu");
 const newsWrapper = document.getElementById("js-news-tab");
@@ -104,6 +105,7 @@ const configUIfromFetchData = async () => {
     tab.classList.add("tab-select");
     document.getElementById("js-tab-list").append(createArticleElements(hasSelectData));
     document.getElementById("js-tab-img").append(createCategoryImg(hasSelectData));
+    // setClickEventInCommentIcon();
   }
 }
 
@@ -162,13 +164,13 @@ const createClickedTabContent = async (target) => {
 }
 
 const tryGetData = async (parent, api) => {
-  parent.appendChild(createLoading());
+  parent.appendChild(loading.create());
   try {
     return await getJsonOrError(api, parent);
   } catch (error) {
     parent.appendChild(createErrorMessage(error));
   } finally {
-    removeLoading();
+    loading.remove();
   }
 }
 

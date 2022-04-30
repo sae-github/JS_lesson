@@ -1,4 +1,5 @@
 import { createElementWithClassName } from "./modules/createElementWithClassName";
+import { loading } from "./modules/loading";
 
 const favoriteWrapper = document.getElementById("js-favorite-wrapper");
 const userToken = localStorage.getItem("token");
@@ -8,17 +9,6 @@ const createErrorMessage = (error) => {
   errorMessage.textContent = error;
   return errorMessage;
 };
-
-const createLoading = () => {
-  const loadingWrapper = createElementWithClassName("div", "loading-wrapper");
-  const loading = document.createElement("img");
-  loadingWrapper.id = "js-loading";
-  loading.src = "./img/loading-circle.gif";
-  loadingWrapper.appendChild(loading);
-  return loadingWrapper;
-};
-
-const removeLoading = () => document.getElementById("js-loading").remove();
 
 const getFavoriteArticlesDataOfLoginUser = () => {
   return new Promise((resolve) => {
@@ -132,14 +122,14 @@ const renderMessageOfNoFavoriteArticle = () => {
 }
 
 const favoriteArticleListHandler = async () => {
-  favoriteWrapper.appendChild(createLoading());
+  favoriteWrapper.appendChild(loading.create());
   try {
     return await getFavoriteArticlesDataOfLoginUser();
   } catch (error) {
     console.error(error);
     favoriteWrapper.appendChild(createErrorMessage(error));
   } finally {
-    removeLoading();
+    loading.remove();
   }
 }
 

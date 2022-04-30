@@ -1,4 +1,5 @@
 import { createElementWithClassName } from "./modules/createElementWithClassName";
+import { loading } from "./modules/loading";
 
 const articleList = document.getElementById("js-article-List");
 
@@ -7,16 +8,6 @@ const createErrorMessage = (text) => {
   errorMessage.textContent = text;
   return errorMessage;
 };
-
-const renderLoading = () => {
-  const loadingWrapper = createElementWithClassName("div", "article-loading-wrapper");
-  const loading = document.createElement("img");
-  loadingWrapper.id = "js-loading";
-  loading.src = "./img/article-loading.gif";
-  articleList.appendChild(loadingWrapper).appendChild(loading);
-};
-
-const removeLoading = () => document.getElementById("js-loading").remove();
 
 const fetchData = async (endpoint) => {
   const response = await fetch(endpoint);
@@ -78,7 +69,7 @@ const observeConfig = {
 const getArticleDataAndUpdate = async () => {
   ++endpointConfig.currentPage;
   const articleData = await getArticleData(endpointConfig.endpoint);
-  removeLoading();
+  loading.remove();
   if (articleData) {
     renderArticleItems(articleData.data);
     observeConfig.startObserve(articleList.lastElementChild, intersectHandler);
@@ -90,15 +81,15 @@ const intersectHandler = ([entry]) => {
   observeConfig.stopObserve(entry.target);
   const articleItems = document.querySelectorAll(".article__item");
   if (articleItems.length < post.total) {
-    renderLoading();
+    articleList.append(loading.create("./img/article-loading.gif"));
     setTimeout(getArticleDataAndUpdate, 500);
   }
 }
 
 const init = async () => {
-  renderLoading();
+  articleList.append(loading.create("./img/article-loading.gif"));
   const articleData = await getArticleData(endpointConfig.endpoint);
-  removeLoading();
+  loading.remove();
   if (articleData.data.length === 0) {
     articleList.append(createErrorMessage("表示する記事がありません"));
     return;

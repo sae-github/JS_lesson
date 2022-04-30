@@ -1,16 +1,7 @@
 import { createElementWithClassName } from "./modules/createElementWithClassName";
+import { loading } from "./modules/loading";
 
 const archiveWrapper = document.getElementById("js-archive-wrapper");
-
-const renderLoading = (parent) => {
-  const loading = createElementWithClassName("div", "archive-loading");
-  const img = document.createElement("img");
-  loading.id = "js-loading";
-  img.src = "./img/loading-circle.gif";
-  parent.appendChild(loading).appendChild(img);
-}
-
-const removeLoading = () => document.getElementById("js-loading").remove();
 
 const fetchErrorHandling = async (response) => {
   if (!response.ok) {
@@ -35,13 +26,13 @@ const getJsonOrError = async (url) => {
 }
 
 const getData = async (parent, resource) => {
-  renderLoading(parent);
+  parent.append(loading.create());
   try {
     return await getJsonOrError(resource);
   } catch (error) {
     parent.createErrorMessage(error, parent);
   } finally {
-    removeLoading();
+    loading.remove();
   }
 }
 

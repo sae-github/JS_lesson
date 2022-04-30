@@ -1,5 +1,6 @@
 import { differenceInDays } from "date-fns";
 import { createElementWithClassName } from "./modules/createElementWithClassName";
+import { loading } from "./modules/loading";
 
 const tabMenu = document.getElementById("js-tab-menu");
 const overlay = document.getElementById("js-overlay");
@@ -11,15 +12,6 @@ const API = {
   economy: "https://mocki.io/v1/36806f47-f531-4e87-b77b-d20bae5eb98f",
   travel: "https://mocki.io/v1/4743c319-f3cd-4606-98fc-9b036453fb46"
 };
-
-const createLoading = () => {
-  const loading = createElementWithClassName("img", "loading");
-  loading.id = "js-loading";
-  loading.src = "./img/loading-circle.gif";
-  return loading;
-};
-
-const removeLoading = () => document.getElementById("js-loading").remove();
 
 const createErrorMessage = (error) => {
   const errorMessage = createElementWithClassName("p", "error-message");
@@ -151,13 +143,13 @@ const createClickedTabContent = async (target) => {
 }
 
 const getJSonData = async (parent, api) => {
-  parent.appendChild(createLoading());
+  parent.appendChild(loading.create());
   try {
     return await getJsonOrError(api);
   } catch (error) {
     parent.appendChild(createErrorMessage(error));
   } finally {
-    removeLoading();
+    loading.remove();
   }
 }
 
