@@ -1633,8 +1633,7 @@ button:disabled {
 }
 
 .tab-menu__error-message,
-.slide-error-message,
-.archive-error-message {
+.slide-error-message {
   background-color: rgb(255, 108, 108);
   color: #fff;
   padding: 10px;

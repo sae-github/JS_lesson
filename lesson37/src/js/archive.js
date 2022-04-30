@@ -19,17 +19,17 @@ const removeLoading = () => document.getElementById("js-loading").remove();
 const fetchErrorHandling = async (response) => {
   if (!response.ok) {
     const responseMessage = `${response.status}:${response.statusText}`;
-    renderErrorMessage(responseMessage, archiveWrapper);
+    archiveWrapper.append(createErrorMessage(responseMessage));
     console.error(responseMessage);
     return;
   }
   return await response.json();
 }
 
-const renderErrorMessage = (error, parent) => {
+const createErrorMessage = (error) => {
   const errorMessage = createElementWithClassName("p", "archive-error-message");
   errorMessage.textContent = error;
-  parent.appendChild(errorMessage);
+  return errorMessage;
 }
 
 const getJsonOrError = async (url) => {
@@ -43,7 +43,7 @@ const getData = async (parent, resource) => {
   try {
     return await getJsonOrError(resource);
   } catch (error) {
-    renderErrorMessage(error, parent);
+    parent.createErrorMessage(error, parent);
   } finally {
     removeLoading();
   }
@@ -87,7 +87,10 @@ const addEventListenerForCategorySelect = (data) => {
       return;
     }
     const selectedCategoryData = data.find(({ category }) => category === selectedCategory);
-    archiveList.append(createArticleItem(selectedCategoryData));
+    archiveList.append(
+      selectedCategoryData
+        ? createArticleItem(selectedCategoryData)
+        : createErrorMessage("選択されたカテゴリーのデータが見つかりません"));
   })
 }
 
