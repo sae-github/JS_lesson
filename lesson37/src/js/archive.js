@@ -1,5 +1,4 @@
 const archiveWrapper = document.getElementById("js-archive-wrapper");
-let defaultArticleList;
 
 const createElementWithClassName = (type, name) => {
   const element = document.createElement(type);
@@ -53,7 +52,7 @@ const getData = async (parent, resource) => {
 const renderCategorySelect = (data) => {
   const selectWrapper = createElementWithClassName("div", "archive__select");
   const select = document.createElement("select");
-  select.addEventListener("change", (event) => renderSelectedCategoryList(event.target, data));
+  select.id = "js-category-select";
   archiveWrapper
     .appendChild(selectWrapper)
     .appendChild(select)
@@ -75,15 +74,21 @@ const createSelectOptions = (data) => {
   return frag;
 }
 
-const renderSelectedCategoryList = (target, data) => {
+const addEventListenerForCategorySelect = (data) => {
   const archiveList = document.getElementById("js-archive-list");
-  if (target.value === "default") {
-    archiveList.replaceWith(defaultArticleList.cloneNode(true));
-    return;
-  }
-  archiveList.textContent = "";
-  const selectedCategoryData = data.find(({ category }) => category === target.value);
-  archiveList.appendChild(createArticleItem(selectedCategoryData));
+  const defaultArticleList = archiveList.cloneNode(true);
+  const categorySelect = document.getElementById("js-category-select");
+  categorySelect.addEventListener("change", (event) => {
+    const selectedCategory = event.target.value;
+    archiveList.textContent = "";
+
+    if (selectedCategory === "default") {
+      archiveList.append(defaultArticleList.cloneNode(true));
+      return;
+    }
+    const selectedCategoryData = data.find(({ category }) => category === selectedCategory);
+    archiveList.append(createArticleItem(selectedCategoryData));
+  })
 }
 
 const renderArchiveList = (data) => {
@@ -134,7 +139,7 @@ const init = async () => {
   if (data) {
     renderCategorySelect(data);
     renderArchiveList(data);
-    defaultArticleList = document.getElementById("js-archive-list").cloneNode(true);
+    addEventListenerForCategorySelect(data)
   }
 }
 
