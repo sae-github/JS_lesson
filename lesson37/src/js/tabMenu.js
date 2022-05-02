@@ -96,7 +96,6 @@ const configUIfromFetchData = async () => {
     tab.classList.add("tab-select");
     document.getElementById("js-tab-list").append(createArticleElements(hasSelectData));
     document.getElementById("js-tab-img").append(createCategoryImg(hasSelectData));
-    // setClickEventInCommentIcon();
   }
 }
 
