@@ -1,4 +1,5 @@
 import { Chance } from "chance";
+import { toggleDisplayPasswordField } from "./modules/toggleDisplayPasswordField"
 
 const passwordButtons = [...document.querySelectorAll(".js-password-icon")];
 const submitButton = document.getElementById("js-submit-button");
@@ -73,19 +74,6 @@ const toggleDisableSubmitButton = () => {
   submitButton.disabled = isInvalidFields;
 };
 
-const togglePasswordButton = (e) => {
-  const target = e.target;
-  if (target.classList.contains("is-hide")) {
-    target.previousElementSibling.type = "text";
-    target.classList.remove("is-hide");
-    target.classList.add("is-show");
-  } else {
-    target.previousElementSibling.type = "password";
-    target.classList.remove("is-show");
-    target.classList.add("is-hide");
-  }
-}
-
 const checkUrlParams = () => {
   const urlParams = new URLSearchParams(window.location.search);
   const token = localStorage.getItem("resetPasswordToken");
@@ -98,7 +86,7 @@ const checkUrlParams = () => {
 checkUrlParams();
 
 passwordButtons.forEach(button => {
-  button.addEventListener("click", togglePasswordButton);
+  button.addEventListener("click", (event) => toggleDisplayPasswordField(event.target));
 });
 passwordField.addEventListener("blur", isValidField);
 passwordField.addEventListener("focus", resetInputField);

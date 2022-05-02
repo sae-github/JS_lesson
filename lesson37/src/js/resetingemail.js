@@ -1,3 +1,5 @@
+import { toggleDisplayPasswordField } from "./modules/toggleDisplayPasswordField"
+
 const emailField = document.getElementById("email");
 const confirmEmailField = document.getElementById("confirmEmail");
 const changeButton = document.getElementById("js-submit-button");
@@ -77,22 +79,9 @@ const toggleDisableChangeButton = () => {
   changeButton.disabled = isInvalidFields;
 };
 
-const togglePasswordButton = (e) => {
-  const target = e.target;
-  if (target.classList.contains("is-hide")) {
-    passwordField.type = "text";
-    target.classList.remove("is-hide");
-    target.classList.add("is-show");
-  } else {
-    passwordField.type = "password";
-    target.classList.remove("is-show");
-    target.classList.add("is-hide");
-  }
-}
-
 const isUserPassword = (data) => data[localStorage.getItem("token")].password === passwordField.value;
 
-passwordButton.addEventListener("click", togglePasswordButton);
+passwordButton.addEventListener("click", (event) => toggleDisplayPasswordField(event.target));
 passwordField.addEventListener("blur", isValidField);
 emailField.addEventListener("blur", isValidField);
 emailField.addEventListener("focus", resetInputField);

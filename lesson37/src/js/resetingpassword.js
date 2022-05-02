@@ -1,3 +1,5 @@
+import { toggleDisplayPasswordField } from "./modules/toggleDisplayPasswordField"
+
 const passwordButtons = [...document.querySelectorAll(".js-password-icon")];
 const confirmPasswordField = document.getElementById("confirmNewPassword");
 const newPasswordField = document.getElementById("newPassword");
@@ -75,24 +77,12 @@ const toggleDisableChangeButton = () => {
   changeButton.disabled = isInvalidFields;
 };
 
-const togglePasswordButton = (e) => {
-  const target = e.target;
-  if (target.classList.contains("is-hide")) {
-    target.previousElementSibling.type = "text";
-    target.classList.remove("is-hide");
-    target.classList.add("is-show");
-  } else {
-    target.previousElementSibling.type = "password";
-    target.classList.remove("is-show");
-    target.classList.add("is-hide");
-  }
-};
-
 const isUserPassword = (data) => data[localStorage.getItem("token")].password === passwordField.value;
 
 passwordButtons.forEach((button) => {
-  button.addEventListener("click", togglePasswordButton);
+  button.addEventListener("click", (event) => toggleDisplayPasswordField(event.target));
 });
+
 passwordField.addEventListener("blur", isValidField);
 newPasswordField.addEventListener("blur", isValidField);
 confirmPasswordField.addEventListener("blur", isValidField);

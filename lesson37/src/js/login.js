@@ -1,3 +1,5 @@
+import { toggleDisplayPasswordField } from "./modules/toggleDisplayPasswordField"
+
 const userField = document.getElementById("username");
 const passwordField = document.getElementById("password");
 const loginButton = document.getElementById("js-login-button");
@@ -60,20 +62,7 @@ const resetInputField = (e) => {
   errorMessage && errorMessage.remove();
 };
 
-const togglePasswordButton = (e) => {
-  const target = e.target;
-  if (target.classList.contains("is-hide")) {
-    passwordField.type = "text";
-    target.classList.remove("is-hide");
-    target.classList.add("is-show");
-  } else {
-    passwordField.type = "password";
-    target.classList.remove("is-show");
-    target.classList.add("is-hide");
-  }
-}
-
-passwordButton.addEventListener("click", togglePasswordButton);
+passwordButton.addEventListener("click", (event) => toggleDisplayPasswordField(event.target));
 passwordField.addEventListener("blur", isValidField);
 userField.addEventListener("blur", isValidField);
 userField.addEventListener("focus", resetInputField);

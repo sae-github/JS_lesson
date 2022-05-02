@@ -1,4 +1,6 @@
 import { Chance } from "chance";
+import { toggleDisplayPasswordField } from "./modules/toggleDisplayPasswordField";
+
 const chance = new Chance();
 const modalContent = document.getElementById("js-modal-content");
 const submitButton = document.getElementById("js-submit-button");
@@ -111,24 +113,11 @@ const toggleDisableSubmitButton = () => {
   submitButton.disabled = isInvalidFields;
 };
 
-const togglePasswordButton = (e) => {
-  const target = e.target;
-  if (target.classList.contains("is-hide")) {
-    passwordField.type = "text";
-    target.classList.remove("is-hide");
-    target.classList.add("is-show");
-  } else {
-    passwordField.type = "password";
-    target.classList.remove("is-show");
-    target.classList.add("is-hide");
-  }
-}
-
 const isEmailRegistered = (usersData) => {
   return Object.values(usersData).some(({ email }) => email === emailField.value);
 };
 
-passwordButton.addEventListener("click", togglePasswordButton);
+passwordButton.addEventListener("click", (event) => toggleDisplayPasswordField(event.target));
 passwordField.addEventListener("blur", isValidField);
 emailField.addEventListener("blur", isValidField);
 userField.addEventListener("blur", isValidField);
