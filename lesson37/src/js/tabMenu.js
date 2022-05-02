@@ -29,15 +29,6 @@ const articleAPI = {
     "https://mocki.io/v1/a53e046f-a838-454d-9e2d-696bce2b592c"
 };
 
-const createLoading = () => {
-  const loading = createElementWithClassName("img", "loading");
-  loading.id = "js-loading";
-  loading.src = "./img/loading-circle.gif";
-  return loading;
-};
-
-const removeLoading = () => document.getElementById("js-loading").remove();
-
 const createErrorMessage = (error) => {
   const errorMessage = createElementWithClassName("p", "tab-menu__error-message");
   errorMessage.textContent = error;
