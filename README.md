@@ -1,9 +1,10 @@
-# JavaScript Lesson
+![header](https://capsule-render.vercel.app/api?text=JavaScript%20Lesson&animation=fadeIn?height=400&type=Rounded&color=0:bbddcc,50:7ab0cc,100:0090a8&fontColor=fff)
 
-もりけん塾で取り組んだ [マークアップエンジニアの方がフロントエンドエンジニアになる為の課題](https://github.com/sae-github/handsonFrontend/blob/master/work/markup/1.md)の リポジトリです
+このリポジトリは 自身が所属するもりけん塾で取り組んだ [マークアップエンジニアの方がフロントエンドエンジニアになる為の課題](https://github.com/sae-github/handsonFrontend/blob/master/work/markup/1.md)に取り組んだ内容です。
 
-もりけん塾では、課題ごとにPRを出し、レビューをし合います。
-課題や、レビューを通して学んだことは[ブログ](https://itosae.com/)にまとめています
+### もりけん塾について
+もりけん塾では、課題ごとにPRを出しレビューをしあいます。
+課題やレビューを通して学んだことは[ブログ](https://itosae.com/)にまとめています
 
 ### 課題の内容・まとめ
 <table>
