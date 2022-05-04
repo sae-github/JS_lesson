@@ -411,5 +411,105 @@
 </a></td> 
 </tr>
 
+<tr>
+<td>
+<a href="https://github.com/sae-github/JS_lesson/tree/main/lesson26">Lesson26</a>
+</td>
+<td>
+<p>ログイン画面の実装</p>
+</td>
+<td>
+<a href="https://codesandbox.io/s/js-lesson26-cpih3?fontsize=14&hidenavigation=1&theme=dark">
+  <img alt="Edit JS_lesson26" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td></td> 
+</tr>
+
+<tr>
+<td>
+<a href="https://github.com/sae-github/JS_lesson/tree/main/lesson27">Lesson27</a>
+</td>
+<td>
+<p>ログイン画面の実装</p>
+tokenを参照してログインユーザーかどうかをチェックする
+</td>
+<td>
+<a href="https://codesandbox.io/s/js-lesson27-h9j6p?fontsize=14&hidenavigation=1&theme=dark">
+  <img alt="Edit JS_lesson27" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td></td> 
+</tr>
+
+<tr>
+<td>
+<a href="https://github.com/sae-github/JS_lesson/tree/main/lesson28">Lesson28</a>
+</td>
+<td>
+<p>パスワード忘れた方へページの実装</p>
+tokenを参照してログインユーザーかどうかをチェックする
+</td>
+<td>
+<a href="https://codesandbox.io/s/js-lesson28-6c7mg8?fontsize=14&hidenavigation=1&theme=dark">
+  <img alt="Edit JS_lesson28" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td></td> 
+</tr>
+
+<tr>
+<td>
+<a href="https://github.com/sae-github/JS_lesson/tree/main/lesson29">Lesson29</a>
+</td>
+<td>
+<p>メールアドレス変更画面ページの実装</p>
+</td>
+<td>
+<a href="https://codesandbox.io/s/lesson29-vlghhg?fontsize=14&hidenavigation=1&theme=dark">
+  <img alt="Edit Lesson29②" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td></td> 
+</tr>
+
+<tr>
+<td>
+<a href="https://github.com/sae-github/JS_lesson/tree/main/lesson30">Lesson30</a>
+</td>
+<td>
+<p>ドロワーメニューの実装</p>
+</td>
+<td>
+<a href="https://codesandbox.io/s/lesson30-3ydix7?fontsize=14&hidenavigation=1&theme=dark">
+  <img alt="Edit Lesson30" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td></td> 
+</tr>
+
+
+<tr>
+<td>
+<a href="https://github.com/sae-github/JS_lesson/tree/main/lesson31">Lesson31</a>
+</td>
+<td>
+<p>ドロワーメニューの実装</p>
+オプション機能を付与する
+</td>
+<td>
+<a href="https://codesandbox.io/s/lesson31-shgu2t?fontsize=14&hidenavigation=1&theme=dark">
+  <img alt="Edit Lesson31" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td rowspan="2">
+<a href="https://itosae.com/js_lesson21_22/" target="_blank" rel="noopener noreferrer">
+<img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png" width="30px">
+</a>
+</td> 
+</tr>
+
+
+
 </tbody>
 </table>
