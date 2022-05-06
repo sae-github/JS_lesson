@@ -406,9 +406,11 @@
   <img alt="Edit JS_lesson25" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
 </td>
-<td><a href="https://itosae.com/js_lesson25/" target="_blank" rel="noopener noreferrer">
+<td>
+<a href="https://itosae.com/js_lesson25/" target="_blank" rel="noopener noreferrer">
 <img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png" width="30px">
-</a></td> 
+</a>
+</td> 
 </tr>
 
 <tr>
@@ -509,7 +511,110 @@ tokenを参照してログインユーザーかどうかをチェックする
 </td> 
 </tr>
 
+<tr>
+<td>
+<a href="https://github.com/sae-github/JS_lesson/tree/main/lesson32">Lesson32</a>
+</td>
+<td>
+一覧ページと絞り込み機能
+<td>
+<a href="https://codesandbox.io/s/lesson32-y34p1y?fontsize=14&hidenavigation=1&theme=dark">
+  <img alt="Edit lesson32" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td></td> 
+</tr>
 
+<tr>
+<td>
+<a href="https://github.com/sae-github/JS_lesson/tree/main/lesson33">Lesson33</a>
+</td>
+<td>
+ドロワーメニューに遷移アニメーションを追加
+<td>
+<a href="https://codesandbox.io/s/lesson33-e3ykz4?fontsize=14&hidenavigation=1&theme=dark">
+  <img alt="Edit Lesson33" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td>
+<a href="https://itosae.com/js_lesson33/" target="_blank" rel="noopener noreferrer">
+<img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png" width="30px">
+</a>
+</td> 
+</tr>
+
+
+<tr>
+<td>
+<a href="https://github.com/sae-github/JS_lesson/tree/main/lesson34">Lesson34</a>
+</td>
+<td>
+マイページとお気に入り機能実装
+<p>
+ニュースタブUIから遷移するニュースの個別ページを作成。<br>
+個別ページにはお気に入り登録できる機能をつける
+</p>
+<td>
+<a href="https://codesandbox.io/s/lesson34-84mp0o?fontsize=14&hidenavigation=1&theme=dark">
+  <img alt="Edit Lesson34②" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td>
+</td> 
+</tr>
+
+<tr>
+<td>
+<a href="https://github.com/sae-github/JS_lesson/tree/main/lesson35">Lesson35</a>
+</td>
+<td>
+ログインユーザーか非ログインユーザーか判定して見れるコンテンツを分ける
+<p>
+擬似的なAPIを使用して、`isAuthorization`のようなログインユーザーか否かの権限を表すフィールドをもつエンドポイントを用意し、
+`isAuthorization`がtrueであればログイン済みなページを表示し、falseであれば非ログインユーザー用のページを表示する
+</p>
+<td>
+<a href="https://codesandbox.io/s/lesson35-29upgv?fontsize=14&hidenavigation=1&theme=dark">
+  <img alt="Edit Lesson35 " src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td>
+</td> 
+</tr>
+
+<tr>
+<td>
+<a href="https://github.com/sae-github/JS_lesson/tree/main/lesson36">Lesson36</a>
+</td>
+<td>
+無限スクロールの実装
+<td>
+<a href="https://codesandbox.io/s/lesson36-rvu9wn?fontsize=14&hidenavigation=1&theme=dark">
+  <img alt="Edit Lesson36" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td>
+<a href="https://itosae.com/js_lesson36/" target="_blank" rel="noopener noreferrer">
+<img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png" width="30px">
+</a>
+</td> 
+</tr>
+
+<tr>
+<td>
+<a href="https://github.com/sae-github/JS_lesson/tree/main/lesson37">Lesson37</a>
+</td>
+<td>
+全てのコンテンツを集める
+<p>今まで課題で制作したコンテンツをあわせる</p>
+<td>
+<a href="https://codesandbox.io/s/lesson37-mivvub?fontsize=14&hidenavigation=1&theme=dark">
+  <img alt="Edit Lesson37" src="https://codesandbox.io/static/img/play-codesandbox.svg">
+</a>
+</td>
+<td>
+</td> 
+</tr>
 
 </tbody>
 </table>
