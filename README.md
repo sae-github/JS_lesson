@@ -364,7 +364,10 @@
 <a href="https://github.com/sae-github/JS_lesson/tree/main/lesson22">Lesson22</a>
 </td>
 <td>
-<p>ソート機能を年齢の項目にも追加する</p>
+
+## ソート機能をさらに追加
+
+年齢のフィールドへもソート機能を追加する
 <img src="https://i.postimg.cc/sxy9FHFM/6b47c048cde0d229f273190c314eb87c.gif" alt="Image from Gyazo" width="300"/>
 </td>
 <td>
@@ -379,11 +382,13 @@
 <a href="https://github.com/sae-github/JS_lesson/tree/main/lesson24">Lesson24</a>
 </td>
 <td>
-<p>会員登録画面作成</p>
-<ul>
-<li>利用規約を押すと、モーダルが立ち上がり内容が表示。スクロールが一番下へ行ったら 利用規約に同意するチェックボックスがcheckedになる。<br>もしモーダルを開いてもスクロールが下まで行っていなければ checkedはfalseのまま。checkedがtrueの場合、送信ボタンを押下することができ 完了ページへ遷移
-</li>
-</ul>
+
+## 会員登録画面作成
+
+利用規約を押すと、モーダルが立ち上がり内容が表示。<br>
+スクロールが一番下へ行ったら 利用規約に同意するチェックボックスがcheckedになる仕様。<br>
+checkedがtrueの場合、送信ボタンを押下することができ完了ページへ遷移
+
 </td>
 <td>
 <a href="https://codesandbox.io/s/lesson24-moufq?fontsize=14&hidenavigation=1&theme=dark">
