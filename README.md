@@ -217,8 +217,6 @@
 <a href="https://gyazo.com/e4bd89e3d8a989fb7b919a5c4c7b9d36">
   <img src="https://i.gyazo.com/e4bd89e3d8a989fb7b919a5c4c7b9d36.gif" alt="Image from Gyazo" width="300" />
 </a>
-
-### 🌟実装のポイント
 <ul>
 <li> [date-fns](https://date-fns.org/) を使用し、記事が3日以内であればNewアイコンを表示</li>
 <li>コメントが0件なら表示なし、1以上ならアイコンと共に数字が表示</li>
@@ -367,7 +365,7 @@
 
 ## ソート機能をさらに追加
 
-年齢のフィールドへもソート機能を追加する
+  <p>年齢のフィールドへもソート機能を追加する</p>
 <img src="https://i.postimg.cc/sxy9FHFM/6b47c048cde0d229f273190c314eb87c.gif" alt="Image from Gyazo" width="300"/>
 </td>
 <td>
@@ -385,9 +383,13 @@
 
 ## 会員登録画面作成
 
+  <p>
 利用規約を押すと、モーダルが立ち上がり内容が表示。<br>
 スクロールが一番下へ行ったら 利用規約に同意するチェックボックスがcheckedになる仕様。<br>
 checkedがtrueの場合、送信ボタンを押下することができ完了ページへ遷移
+  </p>
+  
+<img src="https://user-images.githubusercontent.com/76232904/167287302-9bb69245-2158-460e-838a-9e53c1ccc6d0.gif" width="300">
 
 </td>
 <td>
@@ -405,14 +407,17 @@ checkedがtrueの場合、送信ボタンを押下することができ完了ペ
 <a href="https://github.com/sae-github/JS_lesson/tree/main/lesson25">Lesson25</a>
 </td>
 <td>
-<p>会員登録画面にバリデーションを追加</p>
+  
+## バリデーション実装
+
+<img src="https://user-images.githubusercontent.com/76232904/167287529-99d40628-5c38-4976-a032-ff9dfc9e7c52.gif" width="300">
+
 <ul>
-<li>初期状態は送信ボタンとチェックボックスはdisabled</li>
-<li>ユーザー名は16文字未満とし、もしinvalidならバリデーションテキストは 「ユーザー名は15文字以下にしてください。」</li>
-<li>メールアドレスは一般的なメール形式のバリデーションにしてください。もしinvalidならバリデーションテキストは「メールアドレスの形式になっていません。」</li>
-<li>パスワードのバリデーションは8文字以上の大小の英数字を交ぜたものとし、もしinvalidならバリデーションテキストは「8文字以上の大小の英数字を交ぜたものにしてください。」</li>
-<li>利用規約のスクロール実装に併せて、チェックボックスのdisabledは外し、checkedになる(課題24で実装)</li>
-<li>全ての入力がvalidの場合にのみ送信ボタンは緑色になり押下でき、完了ページに遷移できる。</li>
+<li>ユーザー名は16文字未満</li>
+<li>メールアドレスは一般的なメール形式のバリデーション</li>
+<li>パスワードのバリデーションは8文字以上の大小の英数字を交ぜたもの</li>
+<li>利用規約のスクロール実装に併せて、チェックボックスがcheckedになる(課題24で実装)</li>
+<li>全ての入力がvalidの場合にのみ送信ボタンは押下でき、完了ページに遷移する</li>
 </ul>
 </td>
 <td>
@@ -432,7 +437,9 @@ checkedがtrueの場合、送信ボタンを押下することができ完了ペ
 <a href="https://github.com/sae-github/JS_lesson/tree/main/lesson26">Lesson26</a>
 </td>
 <td>
-<p>ログイン画面の実装</p>
+  
+## ログイン画面の実装
+ 
 </td>
 <td>
 <a href="https://codesandbox.io/s/js-lesson26-cpih3?fontsize=14&hidenavigation=1&theme=dark">
