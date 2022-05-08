@@ -210,18 +210,20 @@
 
 <tr>
 <td><a href="https://github.com/sae-github/JS_lesson/tree/main/lesson16">Lesson16</a></td>
-<td>タブUI実装<br>
-<ul>
-<li>カテゴリタブを開くことができ、ジャンルに応じた記事を4つ表示</li>
-<li>それぞれのカテゴリにはそれぞれ固有の画像が入る</li>
-<li>3日以内の記事であれば、Newアイコンを表示する</li>
-<li>コメントが0件なら表示なし、1以上ならアイコンと共に数字が表示</li>
-<li>htmlはulのみ</li>
-<li>コメントアイコンをクリックするモーダルが表示され、コメント内容とコアイコンが表示</li>
-</ul>
+<td>
+  
+## タブUI実装
+<p>擬似的なAPIを使用し、非同期で取得したデータをもとにタブUIを実装</p>
 <a href="https://gyazo.com/e4bd89e3d8a989fb7b919a5c4c7b9d36">
   <img src="https://i.gyazo.com/e4bd89e3d8a989fb7b919a5c4c7b9d36.gif" alt="Image from Gyazo" width="300" />
 </a>
+
+### 🌟実装のポイント
+<ul>
+<li> [date-fns](https://date-fns.org/) を使用し、記事が3日以内であればNewアイコンを表示</li>
+<li>コメントが0件なら表示なし、1以上ならアイコンと共に数字が表示</li>
+<li>コメントアイコンをクリックするモーダルが表示され、コメント内容とユーザーアイコンが表示</li>
+</ul> 
 </td>
 <td>
 <a href="https://codesandbox.io/s/js-lesson16-part3-d2m4e?fontsize=14&hidenavigation=1&theme=dark">
@@ -243,18 +245,15 @@
 <a href="https://github.com/sae-github/JS_lesson/tree/main/lesson17">Lesson17</a>
 </td>
 <td>
-  スライドショー作成
- <ul>
-<li>画面遷移してから3秒後に解決されるPromiseが返すオブジェクトを元にimgタグを5つつくる</li>
-<li>それぞれは.z-indexで重ねた状態。矢印画像をクリックを押すとスライド画像が変わる</li>
-<li>5枚中何枚目かを表示して、5/5の場合Nextの矢印はdisabledにする。1/5枚の時はBackボタンはdisabledにする</li>
-</ul>
+  
+## スライドショー作成
+<img src="https://i.postimg.cc/YqmzYR9v/71c63798841df61f47044e3b6703948f.gif" width="300" >
 </td>
-  <td>
-    <a href="https://codesandbox.io/s/js-lesson17-part2-mznov?fontsize=14&hidenavigation=1&theme=dark">
+<td>
+<a href="https://codesandbox.io/s/js-lesson17-part2-mznov?fontsize=14&hidenavigation=1&theme=dark">
 <img alt="Edit JS_lesson17 part2" src="https://codesandbox.io/static/img/play-codesandbox.svg">
 </a>
-  </td>
+</td>
 <td>
 <a href="https://itosae.com/js_lesson17/" target="_blank" rel="noopener noreferrer">
 <img src="https://i.postimg.cc/YCD6BPzc/external-link-icon-152846.png" width="30px">
@@ -266,11 +265,14 @@
 <td>
 <a href="https://github.com/sae-github/JS_lesson/tree/main/lesson18">Lesson18</a>
 </td>
-<td>スライドショーにドットのページネーションを追加
-<p>それぞれのドットはクリッカブルで、押下すると画像が切り替わる。それに伴い、カウンターも切り替わる。<br>
-3秒毎に次のスライドに自動で切り替わるauto機能も追加する
+<td>
+
+## ドットページネーション、auto機能の追加
+
+課題17で作成したスライドショーにドットのページネーション、auto機能を追加
 </p>
-<a href="https://gyazo.com/aa26ed5661fa7e2470509b194bb19279"><img src="https://i.gyazo.com/aa26ed5661fa7e2470509b194bb19279.gif" alt="Image from Gyazo" width="300"/></a>
+<a href="https://gyazo.com/aa26ed5661fa7e2470509b194bb19279">
+  <img src="https://i.gyazo.com/aa26ed5661fa7e2470509b194bb19279.gif" alt="Image from Gyazo" width="300"/></a>
 </td>
 <td>
 <a href="https://codesandbox.io/s/js-lesson18-part2-1hd28?fontsize=14&hidenavigation=1&theme=dark">
@@ -292,8 +294,11 @@
 <a href="https://github.com/sae-github/JS_lesson/tree/main/lesson19">Lesson19</a>
 </td>
 <td>
-ニュースUIとスライドショーを合わせる<br>
+  
+## ニュースUIとスライドショーを合わせる
+  
 課題16〜18で作成したコンポーネントを合わせたページの作成
+<img src="https://user-images.githubusercontent.com/76232904/167286931-b49033a9-247a-4d70-9110-8f01f5f83fe4.gif" width="300">
 </td>
 <td>
 <a href="https://codesandbox.io/s/js-lesson19-gelvt?fontsize=14&hidenavigation=1&theme=dark">
@@ -309,7 +314,9 @@
 <a href="https://github.com/sae-github/JS_lesson/tree/main/lesson20">Lesson20</a>
 </td>
 <td>
-ユーザーテーブル作成
+ 
+## ユーザーテーブル作成
+
 <ul>
 <li>画面遷移してから3秒後に解決されるPromiseが返すオブジェクトを元に作成</li>
 <li>カラム名など(id, 名前等)もdataで表現して受け取り、フロント側で加工して表示</li>
@@ -332,7 +339,9 @@
 <a href="https://github.com/sae-github/JS_lesson/tree/main/lesson21">Lesson21</a>
 </td>
 <td>
-ユーザーテーブルにソート機能を追加
+  
+## ソート機能を追加
+
 <ul>
 <li>idがソートできる機能を実装</li>
 <li>通常▶︎昇順▶︎降順の順でソートする</li>
