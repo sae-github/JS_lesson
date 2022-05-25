@@ -439,7 +439,8 @@ checkedがtrueの場合、送信ボタンを押下することができ完了ペ
 <td>
   
 ## ログイン画面の実装
- 
+
+ <img src="https://user-images.githubusercontent.com/76232904/170251691-5af74b8b-3f04-478a-90f3-6098e40b1c2b.gif" width="450">
 </td>
 <td>
 <a href="https://codesandbox.io/s/js-lesson26-cpih3?fontsize=14&hidenavigation=1&theme=dark">
@@ -454,8 +455,10 @@ checkedがtrueの場合、送信ボタンを押下することができ完了ペ
 <a href="https://github.com/sae-github/JS_lesson/tree/main/lesson27">Lesson27</a>
 </td>
 <td>
-<p>ログイン画面の実装</p>
-tokenを参照してログインユーザーかどうかをチェックする
+  
+## tokenチェック
+  
+<p>tokenを参照してログインユーザーかどうかのチェックを追加</p>
 </td>
 <td>
 <a href="https://codesandbox.io/s/js-lesson27-h9j6p?fontsize=14&hidenavigation=1&theme=dark">
