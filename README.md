@@ -533,8 +533,10 @@ checkedがtrueの場合、送信ボタンを押下することができ完了ペ
 <a href="https://github.com/sae-github/JS_lesson/tree/main/lesson31">Lesson31</a>
 </td>
 <td>
-<p>ドロワーメニューの実装</p>
-オプション機能を付与する
+
+### ドロワーメニューの実装
+
+<p>オプション機能を付与する(overLayの有無・ドロワーメニューの出てくる方向)</p>
 </td>
 <td>
 <a href="https://codesandbox.io/s/lesson31-shgu2t?fontsize=14&hidenavigation=1&theme=dark">
@@ -553,7 +555,11 @@ checkedがtrueの場合、送信ボタンを押下することができ完了ペ
 <a href="https://github.com/sae-github/JS_lesson/tree/main/lesson32">Lesson32</a>
 </td>
 <td>
-一覧ページと絞り込み機能
+
+### 一覧ページと絞り込み機能
+  
+<img src="https://user-images.githubusercontent.com/76232904/170812350-8a307a69-4e81-4e44-99e2-48c74eaa7853.gif" width="450">
+  
 <td>
 <a href="https://codesandbox.io/s/lesson32-y34p1y?fontsize=14&hidenavigation=1&theme=dark">
   <img alt="Edit lesson32" src="https://codesandbox.io/static/img/play-codesandbox.svg">
@@ -567,7 +573,11 @@ checkedがtrueの場合、送信ボタンを押下することができ完了ペ
 <a href="https://github.com/sae-github/JS_lesson/tree/main/lesson33">Lesson33</a>
 </td>
 <td>
-ドロワーメニューに遷移アニメーションを追加
+  
+### ドロワーメニューに遷移アニメーションを追加
+
+<img src="https://user-images.githubusercontent.com/76232904/170812460-404680b8-c92b-482f-8bef-514332802e58.gif" width="450">
+
 <td>
 <a href="https://codesandbox.io/s/lesson33-e3ykz4?fontsize=14&hidenavigation=1&theme=dark">
   <img alt="Edit Lesson33" src="https://codesandbox.io/static/img/play-codesandbox.svg">
@@ -586,11 +596,16 @@ checkedがtrueの場合、送信ボタンを押下することができ完了ペ
 <a href="https://github.com/sae-github/JS_lesson/tree/main/lesson34">Lesson34</a>
 </td>
 <td>
-マイページとお気に入り機能実装
+
+### マイページとお気に入り機能実装
+  
 <p>
 ニュースタブUIから遷移するニュースの個別ページを作成。<br>
 個別ページにはお気に入り登録できる機能をつける
 </p>
+
+<img src="https://user-images.githubusercontent.com/76232904/170812606-6e6e25f2-473d-4758-b3c9-d0c5d6e2b7e8.gif" width="450">
+
 <td>
 <a href="https://codesandbox.io/s/lesson34-84mp0o?fontsize=14&hidenavigation=1&theme=dark">
   <img alt="Edit Lesson34②" src="https://codesandbox.io/static/img/play-codesandbox.svg">
@@ -605,7 +620,9 @@ checkedがtrueの場合、送信ボタンを押下することができ完了ペ
 <a href="https://github.com/sae-github/JS_lesson/tree/main/lesson35">Lesson35</a>
 </td>
 <td>
-ログインユーザーか非ログインユーザーか判定して見れるコンテンツを分ける
+
+### ログインユーザーか非ログインユーザーか判定して見れるコンテンツを分ける
+ 
 <p>
 擬似的なAPIを使用して、`isAuthorization`のようなログインユーザーか否かの権限を表すフィールドをもつエンドポイントを用意し、
 `isAuthorization`がtrueであればログイン済みなページを表示し、falseであれば非ログインユーザー用のページを表示する
@@ -624,7 +641,11 @@ checkedがtrueの場合、送信ボタンを押下することができ完了ペ
 <a href="https://github.com/sae-github/JS_lesson/tree/main/lesson36">Lesson36</a>
 </td>
 <td>
-無限スクロールの実装
+  
+### 無限スクロールの実装
+
+<img src="https://user-images.githubusercontent.com/76232904/170812736-e4ed89f9-af32-44e6-86c9-95009337f048.gif" width="450">
+  
 <td>
 <a href="https://codesandbox.io/s/lesson36-rvu9wn?fontsize=14&hidenavigation=1&theme=dark">
   <img alt="Edit Lesson36" src="https://codesandbox.io/static/img/play-codesandbox.svg">
@@ -642,7 +663,9 @@ checkedがtrueの場合、送信ボタンを押下することができ完了ペ
 <a href="https://github.com/sae-github/JS_lesson/tree/main/lesson37">Lesson37</a>
 </td>
 <td>
-全てのコンテンツを集める
+  
+### 全てのコンテンツを集める
+  
 <p>今まで課題で制作したコンテンツをあわせる</p>
 <td>
 <a href="https://codesandbox.io/s/lesson37-mivvub?fontsize=14&hidenavigation=1&theme=dark">
