@@ -473,8 +473,12 @@ checkedがtrueの場合、送信ボタンを押下することができ完了ペ
 <a href="https://github.com/sae-github/JS_lesson/tree/main/lesson28">Lesson28</a>
 </td>
 <td>
-<p>パスワード忘れた方へページの実装</p>
-tokenを参照してログインユーザーかどうかをチェックする
+  
+## パスワード忘れた方へページの実装
+  
+<p>tokenを参照してログインユーザーかどうかをチェックする</p>
+
+ <img src="https://user-images.githubusercontent.com/76232904/170807098-57705f87-e373-43ab-8c90-6f4d0c836859.gif" width="450">
 </td>
 <td>
 <a href="https://codesandbox.io/s/js-lesson28-6c7mg8?fontsize=14&hidenavigation=1&theme=dark">
@@ -489,7 +493,12 @@ tokenを参照してログインユーザーかどうかをチェックする
 <a href="https://github.com/sae-github/JS_lesson/tree/main/lesson29">Lesson29</a>
 </td>
 <td>
-<p>メールアドレス変更画面ページの実装</p>
+  
+### メールアドレス・パスワードの変更画面ページの実装
+<p>ログイン後ページにメールアドレス・パスワードの変更ページを実装</p>
+
+<img src="https://user-images.githubusercontent.com/76232904/170807590-11af5b69-b8e6-4afd-ac1e-1f6d2028121a.gif" width="450">
+
 </td>
 <td>
 <a href="https://codesandbox.io/s/lesson29-vlghhg?fontsize=14&hidenavigation=1&theme=dark">
@@ -504,7 +513,11 @@ tokenを参照してログインユーザーかどうかをチェックする
 <a href="https://github.com/sae-github/JS_lesson/tree/main/lesson30">Lesson30</a>
 </td>
 <td>
-<p>ドロワーメニューの実装</p>
+  
+### ドロワーメニューの実装
+
+<img src="https://user-images.githubusercontent.com/76232904/170807664-90322215-956e-4978-b3c6-36aede40ff70.gif" width="450">
+  
 </td>
 <td>
 <a href="https://codesandbox.io/s/lesson30-3ydix7?fontsize=14&hidenavigation=1&theme=dark">
