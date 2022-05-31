@@ -240,7 +240,7 @@
   
 <tr>
 <td>
-<a href="https://github.com/sae-github/JS_lesson/tree/main/lesson17">Lesson17</a>
+<a href="https://github.com/sae-github/JS_lesson/tree/main/Lesson17">Lesson17</a>
 </td>
 <td>
   
@@ -261,7 +261,7 @@
 
 <tr>
 <td>
-<a href="https://github.com/sae-github/JS_lesson/tree/main/lesson18">Lesson18</a>
+<a href="https://github.com/sae-github/JS_lesson/tree/main/Lesson18">Lesson18</a>
 </td>
 <td>
 
@@ -289,7 +289,7 @@
   
 <tr>
 <td>
-<a href="https://github.com/sae-github/JS_lesson/tree/main/lesson19">Lesson19</a>
+<a href="https://github.com/sae-github/JS_lesson/tree/main/Lesson19">Lesson19</a>
 </td>
 <td>
   
@@ -383,7 +383,7 @@
 
 ## 会員登録画面作成
 
-  <p>
+<p>
 利用規約を押すと、モーダルが立ち上がり内容が表示。<br>
 スクロールが一番下へ行ったら 利用規約に同意するチェックボックスがcheckedになる仕様。<br>
 checkedがtrueの場合、送信ボタンを押下することができ完了ページへ遷移
