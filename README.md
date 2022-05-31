@@ -209,7 +209,7 @@
 </tr>
 
 <tr>
-<td><a href="https://github.com/sae-github/JS_lesson/tree/main/lesson16">Lesson16</a></td>
+<td><a href="https://github.com/sae-github/JS_lesson/tree/main/Lesson16">Lesson16</a></td>
 <td>
   
 ## タブUI実装
