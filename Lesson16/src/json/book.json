@@ -1,0 +1,112 @@
+{
+  "id": "d648f647-13b1-4f32-9edb-1ef6eadeebb8",
+  "category": "book",
+  "select": false,
+  "image": "https://i.postimg.cc/PqXMhkqz/streamline-icon-machine-learning-250x250-1.png",
+  "article": [
+    {
+      "id": "7cb39430-d000-4b2a-8bbd-29a6ff6c7694",
+      "date": "2021-11-16",
+      "title": "11/16 Book#1",
+      "comment": [
+        {
+          "id": "b376fda8-9a54-4922-b876-8d3247baeec2",
+          "name": "Yamada",
+          "icon": "https://i.postimg.cc/DfXpxn48/kyosyu-boy-1.jpg",
+          "detail": "カテゴリーBookに関する記事へのコメントがここには入ります"
+        },
+        {
+          "id": "b376fda8-9a54-4922-b876-8d3247baeec3",
+          "name": "Murakami",
+          "icon": "https://i.postimg.cc/G3M7ZBXm/face-ojiisan-happy.jpg",
+          "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, "
+        },
+        {
+          "id": "b376fda8-9a54-4922-b876-8d3247baeec4",
+          "name": "Aoki",
+          "icon": "https://i.postimg.cc/G3M7ZBXm/face-ojiisan-happy.jpg",
+          "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, "
+        },
+        {
+          "id": "b376fda8-9a54-4922-b876-8d3247baeec5",
+          "name": "Okugawa",
+          "icon": "https://i.postimg.cc/V6vMMNnK/face-obaasan-trouble.jpg",
+          "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, "
+        },
+        {
+          "id": "b376fda8-9a54-4922-b876-8d3247baeec6",
+          "name": "Nisida",
+          "icon": "https://i.postimg.cc/ZntcGvv0/study-girl-1.jpg",
+          "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, "
+        },
+        {
+          "id": "b376fda8-9a54-4922-b876-8d3247baeec7",
+          "name": "Okumura",
+          "icon": "https://i.postimg.cc/0yK2X6vL/face-girl-laugh-1.jpg",
+          "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, "
+        }
+      ]
+    },
+    {
+      "id": "7cb39430-d000-4b2a-8bbd-29a6ff6c7695",
+      "date": "2021-11-16",
+      "title": "11/16 Book#2",
+      "comment": []
+    },
+    {
+      "id": "7cb39430-d000-4b2a-8bbd-29a6ff6c7696",
+      "date": "2021-11-18",
+      "title": "11/18 Book#4",
+      "comment": []
+    },
+    {
+      "id": "7cb39430-d000-4b2a-8bbd-29a6ff6c7697",
+      "date": "2021-11-20",
+      "title": "11/20 Book#5",
+      "comment": [
+        {
+          "id": "732acae8-fd7a-4eb1-85a7-552ac850c979",
+          "name": "Aaron",
+          "icon": "https://i.postimg.cc/V6vMMNnK/face-obaasan-trouble.jpg",
+          "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, "
+        },
+        {
+          "id": "732acae8-fd7a-4eb1-85a7-552ac850c980",
+          "name": "Bill",
+          "icon": "https://i.postimg.cc/DfXpxn48/kyosyu-boy-1.jpg",
+          "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, "
+        },
+        {
+          "id": "732acae8-fd7a-4eb1-85a7-552ac850c981",
+          "name": "Daniel",
+          "icon": "https://i.postimg.cc/ZntcGvv0/study-girl-1.jpg",
+          "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, "
+        },
+        {
+          "id": "732acae8-fd7a-4eb1-85a7-552ac850c982",
+          "name": "Mike",
+          "icon": "https://i.postimg.cc/0yK2X6vL/face-girl-laugh-1.jpg",
+          "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, "
+        },
+        {
+          "id": "732acae8-fd7a-4eb1-85a7-552ac850c983",
+          "name": "Patrick",
+          "icon": "https://i.postimg.cc/G3M7ZBXm/face-ojiisan-happy.jpg",
+          "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, "
+        },
+        {
+          "id": "732acae8-fd7a-4eb1-85a7-552ac850c984",
+          "name": "Stephen",
+          "icon": "https://i.postimg.cc/fRkhGnc6/face-girl.jpg",
+          "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, "
+        },
+        {
+          "id": "732acae8-fd7a-4eb1-85a7-552ac850c985",
+          "name": "Ted",
+          "icon": "https://i.postimg.cc/8PDRSScK/face-girl-angry-1.jpg",
+          "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, "
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "8b5ae244-cddb-4b94-a5cd-b1ca4201c945",
+  "date": "2021-11-17",
+  "title": "11/17 News#1",
+  "comment": [
+    {
+      "id": "3b27461d-8e26-4efc-ade6-5a2ca0d66b4a",
+      "name": "John",
+      "icon": "https://i.postimg.cc/fRkhGnc6/face-girl.jpg",
+      "detail": "11月17日のNewsに関するコメント"
+    },
+    {
+      "id": "3b27461d-8e26-4efc-ade6-5a2ca0d66b4b",
+      "name": "Michael",
+      "icon": "https://i.postimg.cc/G3M7ZBXm/face-ojiisan-happy.jpg",
+      "detail": "ここにはニュースに関するコメントが入りますここにはニュースに関するコメントが入りますここにはニュースに関するコメントが入りますここにはニュースに関するコメントが入ります"
+    },
+    {
+      "id": "3b27461d-8e26-4efc-ade6-5a2ca0d66b4c",
+      "name": "Mike",
+      "icon": "https://i.postimg.cc/25FTT3qm/face-man-cry.jpg",
+      "detail": "ほげほげほげほげほげほげほげほげほげほげげほげほげほげほげほげげほげほげほげほげほげげ"
+    }
+  ]
+}

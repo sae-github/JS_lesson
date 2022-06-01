@@ -1,0 +1,61 @@
+{
+  "id": "8b5ae244-cddb-4b94-a5cd-b1ca4201c946",
+  "date": "2021-11-18",
+  "title": "11/18 News#2",
+  "comment": [
+    {
+      "id": "d70d67e9-fe9d-404e-907c-2dfc22582eb1",
+      "name": "Aaron",
+      "icon": "https://i.postimg.cc/V6vMMNnK/face-obaasan-trouble.jpg",
+      "detail": "11月18日のニュースに関するコメント"
+    },
+    {
+      "id": "d70d67e9-fe9d-404e-907c-2dfc22582eb2",
+      "name": "Bill",
+      "icon": "https://i.postimg.cc/G3M7ZBXm/face-ojiisan-happy.jpg",
+      "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
+    },
+    {
+      "id": "d70d67e9-fe9d-404e-907c-2dfc22582eb3",
+      "name": "Daniel",
+      "icon": "https://i.postimg.cc/fRkhGnc6/face-girl.jpg",
+      "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
+    },
+    {
+      "id": "d70d67e9-fe9d-404e-907c-2dfc22582eb4",
+      "name": "Mike",
+      "icon": "https://i.postimg.cc/G3M7ZBXm/face-ojiisan-happy.jpg",
+      "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
+    },
+    {
+      "id": "d70d67e9-fe9d-404e-907c-2dfc22582eb5",
+      "name": "Patrick",
+      "icon": "https://i.postimg.cc/G3M7ZBXm/face-ojiisan-happy.jpg",
+      "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
+    },
+    {
+      "id": "d70d67e9-fe9d-404e-907c-2dfc22582eb6",
+      "name": "Stephen",
+      "icon": "https://i.postimg.cc/fRkhGnc6/face-girl.jpg",
+      "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
+    },
+    {
+      "id": "d70d67e9-fe9d-404e-907c-2dfc22582eb7",
+      "name": "Ted",
+      "icon": "https://i.postimg.cc/65Jcsddw/face-girl-shock.jpg",
+      "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
+    },
+    {
+      "id": "d70d67e9-fe9d-404e-907c-2dfc22582eb8",
+      "name": "hoge",
+      "icon": "https://i.postimg.cc/65Jcsddw/face-girl-shock.jpg",
+      "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
+    },
+    {
+      "id": "d70d67e9-fe9d-404e-907c-2dfc22582eb9",
+      "name": "hogehoge",
+      "icon": "https://i.postimg.cc/G3M7ZBXm/face-ojiisan-happy.jpg",
+      "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
+    }
+  ]
+}
